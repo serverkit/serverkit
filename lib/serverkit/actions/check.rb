@@ -12,7 +12,8 @@ module Serverkit
       # @todo
       def call
         recipe.elements.each do |element|
-          if element.check(backend)
+          element.backend = backend
+          if element.check
             puts "[OK] #{element.name}"
           else
             puts "[NG] #{element.name}"

@@ -3,11 +3,9 @@ require "serverkit/elements/base"
 module Serverkit
   module Elements
     class Homebrew < Base
-      # @param [Specinfra::Backend::Base] backend
       # @return [true, false]
-      def check(backend)
-        command = backend.command.get(:check_package_is_installed_by_homebrew, package)
-        backend.run_command(command).success?
+      def check
+        check_command_from_identifier(:check_package_is_installed_by_homebrew, package)
       end
 
       private

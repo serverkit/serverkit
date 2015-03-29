@@ -3,11 +3,9 @@ require "serverkit/elements/base"
 module Serverkit
   module Elements
     class File < Base
-      # @param [Specinfra::Backend::Base] backend
       # @return [true, false]
-      def check(backend)
-        command = backend.command.get(:check_file_is_file, path)
-        backend.run_command(command).success?
+      def check
+        check_command_from_identifier(:check_file_is_file, path)
       end
 
       private

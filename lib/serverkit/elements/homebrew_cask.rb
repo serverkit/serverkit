@@ -3,10 +3,9 @@ require "serverkit/elements/base"
 module Serverkit
   module Elements
     class HomebrewCask < Base
-      # @param [Specinfra::Backend::Base] backend
       # @return [true, false]
-      def check(backend)
-        backend.run_command("/usr/local/bin/brew cask list -1 | grep -E '^#{package}$'").success?
+      def check
+        check_command("/usr/local/bin/brew cask list -1 | grep -E '^#{package}$'")
       end
 
       private
