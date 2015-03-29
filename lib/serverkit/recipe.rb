@@ -22,20 +22,25 @@ module Serverkit
     # @return [Array<Serverkit::Elements::Base>]
     # @todo Delegate to element builder
     def elements
-      @elements ||= element_definitions.map do |element_definition|
-        Elements.const_get(element_definition["type"].camelize, false).new({})
+      @elements ||= element_properties.map do |properties|
+        Elements.const_get(properties["type"].camelize, false).new(properties)
       end
     end
 
-    # @return [true, false] False if any error is found from recipe definition (e.g. unknown type)
-    def valid?
-      elements.all?(&:valid?)
+    # @return [Array<String>]
+    def hosts
+      @raw_recipe["hosts"]
+    end
+
+    # @return [true, false] Flag to use SSH (default: true)
+    def ssh?
+      @raw_recipe["ssh"] != false
     end
 
     private
 
     # @return [Array<String>]
-    def element_definitions
+    def element_properties
       @raw_recipe["elements"] || []
     end
   end

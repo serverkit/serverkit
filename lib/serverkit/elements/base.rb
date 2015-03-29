@@ -1,15 +1,21 @@
 module Serverkit
   module Elements
     class Base
-      # @param [Hash] variables
-      def initialize(variables)
-        @variables = variables
+      # @param [Hash] properties
+      def initialize(properties)
+        @properties = properties
       end
 
-      # @note For override.
+      # @note Override this
+      # @param [Specinfra::Backend::Base] backend
       # @return [true, false]
-      def valid?
-        true
+      def check(backend)
+        raise NotImplementedError
+      end
+
+      # @return [String]
+      def name
+        @properties["name"]
       end
     end
   end
