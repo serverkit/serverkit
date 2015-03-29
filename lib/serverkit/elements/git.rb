@@ -5,7 +5,6 @@ module Serverkit
     class Git < Base
       DEFAULT_STATUS = "cloned"
 
-      # @todo Memoize cloned? result
       def apply
         clone if clonable?
         update if updatable?
