@@ -1,0 +1,24 @@
+hosts:
+  - localhost
+elements:
+  - name: install_mysql
+    type: homebrew
+    package: mysql
+    status: installed
+  - name: install_redis
+    type: homebrew
+    package: redis
+    status: installed
+  - name: install_licecap
+    type: homebrew_cask
+    package: licecap
+    status: installed
+  - name: install_alfred
+    type: homebrew_cask
+    package: alfred
+    status: linked
+  - name: symlink_zshrc
+    type: file
+    source: ./dotfiles/.zshrc
+    destination: ~/.zshrc
+    status: symlinked
