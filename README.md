@@ -3,13 +3,6 @@ Configuration management toolkit for building servers.
 
 ## Usage
 ```sh
-# Create Gemfile
-bundle init
-
-# Install serverkit and its dependencies
-echo 'gem "serverkit"' >> Gemfile
-bundle install
-
 # Write your recipe
 vi recipe.yml
 
@@ -18,4 +11,30 @@ bundle exec serverkit check --recipe=recipe.yml
 
 # Apply
 bundle exec serverkit apply --recipe=recipe.yml
+```
+
+### Example
+```yaml
+# recipe.yml
+resources:
+  - name: install_mysql
+    type: homebrew
+    package: mysql
+  - name: install_redis
+    type: homebrew
+    package: redis
+  - name: install_licecap
+    type: homebrew_cask
+    package: licecap
+  - name: install_alfred
+    type: homebrew_cask
+    package: alfred
+  - name: clone_dotfiles
+    type: git
+    repository: git@github.com:r7kamura/dotfiles.git
+    path: /Users/r7kamura/src/github.com/r7kamura/dotfiles
+  - name: symlink_zshrc
+    type: symlink
+    source: /Users/r7kamura/.zshrc
+    destination: /Users/r7kamura/src/github.com/r7kamura/dotfiles/linked/.zshrc
 ```
