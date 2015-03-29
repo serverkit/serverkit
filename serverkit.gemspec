@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.version       = Serverkit::VERSION
   spec.authors       = ["Ryo Nakamura"]
   spec.email         = ["r7kamura@gmail.com"]
-  spec.summary       = "Configuration management toolkit."
+  spec.summary       = "Configuration management toolkit for building servers."
   spec.homepage      = "https://github.com/r7kamura/serverkit"
   spec.license       = "MIT"
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
