@@ -1,5 +1,6 @@
 require "active_support/core_ext/string/inflections"
 require "serverkit/elements/file"
+require "serverkit/elements/git"
 require "serverkit/elements/homebrew"
 require "serverkit/elements/homebrew_cask"
 require "serverkit/elements/symlink"
