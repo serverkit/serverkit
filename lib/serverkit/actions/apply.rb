@@ -1,14 +1,22 @@
+require "serverkit/actions/base"
+
 module Serverkit
   module Actions
-    class Apply
-      # @param [Hash] options
-      def initialize(options)
-        @options = options
-      end
-
-      # @todo
+    class Apply < Base
       def call
-        puts "#{self.class}##{__method__} called"
+        recipe.elements.each do |element|
+          element.backend = backend
+          if element.check
+            puts "[SKIP] #{element.name}"
+          else
+            element.apply
+            if element.check
+              puts "[DONE] #{element.name}"
+            else
+              puts "[FAIL] #{element.name}"
+            end
+          end
+        end
       end
     end
   end

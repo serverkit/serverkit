@@ -5,6 +5,12 @@ module Serverkit
     class Git < Base
       DEFAULT_STATUS = "cloned"
 
+      # @todo Memoize cloned? result
+      def apply
+        clone if clonable?
+        update if updatable?
+      end
+
       # @return [true, false]
       def check
         case status
@@ -16,6 +22,14 @@ module Serverkit
       end
 
       private
+
+      def clonable?
+        !cloned?
+      end
+
+      def clone
+        run_command("git clone #{repository} #{path}")
+      end
 
       def cloned?
         check_command_from_identifier(:check_file_is_directory, git_path)
@@ -53,6 +67,14 @@ module Serverkit
       # @return [String]
       def status
         @properties["status"] || DEFAULT_STATUS
+      end
+
+      def updatable?
+        status == "updated" && !updated?
+      end
+
+      def update
+        run_command("cd #{path} && git fetch origin && git reset --hard origin/master")
       end
 
       def updated?
