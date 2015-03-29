@@ -1,13 +1,11 @@
-require "mem"
 require "serverkit/elements/base"
 
 module Serverkit
   module Elements
     class Git < Base
-      include Mem
-
       DEFAULT_STATUS = "cloned"
 
+      # @todo Memoize cloned? result
       def apply
         clone if clonable?
         update if updatable?
@@ -31,7 +29,6 @@ module Serverkit
       def cloned?
         check_command_from_identifier(:check_file_is_directory, git_path)
       end
-      memoize :cloned?
 
       # @return [String] Path to .git directory in the cloned repository
       def git_path
@@ -41,7 +38,6 @@ module Serverkit
       def has_git?
         check_command("which git")
       end
-      memoize :has_git?
 
       # @return [String]
       def local_head_revision
@@ -71,7 +67,6 @@ module Serverkit
       def updatable?
         status == "updated" && !updated?
       end
-      memoize :updatable?
 
       def update
         run_command("cd #{path} && git fetch origin && git reset --hard origin/master")
