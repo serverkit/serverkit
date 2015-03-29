@@ -7,10 +7,10 @@ Configuration management toolkit for building servers.
 vi recipe.yml
 
 # Check
-bundle exec serverkit check --recipe=recipe.yml
+serverkit check --recipe=recipe.yml
 
 # Apply
-bundle exec serverkit apply --recipe=recipe.yml
+serverkit apply --recipe=recipe.yml
 ```
 
 ### Example
