@@ -13,12 +13,7 @@ module Serverkit
 
       # @return [true, false]
       def check
-        case status
-        when "updated"
-          has_git? && cloned? && updated?
-        else
-          has_git? && cloned?
-        end
+        has_git? && cloned? && !updatable?
       end
 
       private
