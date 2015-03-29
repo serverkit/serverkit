@@ -4,16 +4,16 @@ module Serverkit
   module Actions
     class Apply < Base
       def call
-        recipe.elements.each do |element|
-          element.backend = backend
-          if element.check
-            puts "[SKIP] #{element.name}"
+        recipe.resources.each do |resource|
+          resource.backend = backend
+          if resource.check
+            puts "[SKIP] #{resource.name}"
           else
-            element.apply
-            if element.check
-              puts "[DONE] #{element.name}"
+            resource.apply
+            if resource.check
+              puts "[DONE] #{resource.name}"
             else
-              puts "[FAIL] #{element.name}"
+              puts "[FAIL] #{resource.name}"
             end
           end
         end

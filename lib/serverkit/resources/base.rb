@@ -1,5 +1,5 @@
 module Serverkit
-  module Elements
+  module Resources
     class Base
       # @note @backend will be set before calling #check method
       attr_accessor :backend

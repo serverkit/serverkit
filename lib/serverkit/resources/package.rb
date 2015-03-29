@@ -1,7 +1,7 @@
-require "serverkit/elements/base"
+require "serverkit/resources/base"
 
 module Serverkit
-  module Elements
+  module Resources
     class Package < Base
       def apply
         run_command_from_identifier(:install, package)

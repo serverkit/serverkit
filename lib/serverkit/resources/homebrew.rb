@@ -1,7 +1,7 @@
-require "serverkit/elements/package"
+require "serverkit/resources/package"
 
 module Serverkit
-  module Elements
+  module Resources
     # @note Homebrew is an alias class of Package.
     class Homebrew < Package
     end

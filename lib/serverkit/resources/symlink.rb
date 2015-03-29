@@ -1,7 +1,7 @@
-require "serverkit/elements/base"
+require "serverkit/resources/base"
 
 module Serverkit
-  module Elements
+  module Resources
     class Symlink < Base
       def apply
         run_command_from_identifier(:link_file_to, source, destination)

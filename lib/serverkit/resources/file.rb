@@ -1,8 +1,8 @@
 require "digest"
-require "serverkit/elements/base"
+require "serverkit/resources/base"
 
 module Serverkit
-  module Elements
+  module Resources
     class File < Base
       def apply
         send_file if file_sendable?

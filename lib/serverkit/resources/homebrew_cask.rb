@@ -1,7 +1,7 @@
-require "serverkit/elements/base"
+require "serverkit/resources/base"
 
 module Serverkit
-  module Elements
+  module Resources
     class HomebrewCask < Base
       def apply
         run_command("brew cask install #{package}")

@@ -4,12 +4,12 @@ module Serverkit
   module Actions
     class Check < Base
       def call
-        recipe.elements.each do |element|
-          element.backend = backend
-          if element.check
-            puts "[OK] #{element.name}"
+        recipe.resources.each do |resource|
+          resource.backend = backend
+          if resource.check
+            puts "[OK] #{resource.name}"
           else
-            puts "[NG] #{element.name}"
+            puts "[NG] #{resource.name}"
           end
         end
       end

@@ -1,9 +1,9 @@
 require "active_support/core_ext/string/inflections"
-require "serverkit/elements/file"
-require "serverkit/elements/git"
-require "serverkit/elements/homebrew"
-require "serverkit/elements/homebrew_cask"
-require "serverkit/elements/symlink"
+require "serverkit/resources/file"
+require "serverkit/resources/git"
+require "serverkit/resources/homebrew"
+require "serverkit/resources/homebrew_cask"
+require "serverkit/resources/symlink"
 require "yaml"
 
 module Serverkit
@@ -21,11 +21,11 @@ module Serverkit
       @raw_recipe = raw_recipe
     end
 
-    # @return [Array<Serverkit::Elements::Base>]
-    # @todo Delegate to element builder
-    def elements
-      @elements ||= element_properties.map do |properties|
-        Elements.const_get(properties["type"].camelize, false).new(properties)
+    # @return [Array<Serverkit::Resources::Base>]
+    # @todo Delegate to resource builder
+    def resources
+      @resources ||= resource_properties.map do |properties|
+        Resources.const_get(properties["type"].camelize, false).new(properties)
       end
     end
 
@@ -42,8 +42,8 @@ module Serverkit
     private
 
     # @return [Array<String>]
-    def element_properties
-      @raw_recipe["elements"] || []
+    def resource_properties
+      @raw_recipe["resources"] || []
     end
   end
 end
