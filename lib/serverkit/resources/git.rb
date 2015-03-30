@@ -5,6 +5,10 @@ module Serverkit
     class Git < Base
       DEFAULT_STATUS = "cloned"
 
+      attribute :path, presence: true
+      attribute :repository, presence: true
+      attribute :status, default: DEFAULT_STATUS
+
       def apply
         clone if clonable?
         update if updatable?
@@ -46,21 +50,6 @@ module Serverkit
       # @return [String]
       def origin_head_revision
         run_command("cd #{path} && git ls-remote origin HEAD").stdout.split.first
-      end
-
-      # @return [String] Where to locate cloned repository
-      def path
-        @attributes["path"]
-      end
-
-      # @return [String] Git repository URL
-      def repository
-        @attributes["repository"]
-      end
-
-      # @return [String]
-      def status
-        @attributes["status"] || DEFAULT_STATUS
       end
 
       def updatable?

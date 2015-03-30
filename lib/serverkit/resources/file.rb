@@ -4,6 +4,11 @@ require "serverkit/resources/base"
 module Serverkit
   module Resources
     class File < Base
+      attribute :destination, presence: true
+      attribute :group
+      attribute :owner
+      attribute :source, presence: true
+
       def apply
         send_file if file_sendable?
         change_group unless has_valid_group?
@@ -25,18 +30,8 @@ module Serverkit
         run_command_from_identifier(:change_file_owner, destination, owner)
       end
 
-      # @return [String]
-      def destination
-        @attributes["destination"]
-      end
-
       def file_sendable?
         !has_file? || !has_same_content?
-      end
-
-      # @return [String]
-      def group
-        @attributes["group"]
       end
 
       def has_file?
@@ -62,22 +57,12 @@ module Serverkit
       end
 
       # @return [String]
-      def owner
-        @attributes["owner"]
-      end
-
-      # @return [String]
       def remote_file_sha256sum
         run_command_from_identifier(:get_file_sha256sum, destination).stdout.rstrip
       end
 
       def send_file
         run_command_from_identifier(:send_file, source, destination)
-      end
-
-      # @return [String]
-      def source
-        @attributes["source"]
       end
     end
   end

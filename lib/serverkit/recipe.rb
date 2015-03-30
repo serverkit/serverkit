@@ -75,7 +75,10 @@ module Serverkit
 
     # @return [Array<Serverkit::Errors::Base>]
     def errors_in_resources
-      resources.flat_map(&:errors)
+      resources.flat_map do |resource|
+        resource.validate
+        resource.errors.to_a
+      end
     end
 
     def has_valid_typed_resources_property?

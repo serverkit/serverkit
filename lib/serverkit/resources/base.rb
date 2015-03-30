@@ -1,26 +1,28 @@
+require "active_model"
+
 module Serverkit
   module Resources
     class Base
-      # @note Provide DSL methods to define validatable attributes
       class << self
+        # @note DSL method to define attribute with its validations
+        def attribute(name, options = {})
+          default = options.delete(:default)
+          define_method(name) do
+            @attributes[name.to_s] || default
+          end
+          validates name, options unless options.empty?
+        end
       end
 
+      include ActiveModel::Validations
+
       attr_accessor :backend
+
+      attribute :name, presence: true
 
       # @param [Hash] attributes
       def initialize(attributes)
         @attributes = attributes
-      end
-
-      # @todo
-      # @return [Array<Serverkit::Errors::Base>]
-      def errors
-        []
-      end
-
-      # @return [String]
-      def name
-        @attributes["name"]
       end
 
       private
