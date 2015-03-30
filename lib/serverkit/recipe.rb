@@ -47,8 +47,8 @@ module Serverkit
     # @return [Array<Serverkit::Resources::Base>]
     # @todo Delegate to resource builder
     def resources
-      @resources ||= resources_property.map do |properties|
-        Resources.const_get(properties["type"].camelize, false).new(properties)
+      @resources ||= resources_property.map do |attributes|
+        Resources.const_get(attributes["type"].camelize, false).new(attributes)
       end
     end
 

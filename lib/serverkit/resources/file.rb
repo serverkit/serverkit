@@ -27,7 +27,7 @@ module Serverkit
 
       # @return [String]
       def destination
-        @properties["destination"]
+        @attributes["destination"]
       end
 
       def file_sendable?
@@ -36,7 +36,7 @@ module Serverkit
 
       # @return [String]
       def group
-        @properties["group"]
+        @attributes["group"]
       end
 
       def has_file?
@@ -63,7 +63,7 @@ module Serverkit
 
       # @return [String]
       def owner
-        @properties["owner"]
+        @attributes["owner"]
       end
 
       # @return [String]
@@ -77,7 +77,7 @@ module Serverkit
 
       # @return [String]
       def source
-        @properties["source"]
+        @attributes["source"]
       end
     end
   end

@@ -50,17 +50,17 @@ module Serverkit
 
       # @return [String] Where to locate cloned repository
       def path
-        @properties["path"]
+        @attributes["path"]
       end
 
       # @return [String] Git repository URL
       def repository
-        @properties["repository"]
+        @attributes["repository"]
       end
 
       # @return [String]
       def status
-        @properties["status"] || DEFAULT_STATUS
+        @attributes["status"] || DEFAULT_STATUS
       end
 
       def updatable?

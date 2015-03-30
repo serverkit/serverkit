@@ -16,12 +16,12 @@ module Serverkit
 
       # @return [String]
       def destination
-        @properties["destination"]
+        @attributes["destination"]
       end
 
       # @return [String]
       def source
-        @properties["source"]
+        @attributes["source"]
       end
     end
   end

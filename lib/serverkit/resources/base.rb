@@ -1,11 +1,15 @@
 module Serverkit
   module Resources
     class Base
+      # @note Provide DSL methods to define validatable attributes
+      class << self
+      end
+
       attr_accessor :backend
 
-      # @param [Hash] properties
-      def initialize(properties)
-        @properties = properties
+      # @param [Hash] attributes
+      def initialize(attributes)
+        @attributes = attributes
       end
 
       # @todo
@@ -16,7 +20,7 @@ module Serverkit
 
       # @return [String]
       def name
-        @properties["name"]
+        @attributes["name"]
       end
 
       private

@@ -16,7 +16,7 @@ module Serverkit
 
       # @return [String]
       def package
-        @properties["package"]
+        @attributes["package"]
       end
     end
   end
