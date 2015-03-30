@@ -18,7 +18,7 @@ module Serverkit
 
       attr_accessor :backend
 
-      attribute :name, presence: true
+      attribute :name, required: true
 
       # @param [Hash] attributes
       def initialize(attributes)

@@ -3,7 +3,7 @@ require "serverkit/resources/base"
 module Serverkit
   module Resources
     class Package < Base
-      attribute :package, presence: true
+      attribute :package, required: true
 
       def apply
         run_command_from_identifier(:install, package)

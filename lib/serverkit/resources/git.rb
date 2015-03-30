@@ -5,8 +5,8 @@ module Serverkit
     class Git < Base
       DEFAULT_STATUS = "cloned"
 
-      attribute :path, presence: true
-      attribute :repository, presence: true
+      attribute :path, required: true
+      attribute :repository, required: true
       attribute :status, default: DEFAULT_STATUS
 
       def apply

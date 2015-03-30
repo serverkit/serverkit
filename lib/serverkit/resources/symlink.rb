@@ -3,8 +3,8 @@ require "serverkit/resources/base"
 module Serverkit
   module Resources
     class Symlink < Base
-      attribute :destination, presence: true
-      attribute :source, presence: true
+      attribute :destination, required: true
+      attribute :source, required: true
 
       def apply
         run_command_from_identifier(:link_file_to, source, destination)
