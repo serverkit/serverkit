@@ -1,5 +1,6 @@
 require "serverkit/actions/apply"
 require "serverkit/actions/check"
+require "serverkit/actions/validate"
 require "slop"
 
 module Serverkit
@@ -7,6 +8,7 @@ module Serverkit
     ACTION_NAMES = %w(
       apply
       check
+      validate
     )
 
     # @param [Array<String>] argv
@@ -24,6 +26,8 @@ module Serverkit
         apply
       when action_name == "check"
         check
+      when action_name == "validate"
+        validate
       end
     rescue Slop::MissingOptionError => exception
       abort "Error: #{exception}"
@@ -66,6 +70,10 @@ module Serverkit
         banner "Usage: serverkit ACTION [options]"
         on "-r", "--recipe=", "Path to recipe file", required: true
       end
+    end
+
+    def validate
+      Actions::Validate.new(options).call
     end
   end
 end

@@ -8,6 +8,12 @@ module Serverkit
         @properties = properties
       end
 
+      # @todo
+      # @return [Array<Serverkit::Errors::Base>]
+      def errors
+        []
+      end
+
       # @return [String]
       def name
         @properties["name"]

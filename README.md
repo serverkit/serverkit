@@ -6,10 +6,13 @@ Configuration management toolkit for your infrastructure.
 # Write your recipe
 vi recipe.yml
 
-# Check
+# Validate recipe
+serverkit validate --recipe=recipe.yml
+
+# Check differences
 serverkit check --recipe=recipe.yml
 
-# Apply
+# Apply migration
 serverkit apply --recipe=recipe.yml
 ```
 
