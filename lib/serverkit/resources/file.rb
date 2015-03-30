@@ -52,7 +52,6 @@ module Serverkit
         owner.nil? || check_command_from_identifier(:check_file_is_owned_by, destination, owner)
       end
 
-      # @todo Rescue Errno::ENOENT from File.read
       # @return [String]
       def local_file_sha256sum
         ::Digest::SHA256.hexdigest(::File.read(source))
