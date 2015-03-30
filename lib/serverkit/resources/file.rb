@@ -9,7 +9,7 @@ module Serverkit
       attribute :destination, required: true
       attribute :group
       attribute :owner
-      attribute :source, required: true, readable: true
+      attribute :source, readable: true, required: true
 
       def apply
         send_file if file_sendable?
