@@ -14,7 +14,7 @@ serverkit apply --recipe=recipe.yml
 ```
 
 ## Recipe
-A recipe is the most fundamental configuration which defines the desired state of your server.
+A recipe describes the desired state of your server.
 It is mostly a collection of resources, defined using certain patterns.
 
 ### Format
@@ -73,7 +73,7 @@ An example package resource that has id, type, and name attributes.
 
 ```yaml
 resources:
-  - id: install_mysql #   id attirbute (This resource is identified by this unique id)
+  - id: install_mysql # id attirbute (This resource is identified by this unique id)
     type: package     # type attribute (Serverkit::Resources::Package class is used for this)
     name: mysql       # name attribute (package resource requires name attribute)
 ```
