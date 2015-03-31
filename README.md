@@ -33,8 +33,7 @@ serverkit apply --recipe=recipes/
 ```
 
 ### Example
-This is an example recipe to install some packages,
-clone a git repository, and create a symlink for a dotfile.
+This is an example recipe to install some packages, clone a git repository, and create a symlink.
 
 ```yaml
 # recipe.yml
@@ -53,4 +52,28 @@ resources:
     type: symlink
     source: /Users/r7kamura/.zshrc
     destination: /Users/r7kamura/src/github.com/r7kamura/dotfiles/linked/.zshrc
+```
+
+## Resource
+A resource is a statement of configuration policy that describes the desired state for an item.
+
+### Type
+A resource must have a type property. Currently the following types are available:
+
+- file
+- git
+- homebrew_cask
+- homebrew
+- package
+- service
+- symlink
+
+### Example
+An example package resource that has id, type, and name attributes.
+
+```yaml
+resources:
+  - id: install_mysql #   id attirbute (This resource is identified by this unique id)
+    type: package     # type attribute (Serverkit::Resources::Package class is used for this)
+    name: mysql       # name attribute (package resource requires name attribute)
 ```
