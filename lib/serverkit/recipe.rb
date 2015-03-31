@@ -1,3 +1,4 @@
+require "active_support/core_ext/hash/deep_merge"
 require "active_support/core_ext/string/inflections"
 require "serverkit/errors/invalid_recipe_type"
 require "serverkit/errors/invalid_resources_type"
@@ -13,7 +14,7 @@ module Serverkit
     attr_reader :recipe_data
 
     # @param [Hash] recipe_data
-    def initialize(recipe_data)
+    def initialize(recipe_data = {})
       @recipe_data = recipe_data
     end
 
@@ -34,6 +35,20 @@ module Serverkit
     # @return [Array<String>]
     def hosts
       @recipe_data["hosts"]
+    end
+
+    # @param [Serverkit::Recipe] recipe
+    # @return [Serverkit::Recipe]
+    def merge(recipe)
+      self.class.new(
+        recipe_data.deep_merge(recipe.recipe_data) do |key, a, b|
+          if a.is_a?(Array)
+            a | b
+          else
+            b
+          end
+        end
+      )
     end
 
     # @return [Array<Serverkit::Resources::Base>]

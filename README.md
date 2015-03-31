@@ -18,12 +18,18 @@ A recipe is the most fundamental configuration which defines the desired state o
 It is mostly a collection of resources, defined using patterns (e.g. resource name, type, and other attributes).
 
 ### Format
-JSON, YAML, and any executable that outputs JSON are supported as a recipe file.
+A recipe can be specified as a path to one of:
+
+- JSON file
+- YAML file named with \*.yaml or \*.yml
+- Executable to output JSON
+- Directory including recipe files recursively
 
 ```sh
 serverkit apply --recipe=recipe.yml
 serverkit apply --recipe=recipe.json
 serverkit apply --recipe=recipe
+serverkit apply --recipe=recipes/
 ```
 
 ### Example

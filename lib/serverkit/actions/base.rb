@@ -30,13 +30,9 @@ module Serverkit
         end
       end
 
-      def load_recipe_data
-        RecipeLoader.new(@options[:recipe]).load
-      end
-
       # @return [Serverkit::Recipe]
       def recipe
-        @recipe ||= Recipe.new(load_recipe_data)
+        @recipe ||= RecipeLoader.new(@options[:recipe]).load
       end
     end
   end

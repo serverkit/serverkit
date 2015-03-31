@@ -9,15 +9,12 @@ module Serverkit
       @path = path
     end
 
-    # @return [Object] A Hash in normal case
+    # @return [Serverkit::Recipe]
     def load
-      case
-      when has_executable_path?
-        load_from_executable
-      when has_yaml_path?
-        load_from_yaml
+      if has_directory_path?
+        load_recipe_from_directory
       else
-        load_from_json
+        Recipe.new(load_data)
       end
     end
 
@@ -33,6 +30,10 @@ module Serverkit
       @extname ||= File.extname(@path)
     end
 
+    def has_directory_path?
+      File.directory?(@path)
+    end
+
     def has_executable_path?
       File.executable?(@path)
     end
@@ -41,15 +42,36 @@ module Serverkit
       YAML_EXTNAMES.include?(extname)
     end
 
-    def load_from_executable
+    def load_data
+      case
+      when has_executable_path?
+        load_data_from_executable
+      when has_yaml_path?
+        load_data_from_yaml
+      else
+        load_data_from_json
+      end
+    end
+
+    def load_recipe_from_directory
+      load_recipes_from_directory.inject(Recipe.new, :merge)
+    end
+
+    def load_recipes_from_directory
+      Dir.glob(File.join(@path, "*")).sort.flat_map do |path|
+        self.class.new(path).load
+      end
+    end
+
+    def load_data_from_executable
       JSON.parse(execute)
     end
 
-    def load_from_json
+    def load_data_from_json
       JSON.parse(File.read(@path))
     end
 
-    def load_from_yaml
+    def load_data_from_yaml
       YAML.load_file(@path)
     end
   end
