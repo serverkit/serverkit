@@ -7,9 +7,9 @@ module Serverkit
         recipe.resources.each do |resource|
           resource.backend = backend
           if resource.check
-            puts "[OK] #{resource.name}"
+            puts "[OK] #{resource.id}"
           else
-            puts "[NG] #{resource.name}"
+            puts "[NG] #{resource.id}"
           end
         end
       end

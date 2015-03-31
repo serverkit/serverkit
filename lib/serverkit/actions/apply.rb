@@ -7,13 +7,13 @@ module Serverkit
         recipe.resources.each do |resource|
           resource.backend = backend
           if resource.check
-            puts "[SKIP] #{resource.name}"
+            puts "[SKIP] #{resource.id}"
           else
             resource.apply
             if resource.check
-              puts "[DONE] #{resource.name}"
+              puts "[DONE] #{resource.id}"
             else
-              puts "[FAIL] #{resource.name}"
+              puts "[FAIL] #{resource.id}"
             end
           end
         end
