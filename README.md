@@ -33,24 +33,18 @@ serverkit apply --recipe=recipes/
 ```
 
 ### Example
-This is an example recipe for Mac to install some packages of homebrew and homebrew-cask,
-deploy a git repository, and create symlinks for dotfiles.
+This is an example recipe to install some packages,
+clone a git repository, and create a symlink for a dotfile.
 
 ```yaml
 # recipe.yml
 resources:
   - name: install_mysql
-    type: homebrew
+    type: package
     package: mysql
   - name: install_redis
-    type: homebrew
+    type: package
     package: redis
-  - name: install_licecap
-    type: homebrew_cask
-    package: licecap
-  - name: install_alfred
-    type: homebrew_cask
-    package: alfred
   - name: clone_dotfiles
     type: git
     repository: git@github.com:r7kamura/dotfiles.git
