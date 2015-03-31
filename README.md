@@ -41,3 +41,13 @@ resources:
     source: /Users/r7kamura/.zshrc
     destination: /Users/r7kamura/src/github.com/r7kamura/dotfiles/linked/.zshrc
 ```
+
+## Recipe
+JSON and YAML are supported as your recipe format.
+AIn addition, you can use any executable that will output recipe in JSON format.
+
+```sh
+serverkit apply --recipe=recipe.yml
+serverkit apply --recipe=recipe.json
+serverkit apply --recipe=recipe
+```

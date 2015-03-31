@@ -1,4 +1,5 @@
 require "serverkit/recipe"
+require "serverkit/recipe_loader"
 require "specinfra"
 
 module Serverkit
@@ -29,9 +30,13 @@ module Serverkit
         end
       end
 
+      def load_recipe_data
+        RecipeLoader.new(@options[:recipe]).load
+      end
+
       # @return [Serverkit::Recipe]
       def recipe
-        @recipe ||= Recipe.load_from_path(@options[:recipe])
+        @recipe ||= Recipe.new(load_recipe_data)
       end
     end
   end

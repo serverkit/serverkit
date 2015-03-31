@@ -10,14 +10,6 @@ require "yaml"
 
 module Serverkit
   class Recipe
-    class << self
-      # @param [String] path
-      def load_from_path(path)
-        recipe_data = YAML.load_file(path)
-        new(recipe_data)
-      end
-    end
-
     attr_reader :recipe_data
 
     # @param [Hash] recipe_data
