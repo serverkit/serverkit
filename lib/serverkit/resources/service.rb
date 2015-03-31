@@ -1,10 +1,9 @@
 require "serverkit/resources/base"
-require "required_validator"
 
 module Serverkit
   module Resources
     class Service < Base
-      attribute :name, required: true
+      attribute :name, required: true, type: String
 
       def apply
         run_command_from_identifier(:start, name)

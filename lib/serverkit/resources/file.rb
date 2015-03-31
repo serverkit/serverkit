@@ -1,15 +1,13 @@
 require "digest"
-require "readable_validator"
-require "required_validator"
 require "serverkit/resources/base"
 
 module Serverkit
   module Resources
     class File < Base
-      attribute :destination, required: true
-      attribute :group
-      attribute :owner
-      attribute :source, readable: true, required: true
+      attribute :destination, required: true, type: String
+      attribute :group, type: String
+      attribute :owner, type: String
+      attribute :source, readable: true, required: true, type: String
 
       def apply
         send_file if file_sendable?

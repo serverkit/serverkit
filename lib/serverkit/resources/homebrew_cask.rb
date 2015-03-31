@@ -3,7 +3,7 @@ require "serverkit/resources/base"
 module Serverkit
   module Resources
     class HomebrewCask < Base
-      attribute :name, required: true
+      attribute :name, required: true, type: String
 
       def apply
         run_command("brew cask install #{name}")

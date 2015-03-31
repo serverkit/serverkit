@@ -1,4 +1,7 @@
 require "active_model"
+require "readable_validator"
+require "required_validator"
+require "type_validator"
 
 module Serverkit
   module Resources
@@ -18,7 +21,7 @@ module Serverkit
 
       attr_accessor :backend
 
-      attribute :id, required: true
+      attribute :id, required: true, type: String
 
       # @param [Hash] attributes
       def initialize(attributes)
