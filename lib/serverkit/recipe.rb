@@ -96,9 +96,9 @@ module Serverkit
       @recipe_data.is_a?(Hash)
     end
 
-    # @return [Array<String>]
+    # @return [Array<String>, nil]
     def resources_property
-      @recipe_data["resources"] || []
+      @recipe_data["resources"]
     end
   end
 end

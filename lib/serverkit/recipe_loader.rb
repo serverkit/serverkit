@@ -9,6 +9,7 @@ module Serverkit
       @path = path
     end
 
+    # @todo Care Error::ENOENT error
     # @return [Serverkit::Recipe]
     def load
       if has_directory_path?
