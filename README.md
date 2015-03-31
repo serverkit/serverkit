@@ -2,21 +2,34 @@
 Configuration management toolkit for your infrastructure.
 
 ## Usage
+This gem provides `serverkit` executable with 3 actions.
+`validate` action validates your recipe format.
+`check` action shows the difference between your recipe and the state of the target host.
+`apply` action executes migration programs to fill-in the gaps.
+
 ```sh
-# Write your recipe
-vi recipe.yml
-
-# Validate recipe
 serverkit validate --recipe=recipe.yml
-
-# Check differences
 serverkit check --recipe=recipe.yml
-
-# Apply migration
 serverkit apply --recipe=recipe.yml
 ```
 
+## Recipe
+A recipe is the most fundamental configuration which defines the desired state of your server.
+It is mostly a collection of resources, defined using patterns (e.g. resource name, type, and other attributes).
+
+### Format
+JSON, YAML, and any executable that outputs JSON are supported as a recipe file.
+
+```sh
+serverkit apply --recipe=recipe.yml
+serverkit apply --recipe=recipe.json
+serverkit apply --recipe=recipe
+```
+
 ### Example
+This is an example recipe for Mac to install some packages of homebrew and homebrew-cask,
+deploy a git repository, and create symlinks for dotfiles.
+
 ```yaml
 # recipe.yml
 resources:
@@ -40,14 +53,4 @@ resources:
     type: symlink
     source: /Users/r7kamura/.zshrc
     destination: /Users/r7kamura/src/github.com/r7kamura/dotfiles/linked/.zshrc
-```
-
-## Recipe
-JSON and YAML are supported as your recipe format.
-AIn addition, you can use any executable that will output recipe in JSON format.
-
-```sh
-serverkit apply --recipe=recipe.yml
-serverkit apply --recipe=recipe.json
-serverkit apply --recipe=recipe
 ```
