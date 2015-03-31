@@ -7,22 +7,22 @@
     {
       "id": "install_mysql",
       "type": "homebrew",
-      "package": "mysql"
+      "name": "mysql"
     },
     {
       "id": "install_redis",
       "type": "homebrew",
-      "package": "redis"
+      "name": "redis"
     },
     {
       "id": "install_licecap",
       "type": "homebrew_cask",
-      "package": "licecap"
+      "name": "licecap"
     },
     {
       "id": "install_alfred",
       "type": "homebrew_cask",
-      "package": "alfred"
+      "name": "alfred"
     },
     {
       "id": "clone_dotfiles",

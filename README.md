@@ -41,10 +41,10 @@ clone a git repository, and create a symlink for a dotfile.
 resources:
   - id: install_mysql
     type: package
-    package: mysql
+    name: mysql
   - id: install_redis
     type: package
-    package: redis
+    name: redis
   - id: clone_dotfiles
     type: git
     repository: git@github.com:r7kamura/dotfiles.git
