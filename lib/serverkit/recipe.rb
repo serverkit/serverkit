@@ -6,6 +6,7 @@ require "serverkit/resources/file"
 require "serverkit/resources/git"
 require "serverkit/resources/homebrew"
 require "serverkit/resources/homebrew_cask"
+require "serverkit/resources/service"
 require "serverkit/resources/symlink"
 require "yaml"
 
