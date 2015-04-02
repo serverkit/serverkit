@@ -1,6 +1,3 @@
-hosts:
-  - localhost
-ssh: false
 resources:
   - id: install_mysql
     type: homebrew
