@@ -8,7 +8,6 @@ require "serverkit/resources/homebrew"
 require "serverkit/resources/homebrew_cask"
 require "serverkit/resources/service"
 require "serverkit/resources/symlink"
-require "yaml"
 
 module Serverkit
   class Recipe

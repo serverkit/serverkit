@@ -23,7 +23,7 @@ module Serverkit
 
       # @return [Serverkit::Recipe]
       def recipe
-        @recipe ||= RecipeLoader.new(@options[:recipe]).load
+        @recipe ||= RecipeLoader.new(@options[:recipe], variables_path: @options[:variables]).load
       end
     end
   end

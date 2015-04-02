@@ -69,6 +69,7 @@ module Serverkit
       @options ||= Slop.parse!(@argv) do
         banner "Usage: serverkit ACTION [options]"
         on "-r", "--recipe=", "Path to recipe file", required: true
+        on "--variables=", "Path to variables file for ERB recipe"
       end
     end
 
