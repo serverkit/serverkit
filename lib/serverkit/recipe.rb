@@ -60,11 +60,6 @@ module Serverkit
       end
     end
 
-    # @return [true, false] Flag to use SSH (default: false)
-    def ssh?
-      @recipe_data["ssh"] == true
-    end
-
     def valid?
       errors.empty?
     end

@@ -18,16 +18,7 @@ module Serverkit
 
       # @return [Specinfra::Backend::Base]
       def backend
-        @backend ||= backend_class.new
-      end
-
-      # @return [Class]
-      def backend_class
-        if recipe.ssh?
-          Specinfra::Backend::Ssh
-        else
-          Specinfra::Backend::Exec
-        end
+        @backend ||= Specinfra::Backend::Exec.new
       end
 
       # @return [Serverkit::Recipe]
