@@ -4,9 +4,9 @@ module Serverkit
   class RecipeLoader
     YAML_EXTNAMES = [".yaml", ".yml"]
 
-    # @param [String] path
-    def initialize(path)
-      @path = path
+    # @param [String] recipe_path
+    def initialize(recipe_path)
+      @recipe_path = recipe_path
     end
 
     # @todo Care Error::ENOENT error
@@ -23,20 +23,20 @@ module Serverkit
 
     # @return [String] This executable must print reicpe in JSON format into standard output
     def execute
-      `#{@path}`
+      `#{@recipe_path}`
     end
 
     # @return [String]
     def extname
-      @extname ||= File.extname(@path)
+      @extname ||= File.extname(@recipe_path)
     end
 
     def has_directory_path?
-      File.directory?(@path)
+      File.directory?(@recipe_path)
     end
 
     def has_executable_path?
-      File.executable?(@path)
+      File.executable?(@recipe_path)
     end
 
     def has_yaml_path?
@@ -59,7 +59,7 @@ module Serverkit
     end
 
     def load_recipes_from_directory
-      Dir.glob(File.join(@path, "*")).sort.flat_map do |path|
+      Dir.glob(File.join(@recipe_path, "*")).sort.flat_map do |path|
         self.class.new(path).load
       end
     end
@@ -69,11 +69,11 @@ module Serverkit
     end
 
     def load_data_from_json
-      JSON.parse(File.read(@path))
+      JSON.parse(File.read(@recipe_path))
     end
 
     def load_data_from_yaml
-      YAML.load_file(@path)
+      YAML.load_file(@recipe_path)
     end
   end
 end
