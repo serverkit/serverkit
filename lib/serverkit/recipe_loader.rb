@@ -1,4 +1,5 @@
 require "json"
+require "pathname"
 
 module Serverkit
   class RecipeLoader
@@ -23,20 +24,20 @@ module Serverkit
 
     # @return [String] This executable must print reicpe in JSON format into standard output
     def execute
-      `#{@recipe_path}`
+      `#{recipe_path}`
     end
 
     # @return [String]
     def extname
-      @extname ||= File.extname(@recipe_path)
+      @extname ||= recipe_pathname.extname
     end
 
     def has_directory_recipe_path?
-      File.directory?(@recipe_path)
+      recipe_pathname.directory?
     end
 
     def has_executable_recipe_path?
-      File.executable?(@recipe_path)
+      recipe_pathname.executable?
     end
 
     def has_yaml_recipe_path?
@@ -59,7 +60,7 @@ module Serverkit
     end
 
     def load_recipes_from_directory
-      Dir.glob(File.join(@recipe_path, "*")).sort.flat_map do |path|
+      Dir.glob(recipe_pathname.join("*")).sort.flat_map do |path|
         self.class.new(path).load
       end
     end
@@ -69,11 +70,15 @@ module Serverkit
     end
 
     def load_recipe_data_from_json
-      JSON.parse(File.read(@recipe_path))
+      JSON.parse(recipe_pathname.read)
     end
 
     def load_recipe_data_from_yaml
-      YAML.load_file(@recipe_path)
+      YAML.load_file(recipe_pathname)
+    end
+
+    def recipe_pathname
+      @recipe_pathname ||= Pathname.new(@recipe_path)
     end
   end
 end
