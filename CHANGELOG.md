@@ -1,3 +1,6 @@
+## 0.0.4
+- Support ERB recipe and variables injection
+
 ## 0.0.3
 - Support JSON, executable, and directory recipe
 - Support service resource experimentally
