@@ -35,6 +35,7 @@ serverkit apply --recipe=recipe.json.erb --variables=variables.json
 serverkit apply --recipe=recipe.json.erb --variables=variables.json.erb
 serverkit apply --recipe=recipe.json.erb --variables=variables.yml
 serverkit apply --recipe=recipe.json.erb --variables=variables.yml.erb
+serverkit apply --recipe=recipe.json.erb --variables=variables/
 serverkit apply --recipe=recipe.yml
 serverkit apply --recipe=recipe.yml.erb
 serverkit apply --recipe=recipes/
