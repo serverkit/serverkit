@@ -35,6 +35,11 @@ module Serverkit
       end
 
       # @return [String]
+      def execute
+        `#{pathname}`
+      end
+
+      # @return [String]
       def expand_erb
         ERB.new(pathname.read).result(binding_for_erb)
       end
@@ -52,11 +57,6 @@ module Serverkit
           tempfile.close
           tempfile
         end
-      end
-
-      # @return [String]
-      def execute
-        `#{pathname}`
       end
 
       def has_directory_path?
