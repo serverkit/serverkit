@@ -71,7 +71,7 @@ resources:
   - id: symlink_zshrc
     type: symlink
     source: /Users/<%= variables["user"] %>/.zshrc
-    destination: /Users/<%= variables["user"] %>/Dropbox/dotfiles/.zshrc
+    destination: /Users/<%= variables["user"] %>/src/github.com/<%= variables["dotfiles_repository"] %>/.zshrc
 ```
 
 ## Resource
