@@ -12,10 +12,10 @@ module Serverkit
     # @todo Care Error::ENOENT error
     # @return [Serverkit::Recipe]
     def load
-      if has_directory_path?
+      if has_directory_recipe_path?
         load_recipe_from_directory
       else
-        Recipe.new(load_data)
+        Recipe.new(load_recipe_data)
       end
     end
 
@@ -31,26 +31,26 @@ module Serverkit
       @extname ||= File.extname(@recipe_path)
     end
 
-    def has_directory_path?
+    def has_directory_recipe_path?
       File.directory?(@recipe_path)
     end
 
-    def has_executable_path?
+    def has_executable_recipe_path?
       File.executable?(@recipe_path)
     end
 
-    def has_yaml_path?
+    def has_yaml_recipe_path?
       YAML_EXTNAMES.include?(extname)
     end
 
-    def load_data
+    def load_recipe_data
       case
-      when has_executable_path?
-        load_data_from_executable
-      when has_yaml_path?
-        load_data_from_yaml
+      when has_executable_recipe_path?
+        load_recipe_data_from_executable
+      when has_yaml_recipe_path?
+        load_recipe_data_from_yaml
       else
-        load_data_from_json
+        load_recipe_data_from_json
       end
     end
 
@@ -64,15 +64,15 @@ module Serverkit
       end
     end
 
-    def load_data_from_executable
+    def load_recipe_data_from_executable
       JSON.parse(execute)
     end
 
-    def load_data_from_json
+    def load_recipe_data_from_json
       JSON.parse(File.read(@recipe_path))
     end
 
-    def load_data_from_yaml
+    def load_recipe_data_from_yaml
       YAML.load_file(@recipe_path)
     end
   end
