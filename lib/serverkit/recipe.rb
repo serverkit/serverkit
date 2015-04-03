@@ -26,11 +26,6 @@ module Serverkit
       end
     end
 
-    # @return [Array<String>]
-    def hosts
-      @recipe_data["hosts"]
-    end
-
     # @param [Serverkit::Recipe] recipe
     # @return [Serverkit::Recipe]
     def merge(recipe)
