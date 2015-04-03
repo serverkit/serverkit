@@ -1,13 +1,7 @@
 require "active_support/core_ext/hash/deep_merge"
-require "active_support/core_ext/string/inflections"
 require "serverkit/errors/invalid_recipe_type_error"
 require "serverkit/errors/invalid_resources_type_error"
-require "serverkit/resources/file"
-require "serverkit/resources/git"
-require "serverkit/resources/homebrew"
-require "serverkit/resources/homebrew_cask"
-require "serverkit/resources/service"
-require "serverkit/resources/symlink"
+require "serverkit/resource_builder"
 
 module Serverkit
   class Recipe
@@ -52,10 +46,9 @@ module Serverkit
     end
 
     # @return [Array<Serverkit::Resources::Base>]
-    # @todo Delegate to resource builder
     def resources
       @resources ||= resources_property.map do |attributes|
-        Resources.const_get(attributes["type"].camelize, false).new(attributes)
+        ResourceBuilder.new(attributes).build
       end
     end
 
