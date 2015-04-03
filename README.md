@@ -2,7 +2,7 @@
 Configuration management toolkit for IT automation.
 
 ## Usage
-This gem provides `serverkit` executable with some actions.
+Write a recipe, then run `serverkit` executable to validate, inspect, check, and apply the recipe.
 
 ### serverkit validate
 Validates recipe schema, resources, and attributes.
