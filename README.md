@@ -11,6 +11,7 @@ For instance, it shows validation error if `source` attributes is missing in `fi
 ```
 $ serverkit validate --recipe=recipe.yml
 Error: source attribute is required in file resource
+Error: path attribute can't be unreadable path in recipe resource
 ```
 
 ### serverkit inspect
