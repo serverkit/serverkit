@@ -22,17 +22,27 @@ module Serverkit
 
       attr_accessor :backend
 
+      attr_reader :recipe
+
       attribute :id, required: true, type: String
 
+      # @param [Serverkit::Recipe] recipe
       # @param [Hash] attributes
-      def initialize(attributes)
+      def initialize(recipe, attributes)
         @attributes = attributes
+        @recipe = recipe
       end
 
       # @note For override use
       # @return [Array<Serverkit::Errors::Base>]
       def all_errors
         attribute_validation_errors
+      end
+
+      # @note recipe resource will override to replace itself with multiple resources
+      # @return [Array<Serverkit::Resources::Base>]
+      def to_a
+        [self]
       end
 
       # @return [String]

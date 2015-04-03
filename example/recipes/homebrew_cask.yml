@@ -1,0 +1,7 @@
+resources:
+  - id: install_licecap
+    type: homebrew_cask
+    name: licecap
+  - id: install_alfred
+    type: homebrew_cask
+    name: alfred

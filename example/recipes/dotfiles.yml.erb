@@ -1,16 +1,4 @@
 resources:
-  - id: install_mysql
-    type: homebrew
-    name: mysql
-  - id: install_redis
-    type: homebrew
-    name: redis
-  - id: install_licecap
-    type: homebrew_cask
-    name: licecap
-  - id: install_alfred
-    type: homebrew_cask
-    name: alfred
   - id: clone_dotfiles
     type: git
     repository: git@github.com:<%= variables["dotfiles_github_repository"] %>.git

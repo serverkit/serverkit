@@ -5,11 +5,13 @@ require "serverkit/resource_builder"
 
 module Serverkit
   class Recipe
-    attr_reader :recipe_data
+    attr_reader :recipe_data, :variables_path
 
     # @param [Hash] recipe_data
-    def initialize(recipe_data = {})
+    # @param [String, nil] variables_path Used for recipe resource to render ERB template
+    def initialize(recipe_data, variables_path = nil)
       @recipe_data = recipe_data
+      @variables_path = variables_path
     end
 
     # @return [Array<Serverkit::Errors::Base>]
@@ -40,10 +42,11 @@ module Serverkit
       )
     end
 
+    # @note recipe resource will be expanded into resources defined in its recipe
     # @return [Array<Serverkit::Resources::Base>]
     def resources
-      @resources ||= resources_property.map do |attributes|
-        ResourceBuilder.new(attributes).build
+      @resources ||= resources_property.flat_map do |attributes|
+        ResourceBuilder.new(self, attributes).build.to_a
       end
     end
 

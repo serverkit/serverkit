@@ -21,8 +21,18 @@ module Serverkit
         ErbBindingContext.new(variables_data).binding
       end
 
+      # @note Override to pass @variables_path
+      def create_empty_loadable
+        loaded_class.new({}, @variables_path)
+      end
+
       def has_variables_path?
         !@variables_path.nil?
+      end
+
+      # @note Override to pass @variables_path
+      def load_from_data
+        loaded_class.new(load_data, @variables_path)
       end
 
       # @return [Serverkit::Variables]

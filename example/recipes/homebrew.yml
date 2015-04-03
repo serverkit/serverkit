@@ -1,0 +1,7 @@
+resources:
+  - id: install_mysql
+    type: homebrew
+    name: mysql
+  - id: install_redis
+    type: homebrew
+    name: redis

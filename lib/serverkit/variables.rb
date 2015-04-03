@@ -5,7 +5,7 @@ module Serverkit
     attr_reader :variables_data
 
     # @param [Hash] variables_data
-    def initialize(variables_data = {})
+    def initialize(variables_data)
       @variables_data = variables_data
     end
 

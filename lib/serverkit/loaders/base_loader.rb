@@ -15,7 +15,6 @@ module Serverkit
       end
 
       # @todo Rescue Error::ENOENT error
-      # @return [Serverkit::Recipe]
       def load
         case
         when has_directory_path?
@@ -23,7 +22,7 @@ module Serverkit
         when has_erb_path?
           load_from_erb
         else
-          loaded_class.new(load_data)
+          load_from_data
         end
       end
 
@@ -32,6 +31,11 @@ module Serverkit
       # @return [Binding]
       def binding_for_erb
         TOPLEVEL_BINDING
+      end
+
+      # @note For override
+      def create_empty_loadable
+        loaded_class.new({})
       end
 
       # @return [String]
@@ -89,17 +93,19 @@ module Serverkit
         end
       end
 
-      # @return [Serverkit::Recipe]
-      def load_from_directory
-        loads_from_directory.inject(loaded_class.new, :merge)
+      def load_from_data
+        loaded_class.new(load_data)
       end
 
-      # @return [Serverkit::Recipe]
+      def load_from_directory
+        loads_from_directory.inject(create_empty_loadable, :merge)
+      end
+
       def load_from_erb
         self.class.new(expanded_erb_tempfile.path).load
       end
 
-      # @return [Array<Serverkit::Recipe>]
+      # @return [Array]
       def loads_from_directory
         Dir.glob(pathname.join("*")).sort.flat_map do |path|
           self.class.new(path).load

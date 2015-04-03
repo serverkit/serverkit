@@ -83,9 +83,10 @@ A resource must have a type property. Currently the following types are availabl
 
 - file
 - git
-- homebrew_cask
 - homebrew
+- homebrew_cask
 - package
+- recipe
 - service
 - symlink
 

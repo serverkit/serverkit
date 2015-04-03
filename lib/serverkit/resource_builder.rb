@@ -3,20 +3,23 @@ require "serverkit/resources/file"
 require "serverkit/resources/git"
 require "serverkit/resources/homebrew_cask"
 require "serverkit/resources/homebrew"
+require "serverkit/resources/recipe"
 require "serverkit/resources/service"
 require "serverkit/resources/symlink"
 require "serverkit/resources/unknown"
 
 module Serverkit
   class ResourceBuilder
+    # @param [Serverkit::Recipe] recipe
     # @param [Hash] attributes
-    def initialize(attributes)
+    def initialize(recipe, attributes)
       @attributes = attributes
+      @recipe = recipe
     end
 
     # @return [Serverkit::Resources::Base]
     def build
-      resource_class.new(@attributes)
+      resource_class.new(@recipe, @attributes)
     end
 
     private
