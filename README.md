@@ -115,7 +115,7 @@ $ serverkit apply --recipe=recipes/
 When using ERB recipe, you can also give optional variables file
 that defines configurations in a Hash object for ERB template.
 It supports similar format variation with Recipe.
-In ERB template, you can refer given variables via `variables` method.
+In ERB template, you can use given variables via `variables` method.
 
 ### Example
 This is an example recipe to install some packages, clone a git repository, and create a symlink.
