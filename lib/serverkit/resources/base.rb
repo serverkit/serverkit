@@ -22,7 +22,7 @@ module Serverkit
 
       attr_accessor :backend
 
-      attr_reader :recipe
+      attr_reader :attributes, :recipe
 
       attribute :id, required: true, type: String
 

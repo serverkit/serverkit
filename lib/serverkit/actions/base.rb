@@ -16,6 +16,10 @@ module Serverkit
 
       private
 
+      def abort_with_errors
+        abort recipe.errors.map { |error| "Error: #{error}" }.join("\n")
+      end
+
       # @return [Specinfra::Backend::Base]
       def backend
         @backend ||= Specinfra::Backend::Exec.new

@@ -50,6 +50,11 @@ module Serverkit
       end
     end
 
+    # @return [Hash] Fully-expanded recipe data
+    def to_hash
+      { "resources" => resources.map(&:attributes) }
+    end
+
     def valid?
       errors.empty?
     end

@@ -2,15 +2,84 @@
 Configuration management toolkit for IT automation.
 
 ## Usage
-This gem provides `serverkit` executable with 3 actions.
-`validate` action validates your recipe format.
-`check` action shows the difference between your recipe and the state of the target host.
-`apply` action executes migration programs to fill-in the gaps.
+This gem provides `serverkit` executable with some actions.
 
-```sh
-serverkit validate --recipe=recipe.yml
-serverkit check --recipe=recipe.yml
-serverkit apply --recipe=recipe.yml
+### serverkit validate
+Validates recipe schema, resources, and attributes.
+For instance, it shows validation error if `source` attributes is missing in `file` resource.
+
+```
+$ serverkit validate --recipe=recipe.yml
+Error: source attribute is required in file resource
+```
+
+### serverkit inspect
+Shows fully-expanded recipe data in JSON format.
+
+```
+$ serverkit inspect --recipe=recipe.yml
+{
+  "resources": [
+    {
+      "id": "install_mysql",
+      "type": "homebrew",
+      "name": "mysql"
+    },
+    {
+      "id": "install_redis",
+      "type": "homebrew",
+      "name": "redis"
+    },
+    {
+      "id": "install_licecap",
+      "type": "homebrew_cask",
+      "name": "licecap"
+    },
+    {
+      "id": "install_alfred",
+      "type": "homebrew_cask",
+      "name": "alfred"
+    },
+    {
+      "id": "clone_dotfiles",
+      "type": "git",
+      "repository": "git@github.com:r7kamura/dotfiles.git",
+      "path": "/Users/r7kamura/src/github.com/r7kamura/dotfiles"
+    },
+    {
+      "id": "symlink_zshrc",
+      "type": "symlink",
+      "source": "/Users/r7kamura/.zshrc",
+      "destination": "/Users/r7kamura/src/github.com/r7kamura/dotfiles/linked/.zshrc"
+    }
+  ]
+}
+```
+
+### serverkit check
+Shows the difference between your recipe and the state of the target host.
+
+```
+$ serverkit check --recipe=recipe.yml
+[OK] install_mysql
+[OK] install_redis
+[OK] install_licecap
+[OK] install_alfred
+[NG] clone_dotfiles
+[NG] symlink_zshrc
+```
+
+### serverkit apply
+Executes migration process to fill-in the gaps.
+
+```
+$ serverkit apply --recipe=recipe.yml
+[SKIP] install_mysql
+[SKIP] install_redis
+[SKIP] install_licecap
+[SKIP] install_alfred
+[DONE] clone_dotfiles
+[DONE] symlink_zshrc
 ```
 
 ## Recipe
@@ -26,19 +95,19 @@ A recipe can be specified as a path to one of the following patterns:
 - Executable to output JSON
 - Directory including recipe files recursively
 
-```sh
-serverkit apply --recipe=recipe
-serverkit apply --recipe=recipe.json
-serverkit apply --recipe=recipe.json.erb
-serverkit apply --recipe=recipe.json.erb --variables=variables
-serverkit apply --recipe=recipe.json.erb --variables=variables.json
-serverkit apply --recipe=recipe.json.erb --variables=variables.json.erb
-serverkit apply --recipe=recipe.json.erb --variables=variables.yml
-serverkit apply --recipe=recipe.json.erb --variables=variables.yml.erb
-serverkit apply --recipe=recipe.json.erb --variables=variables/
-serverkit apply --recipe=recipe.yml
-serverkit apply --recipe=recipe.yml.erb
-serverkit apply --recipe=recipes/
+```
+$ serverkit apply --recipe=recipe
+$ serverkit apply --recipe=recipe.json
+$ serverkit apply --recipe=recipe.json.erb
+$ serverkit apply --recipe=recipe.json.erb --variables=variables
+$ serverkit apply --recipe=recipe.json.erb --variables=variables.json
+$ serverkit apply --recipe=recipe.json.erb --variables=variables.json.erb
+$ serverkit apply --recipe=recipe.json.erb --variables=variables.yml
+$ serverkit apply --recipe=recipe.json.erb --variables=variables.yml.erb
+$ serverkit apply --recipe=recipe.json.erb --variables=variables/
+$ serverkit apply --recipe=recipe.yml
+$ serverkit apply --recipe=recipe.yml.erb
+$ serverkit apply --recipe=recipes/
 ```
 
 ### Variables
