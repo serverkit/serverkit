@@ -1,3 +1,6 @@
+## 0.0.5
+- Improve validation error message
+
 ## 0.0.4
 - Support ERB recipe and variables injection
 

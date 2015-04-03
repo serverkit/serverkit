@@ -1,6 +1,7 @@
 require "active_model"
 require "readable_validator"
 require "required_validator"
+require "serverkit/errors/attribute_validation_error"
 require "type_validator"
 
 module Serverkit
@@ -26,6 +27,19 @@ module Serverkit
       # @param [Hash] attributes
       def initialize(attributes)
         @attributes = attributes
+      end
+
+      # @return [Array<Serverkit::Errors::AttributeValidationError>]
+      def attribute_validation_errors
+        validate
+        errors.map do |attribute_name, message|
+          Serverkit::Errors::AttributeValidationError.new(self, attribute_name, message)
+        end
+      end
+
+      # @return [String]
+      def type
+        @attributes["type"]
       end
 
       private

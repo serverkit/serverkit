@@ -75,12 +75,9 @@ module Serverkit
       [Errors::InvalidResourcesType.new(resources_property.class)]
     end
 
-    # @return [Array<Serverkit::Errors::Base>]
+    # @return [Array<Serverkit::Errors::AttributeValidationError>]
     def errors_in_resources
-      resources.flat_map do |resource|
-        resource.validate
-        resource.errors.to_a
-      end
+      resources.flat_map(&:attribute_validation_errors)
     end
 
     def has_valid_typed_resources_property?
