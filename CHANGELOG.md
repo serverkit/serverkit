@@ -1,4 +1,5 @@
 ## 0.0.5
+- Add `recipe` resource type
 - Improve validation error message
 
 ## 0.0.4
