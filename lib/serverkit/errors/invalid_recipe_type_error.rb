@@ -2,7 +2,7 @@ require "serverkit/errors/base"
 
 module Serverkit
   module Errors
-    class InvalidRecipeType < Base
+    class InvalidRecipeTypeError < Base
       # @param [Class] type
       def initialize(type)
         @type = type

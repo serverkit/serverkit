@@ -1,7 +1,7 @@
 require "active_support/core_ext/hash/deep_merge"
 require "active_support/core_ext/string/inflections"
-require "serverkit/errors/invalid_recipe_type"
-require "serverkit/errors/invalid_resources_type"
+require "serverkit/errors/invalid_recipe_type_error"
+require "serverkit/errors/invalid_resources_type_error"
 require "serverkit/resources/file"
 require "serverkit/resources/git"
 require "serverkit/resources/homebrew"
@@ -67,12 +67,12 @@ module Serverkit
 
     # @return [Array<Serverkit::Errors::Base>]
     def errors_for_invalid_typed_recipe_data
-      [Errors::InvalidRecipeType.new(@recipe_data.class)]
+      [Errors::InvalidRecipeTypeError.new(@recipe_data.class)]
     end
 
     # @return [Array<Serverkit::Errors::Base>]
     def errors_for_invalid_typed_resources_property
-      [Errors::InvalidResourcesType.new(resources_property.class)]
+      [Errors::InvalidResourcesTypeError.new(resources_property.class)]
     end
 
     # @return [Array<Serverkit::Errors::AttributeValidationError>]
