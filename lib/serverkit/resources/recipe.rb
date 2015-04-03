@@ -7,7 +7,11 @@ module Serverkit
 
       # @note Override
       def to_a
-        loaded_recipe.resources
+        if valid?
+          loaded_recipe.resources
+        else
+          self
+        end
       end
 
       private
