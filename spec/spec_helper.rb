@@ -10,5 +10,8 @@ RSpec.configure do |config|
   config.disable_monkey_patching!
   config.filter_run :focus
   config.run_all_when_everything_filtered = true
-  config.warnings = true
 end
+
+# Dirty configuration to silent useless warnings from specinfra.
+require "specinfra"
+Specinfra.configuration.backend = :exec
