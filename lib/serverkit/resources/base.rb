@@ -29,12 +29,10 @@ module Serverkit
         @attributes = attributes
       end
 
-      # @return [Array<Serverkit::Errors::AttributeValidationError>]
-      def attribute_validation_errors
-        validate
-        errors.map do |attribute_name, message|
-          Serverkit::Errors::AttributeValidationError.new(self, attribute_name, message)
-        end
+      # @note For override use
+      # @return [Array<Serverkit::Errors::Base>]
+      def all_errors
+        attribute_validation_errors
       end
 
       # @return [String]
@@ -43,6 +41,14 @@ module Serverkit
       end
 
       private
+
+      # @return [Array<Serverkit::Errors::AttributeValidationError>]
+      def attribute_validation_errors
+        validate
+        errors.map do |attribute_name, message|
+          Serverkit::Errors::AttributeValidationError.new(self, attribute_name, message)
+        end
+      end
 
       # @return [true, false]
       def check_command(*args)

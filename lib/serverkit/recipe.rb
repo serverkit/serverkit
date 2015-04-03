@@ -70,7 +70,7 @@ module Serverkit
 
     # @return [Array<Serverkit::Errors::AttributeValidationError>]
     def errors_in_resources
-      resources.flat_map(&:attribute_validation_errors)
+      resources.flat_map(&:all_errors)
     end
 
     def has_valid_typed_resources_property?

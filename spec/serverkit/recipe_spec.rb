@@ -6,7 +6,11 @@ RSpec.describe Serverkit::Recipe do
   end
 
   let(:recipe_data) do
-    {}
+    { "resources" => resources }
+  end
+
+  let(:resources) do
+    []
   end
 
   describe "#errors" do
@@ -14,7 +18,7 @@ RSpec.describe Serverkit::Recipe do
       recipe.errors
     end
 
-    describe "with invalid typed recipe data" do
+    context "with invalid typed recipe data" do
       let(:recipe_data) do
         nil
       end
@@ -23,6 +27,25 @@ RSpec.describe Serverkit::Recipe do
         is_expected.to match(
           [
             an_instance_of(Serverkit::Errors::InvalidRecipeTypeError)
+          ]
+        )
+      end
+    end
+
+    context "with unknown type resource" do
+      let(:resources) do
+        [
+          {
+            "id" => "test",
+            "type" => "test",
+          },
+        ]
+      end
+
+      it "returns UnknownTypeResourceError" do
+        is_expected.to match(
+          [
+            an_instance_of(Serverkit::Errors::UnknownResourceTypeError)
           ]
         )
       end
