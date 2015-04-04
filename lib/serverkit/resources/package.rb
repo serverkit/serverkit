@@ -6,7 +6,7 @@ module Serverkit
       attribute :name, required: true, type: String
 
       def apply
-        run_command_from_identifier(:install, name)
+        run_command_from_identifier(:install_package, name)
       end
 
       # @return [true, false]
