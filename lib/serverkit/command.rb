@@ -34,14 +34,6 @@ module Serverkit
 
     private
 
-    def abort_for_missing_action_name
-      abort "Error: Missing action name"
-    end
-
-    def abort_for_unknown_action_name
-      abort "Error: Unknown action name `#{action_name}`"
-    end
-
     # @return [String, nil]
     def action_name
       @argv.first
