@@ -62,12 +62,12 @@ Shows the difference between your recipe and the state of the target host.
 
 ```
 $ serverkit check recipe.yml
-[OK] install_mysql
-[OK] install_redis
-[OK] install_licecap
-[OK] install_alfred
-[NG] clone_dotfiles
-[NG] symlink_zshrc
+[ OK ] install_mysql
+[ OK ] install_redis
+[ OK ] install_licecap
+[ OK ] install_alfred
+[ NG ] clone_dotfiles
+[ NG ] symlink_zshrc
 ```
 
 ### serverkit apply

@@ -5,12 +5,16 @@ module Serverkit
     class Check < Base
       def run
         recipe.resources.each do |resource|
-          resource.backend = backend
-          if resource.check
-            puts "[OK] #{resource.id}"
-          else
-            puts "[NG] #{resource.id}"
-          end
+          backends.map do |backend|
+            Thread.new do
+              resource.backend = backend
+              if resource.check
+                puts "[ OK ] #{resource.id}"
+              else
+                puts "[ NG ] #{resource.id}"
+              end
+            end
+          end.each(&:join)
         end
       end
     end
