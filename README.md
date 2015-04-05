@@ -84,12 +84,12 @@ $ serverkit apply recipe.yml
 ```
 
 ### SSH support
-Use `--host=` option to execute serverkit over SSH.
+Use `--hosts=` option to execute serverkit over SSH.
 Serverkit does not require any installation on server-side.
 If you want to specify SSH configuration, write it into your ~/.ssh/config.
 
 ```
-$ serverkit apply recipe.yml --host example.com
+$ serverkit apply recipe.yml --hosts=example.com
 ```
 
 ## Recipe

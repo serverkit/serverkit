@@ -44,14 +44,14 @@ module Serverkit
       end
 
       def host
-        options[:host]
+        options[:hosts]
       end
 
       # @return [Slop] Command-line options
       def options
         @options ||= Slop.parse!(@argv, help: true) do
           banner "Usage: serverkit ACTION [options]"
-          on "--host=", "Pass hostname to use SSH"
+          on "--hosts=", "Pass hostname to execute command over SSH"
           on "--variables=", "Path to variables file for ERB recipe"
         end
       end
