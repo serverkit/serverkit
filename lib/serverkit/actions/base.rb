@@ -5,9 +5,9 @@ require "specinfra"
 module Serverkit
   module Actions
     class Base
-      # @param [Slop] options
-      def initialize(options)
-        @options = options
+      # @param [Array] argv Command-line arguments given to serverkit executable
+      def initialize(argv)
+        @argv = argv
       end
 
       private
@@ -21,9 +21,18 @@ module Serverkit
         @backend ||= Specinfra::Backend::Exec.new
       end
 
+      # @return [Slop] Command-line options
+      def options
+        @options ||= Slop.parse!(@argv) do
+          banner "Usage: serverkit ACTION [options]"
+          on "-r", "--recipe=", "Path to recipe file", required: true
+          on "--variables=", "Path to variables file for ERB recipe"
+        end
+      end
+
       # @return [Serverkit::Recipe]
       def recipe
-        @recipe ||= Loaders::RecipeLoader.new(@options[:recipe], variables_path: @options[:variables]).load
+        @recipe ||= Loaders::RecipeLoader.new(options[:recipe], variables_path: options[:variables]).load
       end
     end
   end

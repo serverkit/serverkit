@@ -46,11 +46,11 @@ module Serverkit
     end
 
     def apply
-      Actions::Apply.new(options).call
+      Actions::Apply.new(@argv).call
     end
 
     def check
-      Actions::Check.new(options).call
+      Actions::Check.new(@argv).call
     end
 
     def has_unknown_action_name?
@@ -59,20 +59,11 @@ module Serverkit
 
     # @note #inspect is reserved ;(
     def _inspect
-      Actions::Inspect.new(options).call
-    end
-
-    # @return [Slop] Command-line options
-    def options
-      @options ||= Slop.parse!(@argv) do
-        banner "Usage: serverkit ACTION [options]"
-        on "-r", "--recipe=", "Path to recipe file", required: true
-        on "--variables=", "Path to variables file for ERB recipe"
-      end
+      Actions::Inspect.new(@argv).call
     end
 
     def validate
-      Actions::Validate.new(options).call
+      Actions::Validate.new(@argv).call
     end
   end
 end
