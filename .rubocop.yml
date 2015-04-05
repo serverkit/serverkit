@@ -22,6 +22,9 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Enabled: false
 
+Style/AndOr:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
