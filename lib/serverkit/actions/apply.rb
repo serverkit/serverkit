@@ -4,16 +4,15 @@ module Serverkit
   module Actions
     class Apply < Base
       def run
-        recipe.resources.each do |resource|
-          resource.backend = backend
-          if resource.check
-            puts "[SKIP] #{resource.id}"
-          else
-            resource.apply
+        backends.map do |backend|
+          recipe.resources.each do |resource|
+            resource.backend = backend
             if resource.check
-              puts "[DONE] #{resource.id}"
+              puts "[SKIP] #{resource.id} on #{host_for(backend)}"
             else
-              puts "[FAIL] #{resource.id}"
+              resource.apply
+              result = resource.check ? "DONE" : "FAIL"
+              puts "[#{result}] #{resource.id} on #{host_for(backend)}"
             end
           end
         end

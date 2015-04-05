@@ -4,17 +4,12 @@ module Serverkit
   module Actions
     class Check < Base
       def run
-        recipe.resources.each do |resource|
-          backends.map do |backend|
-            Thread.new do
-              resource.backend = backend
-              if resource.check
-                puts "[ OK ] #{resource.id}"
-              else
-                puts "[ NG ] #{resource.id}"
-              end
-            end
-          end.each(&:join)
+        backends.map do |backend|
+          recipe.resources.each do |resource|
+            resource.backend = backend
+            result = resource.check ? "OK" : "NG"
+            puts "[ #{result} ] #{resource.id} on #{host_for(backend)}"
+          end
         end
       end
     end

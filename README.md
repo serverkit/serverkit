@@ -89,7 +89,8 @@ Serverkit does not require any installation on server-side.
 If you want to specify SSH configuration, write it into your ~/.ssh/config.
 
 ```
-$ serverkit apply recipe.yml --hosts=example.com
+$ serverkit apply recipe.yml --hosts=alpha.example.com
+$ serverkit apply recipe.yml --hosts=alpha.example.com,bravo.example.com
 ```
 
 ## Recipe

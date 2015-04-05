@@ -25,31 +25,39 @@ module Serverkit
         abort recipe.errors.map { |error| "Error: #{error}" }.join("\n")
       end
 
-      # @return [Specinfra::Backend::Base]
-      def backend
-        @backend ||= backend_class.new(backend_options)
+      # @return [Array<Specinfra::Backend::Base>]
+      def backends
+        if options[:hosts]
+          hosts.map do |host|
+            backend_class.new(
+              disable_sudo: true,
+              host: host,
+              ssh_options: {
+                user: ssh_user_for(host),
+              },
+            )
+          end
+        else
+          [backend_class.new]
+        end
       end
 
       def backend_class
-        if host
+        if options[:hosts]
           Specinfra::Backend::Ssh
         else
           Specinfra::Backend::Exec
         end
       end
 
-      def backend_options
-        {
-          disable_sudo: true,
-          host: host,
-          ssh_options: {
-            user: ssh_user,
-          },
-        }
+      def hosts
+        options[:hosts].split(",")
       end
 
-      def host
-        options[:hosts]
+      # @param [Specinfra::Backend::Base]
+      # @return [String]
+      def host_for(backend)
+        backend.get_config(:host) || "localhost"
       end
 
       # @return [Slop] Command-line options
@@ -75,8 +83,9 @@ module Serverkit
         @argv[1] or raise Errors::MissingRecipePathArgumentError
       end
 
+      # @param [String] host
       # @return [String] User name used on SSH
-      def ssh_user
+      def ssh_user_for(host)
         Net::SSH::Config.for(host)[:user] || Etc.getlogin
       end
     end
