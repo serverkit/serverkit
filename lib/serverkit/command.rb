@@ -53,10 +53,6 @@ module Serverkit
       Actions::Check.new(@argv).call
     end
 
-    def has_unknown_action_name?
-      !ACTION_NAMES.include?(action_name)
-    end
-
     # @note #inspect is reserved ;(
     def _inspect
       Actions::Inspect.new(@argv).call
