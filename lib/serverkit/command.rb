@@ -26,7 +26,7 @@ module Serverkit
       when "validate"
         validate
       else
-        raise Errors::UnknownActionNameError
+        raise Errors::UnknownActionNameError, action_name
       end
     rescue Errors::Base, Slop::MissingArgumentError, Slop::MissingOptionError => exception
       abort "Error: #{exception}"
