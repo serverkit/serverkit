@@ -1,9 +1,9 @@
 resources:
   - id: clone_dotfiles
     type: git
-    repository: git@github.com:<%= variables["dotfiles_github_repository"] %>.git
-    path: /Users/<%= variables["user"] %>/src/github.com/<%= variables["dotfiles_github_repository"] %>
+    repository: git@github.com:<%= dotfiles_github_repository %>.git
+    path: /Users/<%= user %>/src/github.com/<%= dotfiles_github_repository %>
   - id: symlink_zshrc
     type: symlink
-    source: /Users/<%= variables["user"] %>/.zshrc
-    destination: /Users/<%= variables["user"] %>/src/github.com/<%= variables["dotfiles_github_repository"] %>/linked/.zshrc
+    source: /Users/<%= user %>/.zshrc
+    destination: /Users/<%= user %>/src/github.com/<%= dotfiles_github_repository %>/linked/.zshrc

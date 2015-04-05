@@ -1,4 +1,5 @@
 require "active_support/core_ext/hash/deep_merge"
+require "hashie/mash"
 
 module Serverkit
   class Variables
@@ -23,9 +24,16 @@ module Serverkit
       )
     end
 
-    # @return [Hash]
-    def to_hash
-      @variables_data.dup
+    # @return [Hashie::Mash]
+    def to_mash
+      BindableMash.new(@variables_data.dup)
+    end
+
+    class BindableMash < Hashie::Mash
+      # @note Override visibility from private to public
+      def binding
+        super
+      end
     end
   end
 end

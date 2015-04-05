@@ -5,7 +5,7 @@ require "serverkit/recipe"
 module Serverkit
   module Loaders
     class RecipeLoader < BaseLoader
-      DEFAULT_VARIABLES = {}
+      DEFAULT_VARIABLES_DATA = {}
 
       # @param [String] path
       # @param [String, nil] variables_path
@@ -17,8 +17,9 @@ module Serverkit
       private
 
       # @note Override
+      # @return [Binding]
       def binding_for_erb
-        ErbBindingContext.new(variables_data).binding
+        variables.to_mash.binding
       end
 
       # @note Override to pass @variables_path
@@ -45,28 +46,14 @@ module Serverkit
         Serverkit::Recipe
       end
 
-      # @return [Hash]
-      def variables_data
+      # @return [Serverkit::Variables]
+      def variables
         @variables ||= begin
           if has_variables_path?
-            load_variables.to_hash
+            load_variables
           else
-            DEFAULT_VARIABLES.dup
+            Variables.new(DEFAULT_VARIABLES_DATA.dup)
           end
-        end
-      end
-
-      class ErbBindingContext
-        attr_reader :variables
-
-        # @param [hash] variables
-        def initialize(variables)
-          @variables = variables
-        end
-
-        # @note Change method visibility to public
-        def binding
-          super
         end
       end
     end

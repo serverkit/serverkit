@@ -124,7 +124,7 @@ $ serverkit apply recipes/
 When using ERB recipe, you can also give optional variables file
 that defines configurations in a Hash object for ERB template.
 It supports similar format variation with Recipe.
-In ERB template, you can use given variables via `variables` method.
+In ERB template, you can use given variables via methods named after its keys.
 
 ### Example
 This is an example recipe to install some packages, clone a git repository, and create a symlink.
@@ -146,12 +146,12 @@ resources:
     name: redis
   - id: clone_dotfiles
     type: git
-    repository: git@github.com:<%= variables["dotfiles_repository"] %>.git
-    path: /Users/<%= variables["user"] %>/src/github.com/<%= variables["dotfiles_repository"] %>
+    repository: git@github.com:<%= dotfiles_repository %>.git
+    path: /Users/<%= user %>/src/github.com/<%= dotfiles_repository %>
   - id: symlink_zshrc
     type: symlink
-    source: /Users/<%= variables["user"] %>/.zshrc
-    destination: /Users/<%= variables["user"] %>/src/github.com/<%= variables["dotfiles_repository"] %>/.zshrc
+    source: /Users/<%= user %>/.zshrc
+    destination: /Users/<%= user %>/src/github.com/<%= dotfiles_repository %>/.zshrc
 ```
 
 ## Resource
