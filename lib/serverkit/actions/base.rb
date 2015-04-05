@@ -14,6 +14,11 @@ module Serverkit
         @argv = argv
       end
 
+      def call
+        setup
+        run
+      end
+
       private
 
       def abort_with_errors
@@ -54,6 +59,10 @@ module Serverkit
           on "--hosts=", "Pass hostname to execute command over SSH"
           on "--variables=", "Path to variables file for ERB recipe"
         end
+      end
+
+      def setup
+        abort_with_errors unless recipe.valid?
       end
 
       # @return [Serverkit::Recipe]

@@ -3,7 +3,7 @@ require "serverkit/actions/base"
 module Serverkit
   module Actions
     class Apply < Base
-      def call
+      def run
         recipe.resources.each do |resource|
           resource.backend = backend
           if resource.check
