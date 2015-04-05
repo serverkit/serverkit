@@ -1,3 +1,8 @@
+## 0.0.6
+- Add `serverkit inspec` action
+- Define required ruby version with 2.0.0 or higher in gemspec
+- Improve recipe validation accuracy
+
 ## 0.0.5
 - Add `recipe` resource type
 - Improve validation error message
