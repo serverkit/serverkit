@@ -62,7 +62,7 @@ module Serverkit
       Actions::Inspect.new(options).call
     end
 
-    # @return [Hash] Command-line options
+    # @return [Slop] Command-line options
     def options
       @options ||= Slop.parse!(@argv) do
         banner "Usage: serverkit ACTION [options]"

@@ -5,7 +5,7 @@ require "specinfra"
 module Serverkit
   module Actions
     class Base
-      # @param [Hash] options
+      # @param [Slop] options
       def initialize(options)
         @options = options
       end
