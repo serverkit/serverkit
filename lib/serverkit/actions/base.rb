@@ -25,7 +25,7 @@ module Serverkit
 
       # @return [Slop] Command-line options
       def options
-        @options ||= Slop.parse!(@argv) do
+        @options ||= Slop.parse!(@argv, help: true) do
           banner "Usage: serverkit ACTION [options]"
           on "--variables=", "Path to variables file for ERB recipe"
         end
