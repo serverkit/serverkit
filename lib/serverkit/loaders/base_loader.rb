@@ -15,7 +15,6 @@ module Serverkit
         @path = path
       end
 
-      # @todo Rescue Error::ENOENT error
       def load
         case
         when !pathname.exist?
