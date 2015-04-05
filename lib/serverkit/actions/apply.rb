@@ -9,11 +9,11 @@ module Serverkit
           Thread.new do
             recipe.resources.map(&:dup).each do |resource|
               resource.backend = backend
-              if resource.check
+              if resource.diff
                 puts "[SKIP] #{resource.id} on #{host_for(backend)}"
               else
                 resource.apply
-                result = resource.check ? "DONE" : "FAIL"
+                result = resource.diff ? "DONE" : "FAIL"
                 puts "[#{result}] #{resource.id} on #{host_for(backend)}"
               end
             end

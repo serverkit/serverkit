@@ -1,5 +1,5 @@
 require "serverkit/actions/apply"
-require "serverkit/actions/check"
+require "serverkit/actions/diff"
 require "serverkit/actions/inspect"
 require "serverkit/actions/validate"
 require "serverkit/errors/missing_action_name_argument_error"
@@ -19,8 +19,8 @@ module Serverkit
         raise Errors::MissingActionNameArgumentError
       when "apply"
         apply
-      when "check"
-        check
+      when "diff"
+        diff
       when "inspect"
         _inspect
       when "validate"
@@ -43,8 +43,8 @@ module Serverkit
       Actions::Apply.new(@argv).call
     end
 
-    def check
-      Actions::Check.new(@argv).call
+    def diff
+      Actions::Diff.new(@argv).call
     end
 
     # @note #inspect is reserved ;(

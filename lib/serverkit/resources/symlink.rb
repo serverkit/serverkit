@@ -11,7 +11,7 @@ module Serverkit
       end
 
       # @return [true, false]
-      def check
+      def diff
         check_command_from_identifier(:check_file_is_linked_to, source, destination)
       end
     end

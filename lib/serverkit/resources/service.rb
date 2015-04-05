@@ -9,7 +9,7 @@ module Serverkit
         run_command_from_identifier(:start, name)
       end
 
-      def check
+      def diff
         check_command_from_identifier(:check_service_is_running, name)
       end
     end

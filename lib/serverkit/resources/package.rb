@@ -10,7 +10,7 @@ module Serverkit
       end
 
       # @return [true, false]
-      def check
+      def diff
         check_command_from_identifier(:check_package_is_installed, name)
       end
     end

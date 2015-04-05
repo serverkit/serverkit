@@ -15,7 +15,7 @@ module Serverkit
       end
 
       # @return [true, false]
-      def check
+      def diff
         has_git? && cloned? && !updatable?
       end
 
