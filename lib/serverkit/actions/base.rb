@@ -1,4 +1,5 @@
 require "etc"
+require "net/ssh"
 require "serverkit/errors/missing_recipe_path_argument_error"
 require "serverkit/loaders/recipe_loader"
 require "serverkit/recipe"
@@ -37,7 +38,7 @@ module Serverkit
           disable_sudo: true,
           host: host,
           ssh_options: {
-            user: Etc.getlogin,
+            user: ssh_user,
           },
         }
       end
@@ -63,6 +64,11 @@ module Serverkit
       # @return [String, nil]
       def recipe_path
         @argv[1] or raise Errors::MissingRecipePathArgumentError
+      end
+
+      # @return [String] User name used on SSH
+      def ssh_user
+        Net::SSH::Config.for(host)[:user] || Etc.getlogin
       end
     end
   end
