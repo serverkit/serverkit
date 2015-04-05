@@ -10,10 +10,6 @@ module Serverkit
         @options = options
       end
 
-      def call
-        raise NotImplementedError
-      end
-
       private
 
       def abort_with_errors
