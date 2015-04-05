@@ -2,7 +2,9 @@ require "serverkit/actions/apply"
 require "serverkit/actions/check"
 require "serverkit/actions/inspect"
 require "serverkit/actions/validate"
-require "slop"
+require "serverkit/errors/missing_action_name_argument_error"
+require "serverkit/errors/missing_recipe_path_argument_error"
+require "serverkit/errors/unknown_action_name_error"
 
 module Serverkit
   class Command
@@ -14,7 +16,7 @@ module Serverkit
     def call
       case action_name
       when nil
-        abort_for_missing_action_name
+        raise Errors::MissingActionNameArgumentError
       when "apply"
         apply
       when "check"
@@ -24,9 +26,9 @@ module Serverkit
       when "validate"
         validate
       else
-        abort_for_unknown_action_name
+        raise Errors::UnknownActionNameError
       end
-    rescue Slop::MissingOptionError => exception
+    rescue Errors::Base, Slop::MissingOptionError => exception
       abort "Error: #{exception}"
     end
 

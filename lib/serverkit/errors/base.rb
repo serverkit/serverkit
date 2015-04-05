@@ -1,6 +1,6 @@
 module Serverkit
   module Errors
-    class Base
+    class Base < StandardError
     end
   end
 end

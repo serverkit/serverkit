@@ -1,5 +1,7 @@
+require "serverkit/errors/missing_recipe_path_argument_error"
 require "serverkit/loaders/recipe_loader"
 require "serverkit/recipe"
+require "slop"
 require "specinfra"
 
 module Serverkit
@@ -25,14 +27,18 @@ module Serverkit
       def options
         @options ||= Slop.parse!(@argv) do
           banner "Usage: serverkit ACTION [options]"
-          on "-r", "--recipe=", "Path to recipe file", required: true
           on "--variables=", "Path to variables file for ERB recipe"
         end
       end
 
       # @return [Serverkit::Recipe]
       def recipe
-        @recipe ||= Loaders::RecipeLoader.new(options[:recipe], variables_path: options[:variables]).load
+        @recipe ||= Loaders::RecipeLoader.new(recipe_path, variables_path: options[:variables]).load
+      end
+
+      # @return [String, nil]
+      def recipe_path
+        @argv[1] or raise Errors::MissingRecipePathArgumentError
       end
     end
   end

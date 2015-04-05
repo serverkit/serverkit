@@ -9,7 +9,7 @@ Validates recipe schema, resources, and attributes.
 For instance, it shows validation error if `source` attributes is missing in `file` resource.
 
 ```
-$ serverkit validate --recipe=recipe.yml
+$ serverkit validate recipe.yml
 Error: source attribute is required in file resource
 Error: path attribute can't be unreadable path in recipe resource
 ```
@@ -18,7 +18,7 @@ Error: path attribute can't be unreadable path in recipe resource
 Shows fully-expanded recipe data in JSON format.
 
 ```
-$ serverkit inspect --recipe=recipe.yml
+$ serverkit inspect recipe.yml
 {
   "resources": [
     {
@@ -61,7 +61,7 @@ $ serverkit inspect --recipe=recipe.yml
 Shows the difference between your recipe and the state of the target host.
 
 ```
-$ serverkit check --recipe=recipe.yml
+$ serverkit check recipe.yml
 [OK] install_mysql
 [OK] install_redis
 [OK] install_licecap
@@ -74,7 +74,7 @@ $ serverkit check --recipe=recipe.yml
 Executes migration process to fill-in the gaps.
 
 ```
-$ serverkit apply --recipe=recipe.yml
+$ serverkit apply recipe.yml
 [SKIP] install_mysql
 [SKIP] install_redis
 [SKIP] install_licecap
@@ -97,18 +97,18 @@ A recipe can be specified as a path to one of the following patterns:
 - Directory including recipe files recursively
 
 ```
-$ serverkit apply --recipe=recipe
-$ serverkit apply --recipe=recipe.json
-$ serverkit apply --recipe=recipe.json.erb
-$ serverkit apply --recipe=recipe.json.erb --variables=variables
-$ serverkit apply --recipe=recipe.json.erb --variables=variables.json
-$ serverkit apply --recipe=recipe.json.erb --variables=variables.json.erb
-$ serverkit apply --recipe=recipe.json.erb --variables=variables.yml
-$ serverkit apply --recipe=recipe.json.erb --variables=variables.yml.erb
-$ serverkit apply --recipe=recipe.json.erb --variables=variables/
-$ serverkit apply --recipe=recipe.yml
-$ serverkit apply --recipe=recipe.yml.erb
-$ serverkit apply --recipe=recipes/
+$ serverkit apply recipe
+$ serverkit apply recipe.json
+$ serverkit apply recipe.json.erb
+$ serverkit apply recipe.json.erb --variables=variables
+$ serverkit apply recipe.json.erb --variables=variables.json
+$ serverkit apply recipe.json.erb --variables=variables.json.erb
+$ serverkit apply recipe.json.erb --variables=variables.yml
+$ serverkit apply recipe.json.erb --variables=variables.yml.erb
+$ serverkit apply recipe.json.erb --variables=variables/
+$ serverkit apply recipe.yml
+$ serverkit apply recipe.yml.erb
+$ serverkit apply recipes/
 ```
 
 ### Variables

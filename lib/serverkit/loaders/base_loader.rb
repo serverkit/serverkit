@@ -1,6 +1,7 @@
 require "erb"
 require "json"
 require "pathname"
+require "serverkit/errors/non_existent_path_error"
 require "tempfile"
 require "yaml"
 
@@ -17,6 +18,8 @@ module Serverkit
       # @todo Rescue Error::ENOENT error
       def load
         case
+        when !pathname.exist?
+          raise Errors::NonExistentPathError, pathname
         when has_directory_path?
           load_from_directory
         when has_erb_path?
