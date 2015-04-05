@@ -1,3 +1,7 @@
+## 0.1.0
+- Support execution over SSH with --host option
+- Remove --recipe=... option and require recipe path in 2nd command-line argument
+
 ## 0.0.6
 - Add `serverkit inspec` action
 - Define required ruby version with 2.0.0 or higher in gemspec
