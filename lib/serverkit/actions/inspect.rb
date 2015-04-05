@@ -1,5 +1,4 @@
 require "serverkit/actions/base"
-require "yaml"
 
 module Serverkit
   module Actions
