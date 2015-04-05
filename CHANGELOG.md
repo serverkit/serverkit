@@ -1,3 +1,9 @@
+## 0.2.0
+- Support multiple hosts
+- Change `--host=` option to `--hosts=`
+- Change variables use on ERB template
+- Force recipe validation on all actions
+
 ## 0.1.0
 - Support execution over SSH with --host option
 - Remove --recipe=... option and require recipe path in 2nd command-line argument
