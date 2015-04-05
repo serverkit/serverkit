@@ -83,6 +83,15 @@ $ serverkit apply recipe.yml
 [DONE] symlink_zshrc
 ```
 
+### SSH support
+Use `--host=` option to execute serverkit over SSH.
+Serverkit does not require any installation on server-side.
+If you want to specify SSH configuration, write it into your ~/.ssh/config.
+
+```
+$ serverkit apply recipe.yml --host example.com
+```
+
 ## Recipe
 A recipe describes the desired state of your server.
 It is mostly a collection of resources, defined using certain patterns.
