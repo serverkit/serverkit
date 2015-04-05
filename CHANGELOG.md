@@ -1,3 +1,6 @@
+## 0.2.1
+- Change action name: `serverkit check` -> `serverkit diff`
+
 ## 0.2.0
 - Support multiple hosts
 - Change `--host=` option to `--hosts=`
