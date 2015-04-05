@@ -42,7 +42,7 @@ module Serverkit
 
     # @return [String, nil]
     def action_name
-      ARGV.first
+      @argv.first
     end
 
     def apply
