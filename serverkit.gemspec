@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "activemodel"
   spec.add_runtime_dependency "activesupport"
+  spec.add_runtime_dependency "highline"
   spec.add_runtime_dependency "slop", "~> 3.4"
   spec.add_runtime_dependency "specinfra"
   spec.add_development_dependency "bundler", "~> 1.7"

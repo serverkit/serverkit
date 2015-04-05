@@ -1,3 +1,4 @@
+require "etc"
 require "serverkit/errors/missing_recipe_path_argument_error"
 require "serverkit/loaders/recipe_loader"
 require "serverkit/recipe"
@@ -20,13 +21,36 @@ module Serverkit
 
       # @return [Specinfra::Backend::Base]
       def backend
-        @backend ||= Specinfra::Backend::Exec.new
+        @backend ||= backend_class.new(backend_options)
+      end
+
+      def backend_class
+        if host
+          Specinfra::Backend::Ssh
+        else
+          Specinfra::Backend::Exec
+        end
+      end
+
+      def backend_options
+        {
+          disable_sudo: true,
+          host: host,
+          ssh_options: {
+            user: Etc.getlogin,
+          },
+        }
+      end
+
+      def host
+        options[:host]
       end
 
       # @return [Slop] Command-line options
       def options
         @options ||= Slop.parse!(@argv, help: true) do
           banner "Usage: serverkit ACTION [options]"
+          on "--host=", "Pass hostname to use SSH"
           on "--variables=", "Path to variables file for ERB recipe"
         end
       end
