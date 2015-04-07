@@ -1,3 +1,7 @@
+## 0.2.2
+- Change action name: `serverkit diff` -> `serverkit check`
+- Load gems from Gemfile before running action
+
 ## 0.2.1
 - Change action name: `serverkit check` -> `serverkit diff`
 
