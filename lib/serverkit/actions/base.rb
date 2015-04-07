@@ -1,3 +1,4 @@
+require "bundler"
 require "etc"
 require "net/ssh"
 require "serverkit/errors/missing_recipe_path_argument_error"
@@ -50,6 +51,10 @@ module Serverkit
         end
       end
 
+      def bundle
+        Bundler.require(:default)
+      end
+
       def hosts
         options[:hosts].split(",")
       end
@@ -70,6 +75,7 @@ module Serverkit
       end
 
       def setup
+        bundle
         abort_with_errors unless recipe.valid?
       end
 
