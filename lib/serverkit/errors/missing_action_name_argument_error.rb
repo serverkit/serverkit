@@ -5,7 +5,7 @@ module Serverkit
     class MissingActionNameArgumentError < Base
       # @return [String]
       def to_s
-        abort "Missing action name argument"
+        "Missing action name argument"
       end
     end
   end

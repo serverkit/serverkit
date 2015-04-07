@@ -5,7 +5,7 @@ module Serverkit
     class MissingRecipePathArgumentError < Base
       # @return [String]
       def to_s
-        abort "Missing recipe path argument"
+        "Missing recipe path argument"
       end
     end
   end
