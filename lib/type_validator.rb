@@ -6,8 +6,9 @@ class TypeValidator < ActiveModel::EachValidator
   end
 
   def validate_each(record, attribute, value)
-    unless value.is_a?(options[:with])
-      record.errors.add(attribute, "must be a #{options[:with]}, not #{value.class}")
+    classes = options[:in] || [options[:with]]
+    if classes.all? { |klass| !value.is_a?(klass) }
+      record.errors.add(attribute, "must be a #{classes.join(' or ')}, not a #{value.class}")
     end
   end
 end
