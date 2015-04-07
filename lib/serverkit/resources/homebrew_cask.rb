@@ -10,7 +10,7 @@ module Serverkit
       end
 
       # @return [true, false]
-      def diff
+      def check
         check_command("/usr/local/bin/brew cask list -1 | grep -E '^#{name}$'")
       end
     end

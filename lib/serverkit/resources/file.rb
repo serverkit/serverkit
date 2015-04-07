@@ -16,7 +16,7 @@ module Serverkit
       end
 
       # @return [true, false]
-      def diff
+      def check
         has_file? && has_same_content? && has_valid_group? && has_valid_owner?
       end
 

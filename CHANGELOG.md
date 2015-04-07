@@ -36,4 +36,4 @@
 
 ## 0.0.1
 - 1st Release on 2015-03-30
-- Support `serverkit diff` and `serverkit apply` actions
+- Support `serverkit check` and `serverkit apply` actions

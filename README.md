@@ -2,7 +2,7 @@
 Configuration management toolkit for IT automation.
 
 ## Usage
-Write a recipe, then run `serverkit` executable to validate, inspect, diff, and apply the recipe.
+Write a recipe, then run `serverkit` executable to validate, inspect, check, and apply the recipe.
 
 ### serverkit validate
 Validates recipe schema, resources, and attributes.
@@ -57,11 +57,11 @@ $ serverkit inspect recipe.yml
 }
 ```
 
-### serverkit diff
+### serverkit check
 Shows the difference between your recipe and the state of the target host.
 
 ```
-$ serverkit diff recipe.yml
+$ serverkit check recipe.yml
 [ OK ] install_mysql
 [ OK ] install_redis
 [ OK ] install_licecap
