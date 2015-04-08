@@ -169,6 +169,8 @@ A resource must have a type property. Currently the following types are availabl
 - recipe
 - service
 - symlink
+- [defaults](https://github.com/r7kamura/serverkit_defaults)
+- [rbenv_ruby](https://github.com/r7kamura/serverkit_rbenv)
 
 ### Example
 An example package resource that has id, type, and name attributes.
