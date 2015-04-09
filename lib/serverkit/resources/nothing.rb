@@ -8,8 +8,15 @@ module Serverkit
       def apply
       end
 
-      # @note Override
+      # @note Override for #apply to be always called
       def check
+        false
+      end
+
+      private
+
+      # @note Override to always pass rechecking
+      def recheck
         true
       end
     end

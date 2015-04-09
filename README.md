@@ -124,13 +124,13 @@ In ERB template, you can use given variables via methods named after its keys.
 ### Example
 This is an example recipe to install some packages, clone a git repository, and create a symlink.
 
-```yaml
+```yml
 # variables.yml
 dotfiles_repository: r7kamura/dotfiles
 user: r7kamura
 ```
 
-```yaml
+```yml
 # recipe.yml.erb
 resources:
   - type: package
@@ -166,8 +166,28 @@ A resource must have a type property. Currently the following types are availabl
 ### Example
 An example package resource that has type and name attributes.
 
-```yaml
+```yml
 resources:
   - type: package
     name: mysql
+```
+
+## Handlers
+When any changes are successfully applied to a resource and it has notify property,
+it notifies handlers that are referenced by their id.
+The notified handlers will run only once after all resources finished their applications.
+Here's an example of restarting Dock on Mac OS X when its preferences change.
+
+```yml
+resources:
+  - type: defaults
+    domain: com.apple.dock
+    key: autohide
+    value: 1
+    notify:
+      - restart_dock
+handlers:
+  - id: restart_dock
+    type: command
+    script: killall Dock
 ```

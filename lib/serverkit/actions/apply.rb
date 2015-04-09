@@ -7,10 +7,15 @@ module Serverkit
       def run
         backends.map do |backend|
           Thread.new do
-            recipe.resources.map(&:dup).each do |resource|
+            recipe.resources.map(&:dup).map do |resource|
               resource.backend = backend
               resource.run_apply
               puts resource.inspect_apply_result
+              resource
+            end.select(&:notifiable?).flat_map(&:handlers).uniq.map(&:dup).each do |handler|
+              handler.backend = backend
+              handler.run_apply
+              puts handler.inspect_apply_result
             end
           end
         end.each(&:join)

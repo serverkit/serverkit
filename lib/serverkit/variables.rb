@@ -13,15 +13,7 @@ module Serverkit
     # @param [Serverkit::Variables] variables
     # @return [Serverkit::Variables]
     def merge(variables)
-      self.class.new(
-        variables_data.deep_merge(variables.variables_data) do |key, a, b|
-          if a.is_a?(Array)
-            a | b
-          else
-            b
-          end
-        end
-      )
+      self.class.new(variables_data.deep_merge(variables.variables_data))
     end
 
     # @return [Hashie::Mash]

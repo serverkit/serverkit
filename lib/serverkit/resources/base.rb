@@ -25,6 +25,8 @@ module Serverkit
       attr_reader :attributes, :recipe
 
       attribute :id, type: String
+      attribute :notify, type: Array
+      attribute :type, type: String
 
       # @param [Serverkit::Recipe] recipe
       # @param [Hash] attributes
@@ -37,6 +39,15 @@ module Serverkit
       # @return [Array<Serverkit::Errors::Base>]
       def all_errors
         attribute_validation_errors
+      end
+
+      # @return [Array<Serverkit::Resource>]
+      def handlers
+        @handlers ||= notify.map do |id|
+          recipe.handlers.find do |handler|
+            handler.id == id
+          end
+        end.compact
       end
 
       # @note For logging and notifying
@@ -66,11 +77,16 @@ module Serverkit
         end
       end
 
+      # @return [true, false] True if this resource should call any handler
+      def notifiable?
+        @recheck_result == true && !handlers.nil?
+      end
+
       # @note #check and #apply wrapper
       def run_apply
         unless run_check
-          resource.apply
-          @recheck_result = check
+          apply
+          @recheck_result = recheck
         end
       end
 
@@ -84,11 +100,6 @@ module Serverkit
       # @return [Array<Serverkit::Resources::Base>]
       def to_a
         [self]
-      end
-
-      # @return [String]
-      def type
-        @attributes["type"]
       end
 
       private
@@ -120,6 +131,12 @@ module Serverkit
       # @return [String]
       def default_id
         type
+      end
+
+      # @note For override
+      # @return [true, false]
+      def recheck
+        check
       end
 
       # @return [String]

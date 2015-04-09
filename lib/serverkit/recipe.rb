@@ -28,6 +28,13 @@ module Serverkit
       end
     end
 
+    # @return [Array<Serverkit::Resource>]
+    def handlers
+      @handlers ||= Array(handlers_property).flat_map do |attributes|
+        ResourceBuilder.new(self, attributes).build.to_a
+      end
+    end
+
     # @param [Serverkit::Recipe] recipe
     # @return [Serverkit::Recipe]
     def merge(recipe)
@@ -74,6 +81,11 @@ module Serverkit
     # @return [Array<Serverkit::Errors::AttributeValidationError>]
     def errors_in_resources
       resources.flat_map(&:all_errors)
+    end
+
+    # @return [Array<String>, nil]
+    def handlers_property
+      @recipe_data["handlers"]
     end
 
     def has_valid_typed_resources_property?

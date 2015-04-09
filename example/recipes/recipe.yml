@@ -6,3 +6,11 @@ resources:
   - type: recipe
     path: example/recipes/dotfiles.yml.erb
   - type: nothing
+    notify:
+      - handler_test
+  - type: nothing
+    notify:
+      - handler_test
+handlers:
+  - id: handler_test
+    type: nothing
