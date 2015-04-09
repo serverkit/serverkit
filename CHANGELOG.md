@@ -1,3 +1,6 @@
+## 0.2.5
+- Fix bug on resource with no notify property
+
 ## 0.2.4
 - Add new feature: Handlers
 - Add command resource type
