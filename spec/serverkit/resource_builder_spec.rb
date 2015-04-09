@@ -35,12 +35,20 @@ RSpec.describe Serverkit::ResourceBuilder do
       it { is_expected.to be_a Serverkit::Resources::Base }
     end
 
+    context "with unknown type attribute" do
+      let(:resource_attributes) do
+        super().merge("type" => "unknown")
+      end
+
+      it { is_expected.to be_a Serverkit::Resources::Unknown }
+    end
+
     context "without type attribute" do
       let(:resource_attributes) do
         super().except("type")
       end
 
-      it { is_expected.to be_a Serverkit::Resources::Unknown }
+      it { is_expected.to be_a Serverkit::Resources::Missing }
     end
   end
 end
