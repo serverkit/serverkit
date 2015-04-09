@@ -165,7 +165,7 @@ resources:
 A resource is a statement of configuration policy that describes the desired state for an item.
 
 ### Type
-A resource must have a type property. Currently the following types are available:
+A resource must have a type attribute. Currently the following types are available:
 
 - command
 - file
@@ -188,7 +188,7 @@ resources:
 ```
 
 ## Handlers
-When any changes are successfully applied to a resource and it has notify property,
+When any changes are successfully applied to a resource and it has notify attribute,
 it notifies handlers that are referenced by their id.
 The notified handlers will run only once after all resources finished their applications.
 Here's an example of restarting Dock on Mac OS X when its preferences change.
