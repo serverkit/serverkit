@@ -214,6 +214,7 @@ handlers:
 ```
 
 ## Plug-in
+A plug-in is provided as a gem.
 Serverkit calls `Bundler.require(:default)` before running an action,
 so you can add any behaviors to serverkit via gems defined in Gemfile.
 For example, [serverkit-rbenv](https://github.com/r7kamura/serverkit-rbenv) gem
