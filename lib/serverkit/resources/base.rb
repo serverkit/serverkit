@@ -43,7 +43,7 @@ module Serverkit
 
       # @return [Array<Serverkit::Resource>]
       def handlers
-        @handlers ||= notify.map do |id|
+        @handlers ||= Array(notify).map do |id|
           recipe.handlers.find do |handler|
             handler.id == id
           end
