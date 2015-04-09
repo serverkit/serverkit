@@ -6,13 +6,21 @@ module Serverkit
       attribute :destination, required: true, type: String
       attribute :source, required: true, type: String
 
+      # @note Override
       def apply
         run_command_from_identifier(:link_file_to, source, destination)
       end
 
-      # @return [true, false]
+      # @note Override
       def check
         check_command_from_identifier(:check_file_is_linked_to, source, destination)
+      end
+
+      private
+
+      # @note Override
+      def default_id
+        destination
       end
     end
   end

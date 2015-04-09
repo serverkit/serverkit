@@ -5,12 +5,21 @@ module Serverkit
     class Service < Base
       attribute :name, required: true, type: String
 
+      # @note Override
       def apply
         run_command_from_identifier(:start, name)
       end
 
+      # @note Override
       def check
         check_command_from_identifier(:check_service_is_running, name)
+      end
+
+      private
+
+      # @note Override
+      def default_id
+        name
       end
     end
   end

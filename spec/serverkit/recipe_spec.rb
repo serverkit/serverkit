@@ -36,7 +36,6 @@ RSpec.describe Serverkit::Recipe do
       let(:resources) do
         [
           {
-            "id" => "test",
             "type" => "test",
           },
         ]

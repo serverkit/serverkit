@@ -9,12 +9,13 @@ module Serverkit
       attribute :repository, required: true, type: String
       attribute :status, default: DEFAULT_STATUS, type: String
 
+      # @note Override
       def apply
         clone if clonable?
         update if updatable?
       end
 
-      # @return [true, false]
+      # @note Override
       def check
         has_git? && cloned? && !updatable?
       end
@@ -31,6 +32,11 @@ module Serverkit
 
       def cloned?
         check_command_from_identifier(:check_file_is_directory, git_path)
+      end
+
+      # @note Override
+      def default_id
+        repository
       end
 
       # @return [String] Path to .git directory in the cloned repository

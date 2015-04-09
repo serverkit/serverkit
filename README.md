@@ -22,33 +22,27 @@ $ serverkit inspect recipe.yml
 {
   "resources": [
     {
-      "id": "install_mysql",
       "type": "homebrew",
       "name": "mysql"
     },
     {
-      "id": "install_redis",
       "type": "homebrew",
       "name": "redis"
     },
     {
-      "id": "install_licecap",
       "type": "homebrew_cask",
       "name": "licecap"
     },
     {
-      "id": "install_alfred",
       "type": "homebrew_cask",
       "name": "alfred"
     },
     {
-      "id": "clone_dotfiles",
       "type": "git",
       "repository": "git@github.com:r7kamura/dotfiles.git",
       "path": "/Users/r7kamura/src/github.com/r7kamura/dotfiles"
     },
     {
-      "id": "symlink_zshrc",
       "type": "symlink",
       "source": "/Users/r7kamura/.zshrc",
       "destination": "/Users/r7kamura/src/github.com/r7kamura/dotfiles/linked/.zshrc"
@@ -139,18 +133,14 @@ user: r7kamura
 ```yaml
 # recipe.yml.erb
 resources:
-  - id: install_mysql
-    type: package
+  - type: package
     name: mysql
-  - id: install_redis
-    type: package
+  - type: package
     name: redis
-  - id: clone_dotfiles
-    type: git
+  - type: git
     repository: git@github.com:<%= dotfiles_repository %>.git
     path: /Users/<%= user %>/src/github.com/<%= dotfiles_repository %>
-  - id: symlink_zshrc
-    type: symlink
+  - type: symlink
     source: /Users/<%= user %>/.zshrc
     destination: /Users/<%= user %>/src/github.com/<%= dotfiles_repository %>/.zshrc
 ```
@@ -173,11 +163,10 @@ A resource must have a type property. Currently the following types are availabl
 - [rbenv_ruby](https://github.com/r7kamura/serverkit-rbenv)
 
 ### Example
-An example package resource that has id, type, and name attributes.
+An example package resource that has type and name attributes.
 
 ```yaml
 resources:
-  - id: install_mysql # id attirbute (This resource is identified by this unique id)
-    type: package     # type attribute (Serverkit::Resources::Package class is used for this)
-    name: mysql       # name attribute (package resource requires name attribute)
+  - type: package
+    name: mysql
 ```

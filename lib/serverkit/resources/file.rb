@@ -9,13 +9,14 @@ module Serverkit
       attribute :owner, type: String
       attribute :source, readable: true, required: true, type: String
 
+      # @note Override
       def apply
         send_file if file_sendable?
         change_group unless has_valid_group?
         change_owner unless has_valid_owner?
       end
 
-      # @return [true, false]
+      # @note Override
       def check
         has_file? && has_same_content? && has_valid_group? && has_valid_owner?
       end
@@ -28,6 +29,11 @@ module Serverkit
 
       def change_owner
         run_command_from_identifier(:change_file_owner, destination, owner)
+      end
+
+      # @note Override
+      def default_id
+        destination
       end
 
       def file_sendable?

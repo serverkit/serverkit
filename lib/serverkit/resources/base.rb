@@ -24,7 +24,7 @@ module Serverkit
 
       attr_reader :attributes, :recipe
 
-      attribute :id, required: true, type: String
+      attribute :id, type: String
 
       # @param [Serverkit::Recipe] recipe
       # @param [Hash] attributes
@@ -37,6 +37,12 @@ module Serverkit
       # @return [Array<Serverkit::Errors::Base>]
       def all_errors
         attribute_validation_errors
+      end
+
+      # @note id is used for logging and notifying
+      # @return [String]
+      def id
+        @attributes["id"] || default_id
       end
 
       # @note recipe resource will override to replace itself with multiple resources
@@ -68,6 +74,12 @@ module Serverkit
       # @return [true, false]
       def check_command_from_identifier(*args)
         run_command_from_identifier(*args).success?
+      end
+
+      # @note Override me in resource class
+      # @return [String]
+      def default_id
+        type
       end
 
       # @return [Specinfra::CommandResult]

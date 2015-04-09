@@ -1,10 +1,7 @@
 resources:
-  - id: install_homebrew_packages
-    type: recipe
+  - type: recipe
     path: example/recipes/homebrew.yml
-  - id: install_homebrew_cask_packages
-    type: recipe
+  - type: recipe
     path: example/recipes/homebrew_cask.yml
-  - id: install_dotfiles
-    type: recipe
+  - type: recipe
     path: example/recipes/dotfiles.yml.erb

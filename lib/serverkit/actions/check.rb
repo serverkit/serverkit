@@ -10,7 +10,7 @@ module Serverkit
             recipe.resources.map(&:dup).each do |resource|
               resource.backend = backend
               result = resource.check ? "OK" : "NG"
-              puts "[ #{result} ] #{resource.id} on #{host_for(backend)}"
+              puts "[ #{result} ] #{resource.type} #{resource.id} on #{host_for(backend)}"
             end
           end
         end.each(&:join)
