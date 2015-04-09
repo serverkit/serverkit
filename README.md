@@ -151,6 +151,7 @@ A resource is a statement of configuration policy that describes the desired sta
 ### Type
 A resource must have a type property. Currently the following types are available:
 
+- command
 - file
 - git
 - homebrew
