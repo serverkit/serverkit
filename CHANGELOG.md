@@ -1,3 +1,7 @@
+## 0.2.3
+- Support multiple types on TypeValidator
+- Fix validation bug on missing type resource
+
 ## 0.2.2
 - Change action name: `serverkit diff` -> `serverkit check`
 - Load gems from Gemfile before running action
