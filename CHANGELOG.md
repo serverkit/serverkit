@@ -1,3 +1,9 @@
+## 0.2.4
+- Add new feature: Handlers
+- Add command resource type
+- Change id attribute to optional
+- Improve validation error message on missing type case
+
 ## 0.2.3
 - Support multiple types on TypeValidator
 - Fix validation bug on missing type resource
