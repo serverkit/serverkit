@@ -5,3 +5,4 @@ resources:
     path: example/recipes/homebrew_cask.yml
   - type: recipe
     path: example/recipes/dotfiles.yml.erb
+  - type: nothing
