@@ -11,6 +11,10 @@ resources:
   - type: nothing
     notify:
       - handler_test
+  - type: command
+    check_script: "false"
+    script: echo test
+    recheck_script: "true"
 handlers:
   - id: handler_test
     type: nothing
