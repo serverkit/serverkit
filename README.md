@@ -187,8 +187,7 @@ resources:
     value: 1
     notify:
       - restart_dock
-  - id: empty_dock
-    type: defaults
+  - type: defaults
     domain: com.apple.dock
     key: persistent-apps
     value: []
