@@ -177,8 +177,6 @@ A resource must have a type property. Currently the following types are availabl
 - recipe
 - service
 - symlink
-- [defaults](https://github.com/r7kamura/serverkit-defaults)
-- [rbenv_ruby](https://github.com/r7kamura/serverkit-rbenv)
 
 ### Example
 An example package resource that has type and name attributes.
@@ -221,6 +219,9 @@ so you can add any behaviors to serverkit via gems defined in Gemfile.
 For example, [serverkit-rbenv](https://github.com/r7kamura/serverkit-rbenv) gem
 adds a custom resource type named `rbenv_ruby` by defining `Serverkit::Resources::RbenvRuby` class.
 Serverkit finds `Serverkit::Resources::FooBar` resource class from `type: "foo_bar"`.
+
+- [serverkit-defaults](https://github.com/r7kamura/serverkit-defaults)
+- [serverkit-rbenv](https://github.com/r7kamura/serverkit-rbenv)
 
 ```rb
 # Gemfile
