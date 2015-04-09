@@ -1,6 +1,22 @@
 # Serverkit [![Build Status](https://travis-ci.org/r7kamura/serverkit.svg)](https://travis-ci.org/r7kamura/serverkit) [![Code Climate](https://codeclimate.com/github/r7kamura/serverkit/badges/gpa.svg)](https://codeclimate.com/github/r7kamura/serverkit)
 Configuration management toolkit for IT automation.
 
+- [Usage](#usage)
+  - [serverkit validate](#serverkit-validate)
+  - [serverkit inspect](#serverkit-inspect)
+  - [serverkit check](#serverkit-check)
+  - [serverkit apply](#serverkit-apply)
+  - [SSH support](#ssh-support)
+- [Recipe](#recipe)
+  - [Format](#format)
+  - [Variables](#variables)
+  - [Example](#example)
+- [Resource](#resource)
+  - [Type](#type)
+  - [Example](#example-1)
+- [Handlers](#handlers)
+- [Plug-in](#plug-in)
+
 ## Usage
 Write a recipe, then run `serverkit` executable to validate, inspect, check, and apply the recipe.
 
