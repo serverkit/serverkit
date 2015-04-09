@@ -3,6 +3,8 @@ require "serverkit/resources/file"
 require "serverkit/resources/git"
 require "serverkit/resources/homebrew_cask"
 require "serverkit/resources/homebrew"
+require "serverkit/resources/missing"
+require "serverkit/resources/package"
 require "serverkit/resources/recipe"
 require "serverkit/resources/service"
 require "serverkit/resources/symlink"
@@ -30,7 +32,10 @@ module Serverkit
 
     # @return [Class]
     def resource_class
-      if has_known_type?
+      case
+      when type.nil?
+        Resources::Missing
+      when has_known_type?
         Resources.const_get(resource_class_name, false)
       else
         Resources::Unknown
@@ -39,9 +44,7 @@ module Serverkit
 
     # @return [String] (e.g. "File", "Symlink")
     def resource_class_name
-      if type.is_a?(String)
-        type.camelize
-      end
+      type.to_s.camelize
     end
 
     # @note Expected to return String in normal case
