@@ -56,12 +56,12 @@ Shows the difference between your recipe and the state of the target host.
 
 ```
 $ serverkit check recipe.yml
-[ OK ] install_mysql
-[ OK ] install_redis
-[ OK ] install_licecap
-[ OK ] install_alfred
-[ NG ] clone_dotfiles
-[ NG ] symlink_zshrc
+[ OK ] homebrew mysql on localhost
+[ OK ] homebrew redis on localhost
+[ OK ] homebrew_cask licecap on localhost
+[ OK ] homebrew_cask alfred on localhost
+[ NG ] git git@github.com:r7kamura/dotfiles.git on localhost
+[ NG ] symlink /Users/r7kamura/src/github.com/r7kamura/dotfiles/linked/.zshrc on localhost
 ```
 
 ### serverkit apply
@@ -69,12 +69,12 @@ Executes migration process to fill-in the gaps.
 
 ```
 $ serverkit apply recipe.yml
-[SKIP] install_mysql
-[SKIP] install_redis
-[SKIP] install_licecap
-[SKIP] install_alfred
-[DONE] clone_dotfiles
-[DONE] symlink_zshrc
+[SKIP] homebrew mysql on localhost
+[SKIP] homebrew redis on localhost
+[SKIP] homebrew_cask licecap on localhost
+[SKIP] homebrew_cask alfred on localhost
+[DONE] git git@github.com:r7kamura/dotfiles.git on localhost
+[DONE] symlink /Users/r7kamura/src/github.com/r7kamura/dotfiles/linked/.zshrc on localhost
 ```
 
 ### SSH support
