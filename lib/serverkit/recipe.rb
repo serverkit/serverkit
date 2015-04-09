@@ -59,7 +59,7 @@ module Serverkit
 
     # @return [Hash] Fully-expanded recipe data
     def to_hash
-      { "resources" => resources.map(&:attributes) }
+      @recipe_data.merge("resources" => resources.map(&:attributes))
     end
 
     def valid?
