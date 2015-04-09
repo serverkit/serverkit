@@ -9,13 +9,8 @@ module Serverkit
           Thread.new do
             recipe.resources.map(&:dup).each do |resource|
               resource.backend = backend
-              if resource.check
-                puts "[SKIP] #{resource.type} #{resource.id} on #{host_for(backend)}"
-              else
-                resource.apply
-                result = resource.check ? "DONE" : "FAIL"
-                puts "[#{result}] #{resource.type} #{resource.id} on #{host_for(backend)}"
-              end
+              resource.run_apply
+              puts resource.inspect_apply_result
             end
           end
         end.each(&:join)

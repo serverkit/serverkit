@@ -59,12 +59,6 @@ module Serverkit
         options[:hosts].split(",")
       end
 
-      # @param [Specinfra::Backend::Base]
-      # @return [String]
-      def host_for(backend)
-        backend.get_config(:host) || "localhost"
-      end
-
       # @return [Slop] Command-line options
       def options
         @options ||= Slop.parse!(@argv, help: true) do

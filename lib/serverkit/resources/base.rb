@@ -33,16 +33,51 @@ module Serverkit
         @recipe = recipe
       end
 
-      # @note For override use
+      # @note For override
       # @return [Array<Serverkit::Errors::Base>]
       def all_errors
         attribute_validation_errors
       end
 
-      # @note id is used for logging and notifying
+      # @note For logging and notifying
       # @return [String]
       def id
         @attributes["id"] || default_id
+      end
+
+      # @return [String]
+      def inspect_apply_result
+        case @recheck_result
+        when nil
+          "[SKIP] #{result_inspection_suffix}"
+        when false
+          "[FAIL] #{result_inspection_suffix}"
+        else
+          "[DONE] #{result_inspection_suffix}"
+        end
+      end
+
+      # @return [String]
+      def inspect_check_result
+        if @check_result
+          "[ OK ] #{result_inspection_suffix}"
+        else
+          "[ NG ] #{result_inspection_suffix}"
+        end
+      end
+
+      # @note #check and #apply wrapper
+      def run_apply
+        unless run_check
+          resource.apply
+          @recheck_result = check
+        end
+      end
+
+      # @note #check wrapper
+      # @return [true, false]
+      def run_check
+        @check_result = check
       end
 
       # @note recipe resource will override to replace itself with multiple resources
@@ -66,6 +101,11 @@ module Serverkit
         end
       end
 
+      # @return [String]
+      def backend_host
+        backend.get_config(:host) || "localhost"
+      end
+
       # @return [true, false]
       def check_command(*args)
         run_command(*args).success?
@@ -76,10 +116,15 @@ module Serverkit
         run_command_from_identifier(*args).success?
       end
 
-      # @note Override me in resource class
+      # @note For override
       # @return [String]
       def default_id
         type
+      end
+
+      # @return [String]
+      def result_inspection_suffix
+        "#{type} #{id} on #{backend_host}"
       end
 
       # @return [Specinfra::CommandResult]
