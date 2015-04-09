@@ -155,6 +155,7 @@ A resource must have a type property. Currently the following types are availabl
 - git
 - homebrew
 - homebrew_cask
+- nothing
 - package
 - recipe
 - service
