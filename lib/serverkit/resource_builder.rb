@@ -39,7 +39,9 @@ module Serverkit
 
     # @return [String] (e.g. "File", "Symlink")
     def resource_class_name
-      type.camelize
+      if type.is_a?(String)
+        type.camelize
+      end
     end
 
     # @note Expected to return String in normal case
