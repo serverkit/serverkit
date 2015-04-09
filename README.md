@@ -14,7 +14,7 @@ Configuration management toolkit for IT automation.
 - [Resource](#resource)
   - [Type](#type)
   - [Example](#example-1)
-- [Handlers](#handlers)
+- [Handler](#handler)
 - [Plug-in](#plug-in)
 
 ## Usage
@@ -187,7 +187,7 @@ resources:
     name: mysql
 ```
 
-## Handlers
+## Handler
 When any changes are successfully applied to a resource and it has notify attribute,
 it notifies handlers that are referenced by their id.
 The notified handlers will run only once after all resources finished their applications.
