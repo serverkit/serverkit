@@ -222,10 +222,13 @@ adds a custom resource type named `rbenv_ruby` by defining `Serverkit::Resources
 Serverkit finds `Serverkit::Resources::FooBar` resource class from `type: "foo_bar"`.
 
 - [serverkit-defaults](https://github.com/r7kamura/serverkit-defaults)
+- [serverkit-karabiner](https://github.com/r7kamura/serverkit-karabiner)
 - [serverkit-rbenv](https://github.com/r7kamura/serverkit-rbenv)
 
 ```rb
 # Gemfile
 gem "serverkit"
+gem "serverkit-defaults"
+gem "serverkit-karabiner"
 gem "serverkit-rbenv"
 ```
