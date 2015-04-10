@@ -1,3 +1,6 @@
+## 0.2.6
+- Support ERB trim_mode with "-"
+
 ## 0.2.5
 - Fix bug on resource with no notify property
 
