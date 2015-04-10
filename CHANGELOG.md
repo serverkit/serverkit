@@ -1,3 +1,6 @@
+## 0.2.7
+- Ignore missing Gemfile error
+
 ## 0.2.6
 - Support ERB trim_mode with "-"
 
