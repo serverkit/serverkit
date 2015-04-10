@@ -47,7 +47,7 @@ module Serverkit
 
       # @return [String]
       def expand_erb
-        ERB.new(pathname.read).result(binding_for_erb)
+        ERB.new(pathname.read, nil, "-").result(binding_for_erb)
       end
 
       # @return [String]
