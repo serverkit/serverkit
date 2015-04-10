@@ -53,6 +53,7 @@ module Serverkit
 
       def bundle
         Bundler.require(:default)
+      rescue Bundler::GemfileNotFound
       end
 
       def hosts
