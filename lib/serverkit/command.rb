@@ -7,6 +7,8 @@ require "serverkit/errors/missing_recipe_path_argument_error"
 require "serverkit/errors/unknown_action_name_error"
 
 module Serverkit
+  # Command clsas takes care of command line interface.
+  # It builds and runs an Action object from given command line arguements.
   class Command
     # @param [Array<String>] argv
     def initialize(argv)
@@ -34,26 +36,62 @@ module Serverkit
 
     private
 
+    # @note #inspect is reserved ;(
+    def _inspect
+      Actions::Inspect.new(action_options).call
+    end
+
     # @return [String, nil]
     def action_name
       @argv.first
     end
 
+    # @return [Hash<Symbol => String>]
+    def action_options
+      {
+        hosts: hosts,
+        recipe_path: recipe_path,
+        variables_path: variables_path,
+      }.reject do |key, value|
+        value.nil?
+      end
+    end
+
     def apply
-      Actions::Apply.new(@argv).call
+      Actions::Apply.new(action_options).call
     end
 
     def check
-      Actions::Check.new(@argv).call
+      Actions::Check.new(action_options).call
     end
 
-    # @note #inspect is reserved ;(
-    def _inspect
-      Actions::Inspect.new(@argv).call
+    # @note This options are commonly used from all actions for now, however,
+    #   someday a new action that requires options might appear.
+    # @return [Slop]
+    def command_line_options
+      @command_line_options ||= Slop.parse!(@argv, help: true) do
+        banner "Usage: serverkit ACTION [options]"
+        on "--hosts=", "Pass hostname to execute command over SSH"
+        on "--variables=", "Path to variables file for ERB recipe"
+      end
+    end
+
+    # @return [String, nil]
+    def hosts
+      command_line_options[:hosts]
+    end
+
+    # @return [String]
+    def recipe_path
+      @argv[1] or raise Errors::MissingRecipePathArgumentError
     end
 
     def validate
-      Actions::Validate.new(@argv).call
+      Actions::Validate.new(action_options).call
+    end
+
+    def variables_path
+      command_line_options[:variables]
     end
   end
 end
