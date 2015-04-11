@@ -1,3 +1,6 @@
+## 0.2.8
+- Support SSH options injection on action class
+
 ## 0.2.7
 - Ignore missing Gemfile error
 
