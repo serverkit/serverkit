@@ -1,3 +1,6 @@
+## 0.3.0
+- Always use sudo on SSH backend
+
 ## 0.2.9
 - Support ActiveModel v3.2.12
 
