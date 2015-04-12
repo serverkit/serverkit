@@ -7,7 +7,7 @@ module Serverkit
       def run
         backends.map do |backend|
           Thread.new do
-            recipe.resources.map(&:dup).each do |resource|
+            recipe.resources.map(&:clone).each do |resource|
               resource.backend = backend
               resource.run_check
               puts resource.inspect_check_result

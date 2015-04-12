@@ -106,7 +106,7 @@ module Serverkit
 
       # @return [Array<Serverkit::Errors::AttributeValidationError>]
       def attribute_validation_errors
-        validate
+        valid?
         errors.map do |attribute_name, message|
           Serverkit::Errors::AttributeValidationError.new(self, attribute_name, message)
         end
