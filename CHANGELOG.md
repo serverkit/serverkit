@@ -1,3 +1,6 @@
+## 0.2.9
+- Support ActiveModel v3.2.12
+
 ## 0.2.8
 - Support SSH options injection on action class
 
