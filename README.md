@@ -16,6 +16,7 @@ Configuration management toolkit for IT automation.
   - [Example](#example-1)
 - [Handler](#handler)
 - [Plug-in](#plug-in)
+- [Vagrant](#vagrant)
 
 ## Usage
 Write a recipe, then run `serverkit` executable to validate, inspect, check, and apply the recipe.
@@ -231,4 +232,23 @@ gem "serverkit"
 gem "serverkit-defaults"
 gem "serverkit-karabiner"
 gem "serverkit-rbenv"
+```
+
+## Vagrant
+[vagrant-serverkit](https://github.com/r7kamura/vagrant-serverkit)
+helps you provision your vagrant box with serverkit.
+
+```
+$ vagrant plugin install vagrant-serverkit
+$ vagrant up
+```
+
+```rb
+# Vagrantfile
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/trusty64"
+  config.vm.provision :serverkit do |serverkit_config|
+    serverkit_config.recipe_path = "recipe.yml"
+  end
+end
 ```
