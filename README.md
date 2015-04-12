@@ -238,11 +238,6 @@ gem "serverkit-rbenv"
 [vagrant-serverkit](https://github.com/r7kamura/vagrant-serverkit)
 helps you provision your vagrant box with serverkit.
 
-```
-$ vagrant plugin install vagrant-serverkit
-$ vagrant up
-```
-
 ```rb
 # Vagrantfile
 Vagrant.configure("2") do |config|
@@ -251,4 +246,9 @@ Vagrant.configure("2") do |config|
     serverkit_config.recipe_path = "recipe.yml"
   end
 end
+```
+
+```
+$ vagrant plugin install vagrant-serverkit
+$ vagrant up
 ```
