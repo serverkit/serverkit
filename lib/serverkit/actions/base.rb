@@ -36,7 +36,6 @@ module Serverkit
         if has_hosts?
           hosts.map do |host|
             backend_class.new(
-              disable_sudo: true,
               host: host,
               ssh_options: {
                 user: ssh_user_for(host),
