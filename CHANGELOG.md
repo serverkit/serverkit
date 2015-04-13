@@ -1,3 +1,6 @@
+## 0.3.2
+- Fix git resource on git-clone
+
 ## 0.3.1
 - Support options and version attributes on package resource
 
