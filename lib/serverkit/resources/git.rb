@@ -3,11 +3,11 @@ require "serverkit/resources/base"
 module Serverkit
   module Resources
     class Git < Base
-      DEFAULT_STATUS = "cloned"
+      DEFAULT_STATE = "cloned"
 
       attribute :path, required: true, type: String
       attribute :repository, required: true, type: String
-      attribute :status, default: DEFAULT_STATUS, type: String
+      attribute :state, default: DEFAULT_STATE, type: String
 
       # @note Override
       def apply
@@ -60,7 +60,7 @@ module Serverkit
       end
 
       def updatable?
-        status == "updated" && !updated?
+        state == "updated" && !updated?
       end
 
       def update
