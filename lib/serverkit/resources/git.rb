@@ -11,7 +11,7 @@ module Serverkit
 
       # @note Override
       def apply
-        clone if clonable?
+        _clone if clonable?
         update if updatable?
       end
 
@@ -26,7 +26,8 @@ module Serverkit
         !cloned?
       end
 
-      def clone
+      # @note #clone is reserved ;(
+      def _clone
         run_command("git clone #{repository} #{path}")
       end
 
