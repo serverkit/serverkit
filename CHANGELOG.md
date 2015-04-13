@@ -1,3 +1,6 @@
+## 0.3.3
+- Return exit code 1 if any resource failed
+
 ## 0.3.2
 - Fix git resource on git-clone
 
