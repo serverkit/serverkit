@@ -14,13 +14,6 @@ module Serverkit
       def check
         check_command_from_identifier(:check_service_is_running, name)
       end
-
-      private
-
-      # @note Override
-      def default_id
-        name
-      end
     end
   end
 end

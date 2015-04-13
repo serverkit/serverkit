@@ -15,13 +15,6 @@ module Serverkit
       def check
         check_command_from_identifier(:check_file_is_linked_to, source, destination)
       end
-
-      private
-
-      # @note Override
-      def default_id
-        destination
-      end
     end
   end
 end

@@ -35,11 +35,6 @@ module Serverkit
         check_command_from_identifier(:check_file_is_directory, git_path)
       end
 
-      # @note Override
-      def default_id
-        repository
-      end
-
       # @return [String] Path to .git directory in the cloned repository
       def git_path
         ::File.join(path, ".git")

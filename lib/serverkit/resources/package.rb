@@ -16,13 +16,6 @@ module Serverkit
       def check
         check_command_from_identifier(:check_package_is_installed, name, version)
       end
-
-      private
-
-      # @note Override
-      def default_id
-        name
-      end
     end
   end
 end

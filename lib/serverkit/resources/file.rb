@@ -31,11 +31,6 @@ module Serverkit
         run_command_from_identifier(:change_file_owner, destination, owner)
       end
 
-      # @note Override
-      def default_id
-        destination
-      end
-
       def file_sendable?
         !has_file? || !has_same_content?
       end

@@ -23,10 +23,6 @@ module Serverkit
 
       private
 
-      def default_id
-        script
-      end
-
       # @note Override
       def recheck
         case

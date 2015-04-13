@@ -135,7 +135,7 @@ module Serverkit
       # @note For override
       # @return [String]
       def default_id
-        type
+        required_values.join(" ")
       end
 
       # @note For override
@@ -157,6 +157,20 @@ module Serverkit
       # @return [Specinfra::CommandResult]
       def run_command_from_identifier(*args)
         run_command(backend.command.get(*args))
+      end
+
+      # @return [Array<Symbol>]
+      def required_attribute_names
+        _validators.select do |key, validators|
+          validators.grep(::RequiredValidator).any?
+        end.keys
+      end
+
+      # @return [Array]
+      def required_values
+        required_attribute_names.map do |required_attribute_name|
+          send(required_attribute_name)
+        end
       end
     end
   end
