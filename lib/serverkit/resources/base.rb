@@ -1,4 +1,5 @@
 require "active_model"
+require "active_support/core_ext/module/delegation"
 require "readable_validator"
 require "required_validator"
 require "serverkit/errors/attribute_validation_error"
@@ -27,6 +28,16 @@ module Serverkit
       attribute :id, type: String
       attribute :notify, type: Array
       attribute :type, type: String
+
+      delegate(
+        :check_command,
+        :check_command_from_identifier,
+        :get_command_from_identifier,
+        :run_command,
+        :run_command_from_identifier,
+        :send_file,
+        to: :backend,
+      )
 
       # @param [Serverkit::Recipe] recipe
       # @param [Hash] attributes
@@ -117,21 +128,6 @@ module Serverkit
         end
       end
 
-      # @return [String]
-      def backend_host
-        backend.get_config(:host) || "localhost"
-      end
-
-      # @return [true, false]
-      def check_command(*args)
-        run_command(*args).success?
-      end
-
-      # @return [true, false]
-      def check_command_from_identifier(*args)
-        run_command_from_identifier(*args).success?
-      end
-
       # @note For override
       # @return [String]
       def default_id
@@ -146,17 +142,7 @@ module Serverkit
 
       # @return [String]
       def result_inspection_suffix
-        "#{type} #{id} on #{backend_host}"
-      end
-
-      # @return [Specinfra::CommandResult]
-      def run_command(*args)
-        backend.run_command(*args)
-      end
-
-      # @return [Specinfra::CommandResult]
-      def run_command_from_identifier(*args)
-        run_command(backend.command.get(*args))
+        "#{type} #{id} on #{backend.host}"
       end
 
       # @return [Array<Symbol>]

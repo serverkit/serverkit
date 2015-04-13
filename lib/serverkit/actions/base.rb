@@ -1,6 +1,6 @@
 require "bundler"
-require "etc"
-require "net/ssh"
+require "serverkit/backends/local_backend"
+require "serverkit/backends/ssh_backend"
 require "serverkit/loaders/recipe_loader"
 require "serverkit/recipe"
 require "slop"
@@ -31,27 +31,14 @@ module Serverkit
         abort recipe.errors.map { |error| "Error: #{error}" }.join("\n")
       end
 
-      # @return [Array<Specinfra::Backend::Base>]
+      # @return [Array<Serverkit::Backends::Base>]
       def backends
         if has_hosts?
           hosts.map do |host|
-            backend_class.new(
-              host: host,
-              ssh_options: {
-                user: ssh_user_for(host),
-              }.merge(ssh_options),
-            )
+            Backends::SshBackend.new(host, ssh_options: @ssh_options)
           end
         else
-          [backend_class.new]
-        end
-      end
-
-      def backend_class
-        if has_hosts?
-          Specinfra::Backend::Ssh
-        else
-          Specinfra::Backend::Exec
+          [Backends::LocalBackend.new]
         end
       end
 
@@ -76,20 +63,9 @@ module Serverkit
         abort_with_errors unless recipe.valid?
       end
 
-      # @return [Hash]
-      def ssh_options
-        @ssh_options || {}
-      end
-
       # @return [Serverkit::Recipe]
       def recipe
         @recipe ||= Loaders::RecipeLoader.new(@recipe_path, variables_path: @variables_path).load
-      end
-
-      # @param [String] host
-      # @return [String] User name used on SSH
-      def ssh_user_for(host)
-        Net::SSH::Config.for(host)[:user] || Etc.getlogin
       end
     end
   end
