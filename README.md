@@ -24,6 +24,7 @@ Write a recipe, then run `serverkit` executable to validate, inspect, check, and
 ### serverkit validate
 Validates recipe schema, resources, and attributes.
 For instance, it shows validation error if `source` attributes is missing in `file` resource.
+If any validation error is detected, this action returns exit code 1.
 
 ```
 $ serverkit validate recipe.yml
@@ -70,6 +71,7 @@ $ serverkit inspect recipe.yml
 
 ### serverkit check
 Shows the difference between your recipe and the state of the target host.
+If any failed resource is detected, this action returns exit code 1.
 
 ```
 $ serverkit check recipe.yml
@@ -83,6 +85,7 @@ $ serverkit check recipe.yml
 
 ### serverkit apply
 Executes migration process to fill-in the gaps.
+If any failed resource is detected, this action returns exit code 1.
 
 ```
 $ serverkit apply recipe.yml
