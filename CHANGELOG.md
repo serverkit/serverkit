@@ -1,3 +1,6 @@
+## 0.3.1
+- Support options and version attributes on package resource
+
 ## 0.3.0
 - Always use sudo on SSH backend
 
