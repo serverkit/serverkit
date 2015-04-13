@@ -171,8 +171,6 @@ A resource must have a type attribute. Currently the following types are availab
 - command
 - file
 - git
-- homebrew
-- homebrew_cask
 - nothing
 - package
 - recipe
@@ -224,6 +222,7 @@ Serverkit finds `Serverkit::Resources::FooBar` resource class from `type: "foo_b
 
 - [serverkit-atom](https://github.com/r7kamura/serverkit-atom)
 - [serverkit-defaults](https://github.com/r7kamura/serverkit-defaults)
+- [serverkit-homebrew](https://github.com/r7kamura/serverkit-homebrew)
 - [serverkit-karabiner](https://github.com/r7kamura/serverkit-karabiner)
 - [serverkit-rbenv](https://github.com/r7kamura/serverkit-rbenv)
 
@@ -232,6 +231,7 @@ Serverkit finds `Serverkit::Resources::FooBar` resource class from `type: "foo_b
 gem "serverkit"
 gem "serverkit-atom"
 gem "serverkit-defaults"
+gem "serverkit-homebrew"
 gem "serverkit-karabiner"
 gem "serverkit-rbenv"
 ```
