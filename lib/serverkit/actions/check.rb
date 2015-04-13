@@ -5,15 +5,21 @@ module Serverkit
   module Actions
     class Check < Base
       def run
-        backends.map do |backend|
+        successful = backends.map do |backend|
           Thread.new do
-            recipe.resources.map(&:clone).each do |resource|
+            recipe.resources.map(&:clone).map do |resource|
               resource.backend = backend
               resource.run_check
               puts resource.inspect_check_result
+              resource
             end
           end
-        end.each(&:join)
+        end.map(&:value).flatten.all?(&:successful?)
+        if successful
+          exit
+        else
+          exit(1)
+        end
       end
     end
   end

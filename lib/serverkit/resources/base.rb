@@ -86,14 +86,19 @@ module Serverkit
       def run_apply
         unless run_check
           apply
-          @recheck_result = recheck
+          @recheck_result = !!recheck
         end
       end
 
       # @note #check wrapper
       # @return [true, false]
       def run_check
-        @check_result = check
+        @check_result = !!check
+      end
+
+      # @return [true, false]
+      def successful?
+        @check_result == true || @recheck_result == true
       end
 
       # @note recipe resource will override to replace itself with multiple resources
