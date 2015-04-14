@@ -1,3 +1,7 @@
+## 0.3.4
+- Add -f option on symlink resource
+- Change attributes naming rule: status -> state
+
 ## 0.3.3
 - Return exit code 1 if any resource failed
 
