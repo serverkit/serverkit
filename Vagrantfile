@@ -6,7 +6,6 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :serverkit do |serverkit_config|
     serverkit_config.log_level = "DEBUG"
-    serverkit_config.recipe_path = "example/recipes/recipe.yml"
-    serverkit_config.variables_path = "example/variables"
+    serverkit_config.recipe_path = "example/recipe.yml"
   end
 end
