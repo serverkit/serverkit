@@ -4,8 +4,6 @@ require "rainbow"
 module Serverkit
   # A logger class that has a simple formatter by default.
   class Logger < ::Logger
-    DEFAULT_LEVEL = INFO
-
     def initialize(*)
       super
       self.formatter = Formatter.new
