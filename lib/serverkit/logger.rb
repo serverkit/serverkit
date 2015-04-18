@@ -23,7 +23,7 @@ module Serverkit
 
     class Formatter
       def call(severity, time, program_name, message)
-        message = message.to_s.gsub(/\n\z/, "") + "\n"
+        message = message.to_s.gsub(/\n\z/, "").gsub(/\e\[(\d+)(;\d+)*m/, "") + "\n"
         message = Rainbow(message).black.bright if severity == "DEBUG"
         message
       end
