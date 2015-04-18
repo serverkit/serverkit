@@ -1,5 +1,0 @@
-resources:
-  - type: homebrew_cask
-    name: licecap
-  - type: homebrew_cask
-    name: alfred

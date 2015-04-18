@@ -9,6 +9,7 @@ require "serverkit/resources/recipe"
 require "serverkit/resources/service"
 require "serverkit/resources/symlink"
 require "serverkit/resources/unknown"
+require "serverkit/resources/user"
 
 module Serverkit
   class ResourceBuilder

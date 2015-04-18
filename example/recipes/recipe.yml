@@ -1,20 +1,6 @@
 resources:
-  - type: recipe
-    path: example/recipes/homebrew.yml
-  - type: recipe
-    path: example/recipes/homebrew_cask.yml
-  - type: recipe
-    path: example/recipes/dotfiles.yml.erb
-  - type: nothing
-    notify:
-      - handler_test
-  - type: nothing
-    notify:
-      - handler_test
-  - type: command
-    check_script: foo
-    script: echo test
-    recheck_script: "true"
+  - type: user
+    name: test
 handlers:
   - id: handler_test
     type: nothing

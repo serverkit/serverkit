@@ -202,6 +202,7 @@ A resource must have a type attribute. Currently the following types are availab
 - recipe
 - service
 - symlink
+- user
 
 ### Example
 An example package resource that has type and name attributes.

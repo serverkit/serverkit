@@ -1,5 +1,0 @@
-resources:
-  - type: homebrew
-    name: mysql
-  - type: homebrew
-    name: redis
