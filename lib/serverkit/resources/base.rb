@@ -25,8 +25,10 @@ module Serverkit
 
       attr_reader :attributes, :check_result, :recheck_result, :recipe
 
+      attribute :check_script, type: String
       attribute :id, type: String
       attribute :notify, type: Array
+      attribute :recheck_script, type: String
       attribute :type, type: String
 
       delegate(
@@ -76,14 +78,14 @@ module Serverkit
       def run_apply
         unless run_check
           apply
-          @recheck_result = !!recheck
+          @recheck_result = !!recheck_with_script
         end
       end
 
       # @note #check wrapper
       # @return [true, false]
       def run_check
-        @check_result = !!check
+        @check_result = !!check_with_script
       end
 
       def successful?
@@ -114,6 +116,15 @@ module Serverkit
         end
       end
 
+      # @note Prior check_script attribute to resource's #check implementation
+      def check_with_script
+        if check_script
+          check_command(check_script)
+        else
+          check
+        end
+      end
+
       # @note For override
       # @return [String]
       def default_id
@@ -124,6 +135,15 @@ module Serverkit
       # @return [true, false]
       def recheck
         check
+      end
+
+      # @note Prior recheck_script attribute to resource's #recheck implementation
+      def recheck_with_script
+        if recheck_script
+          check_command(recheck_script)
+        else
+          recheck
+        end
       end
 
       # @return [Array<Symbol>]

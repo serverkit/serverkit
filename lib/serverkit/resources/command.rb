@@ -3,9 +3,7 @@ require "serverkit/resources/base"
 module Serverkit
   module Resources
     class Command < Base
-      attribute :check_script, type: String
       attribute :script, required: true, type: String
-      attribute :recheck_script, type: String
 
       # @note Override
       def apply
@@ -14,21 +12,14 @@ module Serverkit
 
       # @note Override
       def check
-        if check_script
-          check_command(check_script)
-        else
-          false
-        end
+        false
       end
 
       private
 
       # @note Override
       def recheck
-        case
-        when recheck_script
-          check_command(recheck_script)
-        when check_script
+        if check_script
           check_command(check_script)
         else
           true
