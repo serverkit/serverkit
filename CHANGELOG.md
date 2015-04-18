@@ -1,3 +1,6 @@
+## 0.3.5
+- Add logger with `--log-level=` and `--no-color` options
+
 ## 0.3.4
 - Add -f option on symlink resource
 - Change attributes naming rule: status -> state
