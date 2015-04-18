@@ -26,7 +26,7 @@ module Serverkit
         when !has_correct_gid?
           run_command_from_identifier(:update_user_gid, name, gid)
         when !has_correct_uid?
-          run_command_from_identifier(:update_user_gid, name, uid)
+          run_command_from_identifier(:update_user_uid, name, uid)
         when !has_correct_home_directory?
           run_command_from_identifier(:update_user_home_directory, name, home_directory)
         end
