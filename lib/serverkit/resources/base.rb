@@ -23,7 +23,7 @@ module Serverkit
 
       attr_accessor :backend
 
-      attr_reader :attributes, :recipe
+      attr_reader :attributes, :check_result, :recheck_result, :recipe
 
       attribute :id, type: String
       attribute :notify, type: Array
@@ -67,27 +67,6 @@ module Serverkit
         @attributes["id"] || default_id
       end
 
-      # @return [String]
-      def inspect_apply_result
-        case @recheck_result
-        when nil
-          "[SKIP] #{result_inspection_suffix}"
-        when false
-          "[FAIL] #{result_inspection_suffix}"
-        else
-          "[DONE] #{result_inspection_suffix}"
-        end
-      end
-
-      # @return [String]
-      def inspect_check_result
-        if @check_result
-          "[ OK ] #{result_inspection_suffix}"
-        else
-          "[ NG ] #{result_inspection_suffix}"
-        end
-      end
-
       # @return [true, false] True if this resource should call any handler
       def notifiable?
         @recheck_result == true && !handlers.nil?
@@ -107,9 +86,16 @@ module Serverkit
         @check_result = !!check
       end
 
-      # @return [true, false]
       def successful?
-        @check_result == true || @recheck_result == true
+        successful_on_check? || successful_on_recheck?
+      end
+
+      def successful_on_check?
+        @check_result == true
+      end
+
+      def successful_on_recheck?
+        @check_result == true
       end
 
       # @note recipe resource will override to replace itself with multiple resources
@@ -138,11 +124,6 @@ module Serverkit
       # @return [true, false]
       def recheck
         check
-      end
-
-      # @return [String]
-      def result_inspection_suffix
-        "#{type} #{id} on #{backend.host}"
       end
 
       # @return [Array<Symbol>]

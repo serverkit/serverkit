@@ -7,6 +7,7 @@ Configuration management toolkit for IT automation.
   - [serverkit check](#serverkit-check)
   - [serverkit apply](#serverkit-apply)
   - [SSH support](#ssh-support)
+  - [Log level](#log-level)
 - [Recipe](#recipe)
   - [Format](#format)
   - [Variables](#variables)
@@ -105,6 +106,16 @@ If you want to specify SSH configuration, write it into your ~/.ssh/config.
 ```
 $ serverkit apply recipe.yml --hosts=alpha.example.com
 $ serverkit apply recipe.yml --hosts=alpha.example.com,bravo.example.com
+```
+
+### Log level
+You can change serverkit log level by passing `--log-level=` command line option.
+Available values are `debug`, `error`, `fatal`, `warn`, or `info` (default).
+General result lines like `[SKIP] ...` and `[ OK ] ...` are logged with INFO level,
+and all shell commands executed on hosts are logged with DEBUG level.
+
+```
+$ serverkit apply recipe.yml --hosts=alpha.example.com --log-level=debug
 ```
 
 ## Recipe

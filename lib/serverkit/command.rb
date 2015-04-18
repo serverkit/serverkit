@@ -10,6 +10,15 @@ module Serverkit
   # Command clsas takes care of command line interface.
   # It builds and runs an Action object from given command line arguements.
   class Command
+    LOG_LEVELS_TABLE = {
+      nil => Logger::INFO,
+      "debug" => Logger::DEBUG,
+      "error" => Logger::ERROR,
+      "fatal" => Logger::FATAL,
+      "info" => Logger::INFO,
+      "warn" => Logger::WARN,
+    }
+
     # @param [Array<String>] argv
     def initialize(argv)
       @argv = argv
@@ -50,6 +59,7 @@ module Serverkit
     def action_options
       {
         hosts: hosts,
+        log_level: log_level,
         recipe_path: recipe_path,
         variables_path: variables_path,
       }.reject do |key, value|
@@ -72,13 +82,19 @@ module Serverkit
       @command_line_options ||= Slop.parse!(@argv, help: true) do
         banner "Usage: serverkit ACTION [options]"
         on "--hosts=", "Pass hostname to execute command over SSH"
+        on "--log-level=", "Pass optional log level (debug, info, warn, error, fatal)"
         on "--variables=", "Path to variables file for ERB recipe"
       end
     end
 
     # @return [String, nil]
     def hosts
-      command_line_options[:hosts]
+      command_line_options["hosts"]
+    end
+
+    # @return [Fixnum]
+    def log_level
+      LOG_LEVELS_TABLE[command_line_options["log-level"]] || ::Logger::UNKNOWN
     end
 
     # @return [String]
@@ -91,7 +107,7 @@ module Serverkit
     end
 
     def variables_path
-      command_line_options[:variables]
+      command_line_options["variables"]
     end
   end
 end

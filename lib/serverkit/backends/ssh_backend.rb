@@ -10,7 +10,10 @@ module Serverkit
 
       attr_reader :host
 
-      def initialize(host, ssh_options: nil)
+      # @param [String] host
+      # @param [Hash] ssh_options
+      def initialize(host: nil, ssh_options: nil, **args)
+        super(**args)
         @host = host
         @ssh_options = ssh_options
       end
