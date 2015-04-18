@@ -1,3 +1,9 @@
+## 0.4.0
+- Deprecate homebrew & homebrew_cask resources
+- Add check_script and recheck_script to all resources
+- Disable original color from command result
+- Change symlink default_id so that only source is displayed
+
 ## 0.3.5
 - Add logger with `--log-level=` and `--no-color` options
 
