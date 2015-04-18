@@ -1,4 +1,5 @@
 require "logger"
+require "rainbow"
 
 module Serverkit
   # A logger class that has a simple formatter by default.
@@ -24,11 +25,9 @@ module Serverkit
 
     class Formatter
       def call(severity, time, program_name, message)
-        if message.is_a?(String)
-          message
-        else
-          message.inspect
-        end.gsub(/\n\z/, "") + "\n"
+        message = message.to_s.gsub(/\n\z/, "") + "\n"
+        message = Rainbow(message).black.bright if severity == "DEBUG"
+        message
       end
     end
 

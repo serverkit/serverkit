@@ -7,7 +7,7 @@ Configuration management toolkit for IT automation.
   - [serverkit check](#serverkit-check)
   - [serverkit apply](#serverkit-apply)
   - [SSH support](#ssh-support)
-  - [Log level](#log-level)
+  - [Log](#log)
 - [Recipe](#recipe)
   - [Format](#format)
   - [Variables](#variables)
@@ -108,14 +108,15 @@ $ serverkit apply recipe.yml --hosts=alpha.example.com
 $ serverkit apply recipe.yml --hosts=alpha.example.com,bravo.example.com
 ```
 
-### Log level
+### Log
 You can change serverkit log level by passing `--log-level=` command line option.
 Available values are `DEBUG`, `ERROR`, `FATAL`, `WARN`, OR `INFO` (default).
 General result lines like `[SKIP] ...` and `[ OK ] ...` are logged with FATAL level,
 and all shell commands executed on hosts are logged with DEBUG level.
+Pass `--no-color` option if you would like to disable colored log outputs.
 
 ```
-$ serverkit apply recipe.yml --hosts=alpha.example.com --log-level=debug
+$ serverkit apply recipe.yml --hosts=alpha.example.com --log-level=debug --no-color
 ```
 
 ## Recipe

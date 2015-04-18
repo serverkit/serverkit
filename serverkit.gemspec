@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "bundler"
   spec.add_runtime_dependency "hashie"
   spec.add_runtime_dependency "highline"
+  spec.add_runtime_dependency "rainbow"
   spec.add_runtime_dependency "slop", "~> 3.4"
   spec.add_runtime_dependency "specinfra"
   spec.add_development_dependency "pry", "0.10.1"

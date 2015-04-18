@@ -1,3 +1,4 @@
+require "rainbow"
 require "serverkit/actions/apply"
 require "serverkit/actions/check"
 require "serverkit/actions/inspect"
@@ -25,6 +26,7 @@ module Serverkit
     end
 
     def call
+      setup
       case action_name
       when nil
         raise Errors::MissingActionNameArgumentError
@@ -81,8 +83,9 @@ module Serverkit
     def command_line_options
       @command_line_options ||= Slop.parse!(@argv, help: true) do
         banner "Usage: serverkit ACTION [options]"
-        on "--hosts=", "Pass hostname to execute command over SSH"
-        on "--log-level=", "Pass optional log level (debug, info, warn, error, fatal)"
+        on "--hosts=", "Hostname to execute command over SSH"
+        on "--log-level=", "Log level (DEBUG, INFO, WARN, ERROR, FATAL)"
+        on "--no-color", "Disable coloring"
         on "--variables=", "Path to variables file for ERB recipe"
       end
     end
@@ -100,6 +103,10 @@ module Serverkit
     # @return [String]
     def recipe_path
       @argv[1] or raise Errors::MissingRecipePathArgumentError
+    end
+
+    def setup
+      ::Rainbow.enabled = !command_line_options["no-color"]
     end
 
     def validate
