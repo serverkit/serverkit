@@ -12,7 +12,7 @@ resources:
     notify:
       - handler_test
   - type: command
-    check_script: "false"
+    check_script: foo
     script: echo test
     recheck_script: "true"
 handlers:

@@ -1,6 +1,9 @@
 Lint/HandleExceptions:
   Enabled: false
 
+Lint/UnderscorePrefixedVariableName:
+  Enabled: false
+
 Lint/UnusedBlockArgument:
   Enabled: false
 
