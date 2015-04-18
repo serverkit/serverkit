@@ -1,3 +1,6 @@
+## 0.4.1
+- Add user resource
+
 ## 0.4.0
 - Deprecate homebrew & homebrew_cask resources
 - Add check_script and recheck_script to all resources
