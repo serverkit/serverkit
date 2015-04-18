@@ -12,7 +12,12 @@ module Serverkit
   # It builds and runs an Action object from given command line arguements.
   class Command
     LOG_LEVELS_TABLE = {
-      nil => Logger::INFO,
+      "" => Logger::INFO,
+      "0" => Logger::DEBUG,
+      "1" => Logger::INFO,
+      "2" => Logger::WARN,
+      "3" => Logger::ERROR,
+      "4" => Logger::FATAL,
       "DEBUG" => Logger::DEBUG,
       "ERROR" => Logger::ERROR,
       "FATAL" => Logger::FATAL,
@@ -97,7 +102,7 @@ module Serverkit
 
     # @return [Fixnum]
     def log_level
-      LOG_LEVELS_TABLE[command_line_options["log-level"]] || ::Logger::UNKNOWN
+      LOG_LEVELS_TABLE[command_line_options["log-level"].to_s.upcase] || ::Logger::UNKNOWN
     end
 
     # @return [String]
