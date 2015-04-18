@@ -13,6 +13,7 @@ Configuration management toolkit for IT automation.
   - [Variables](#variables)
   - [Example](#example)
 - [Resource](#resource)
+  - [Attributes](#attributes)
   - [Type](#type)
   - [Example](#example-1)
 - [Handler](#handler)
@@ -179,6 +180,16 @@ resources:
 
 ## Resource
 A resource is a statement of configuration policy that describes the desired state for an item.
+
+### Attributes
+Each resource has different attributes along with its type.
+By default, all types of resource can or must have the following attributes:
+
+- type - what type this resource represents (required)
+- check_script - pass shell script to override the `#check` phase
+- recheck_script - pass shell script to override the `#recheck` phase (runned after `#apply`)
+- id - change resource identifier used in log, and also used for `notify`
+- notify - specify an Array of handler ids that should be applied after changed
 
 ### Type
 A resource must have a type attribute. Currently the following types are available:
