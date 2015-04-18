@@ -1,4 +1,5 @@
 require "serverkit/resources/base"
+require "unix_crypt"
 
 module Serverkit
   module Resources
@@ -12,27 +13,16 @@ module Serverkit
 
       # @note Override
       def apply
-        case
-        when !has_correct_user?
-          run_command_from_identifier(
-            :add_user,
-            name,
-            gid: gid,
-            home_directory: home_directory,
-            password: password,
-            system_user: system_user,
-            uid: uid,
-          )
-        when !has_correct_gid?
-          run_command_from_identifier(:update_user_gid, name, gid)
-        when !has_correct_uid?
-          run_command_from_identifier(:update_user_uid, name, uid)
-        when !has_correct_home_directory?
-          run_command_from_identifier(:update_user_home_directory, name, home_directory)
+        if has_correct_user?
+          update_user_encrypted_password unless has_correct_password?
+          update_user_gid unless has_correct_gid?
+          update_user_home_directory unless has_correct_home_directory?
+          update_user_uid unless has_correct_uid?
+        else
+          add_user
         end
       end
 
-      # @todo Check password
       # @note Override
       def check
         case
@@ -40,9 +30,11 @@ module Serverkit
           false
         when gid && !has_correct_gid?
           false
-        when uid && !has_correct_uid?
-          false
         when home_directory && !has_correct_home_directory?
+          false
+        when password && !has_correct_password?
+          false
+        when uid && !has_correct_uid?
           false
         else
           true
@@ -51,12 +43,36 @@ module Serverkit
 
       private
 
+      def add_user
+        run_command_from_identifier(
+          :add_user,
+          name,
+          gid: gid,
+          home_directory: home_directory,
+          password: encrypted_password,
+          system_user: system_user,
+          uid: uid,
+        )
+      end
+
+      def encrypted_password
+        @encrypted_password ||= UnixCrypt::SHA512.build(password)
+      end
+
+      def get_remote_encrypted_password
+        run_command_from_identifier(:get_user_encrypted_password, name).stdout
+      end
+
       def has_correct_gid?
         check_command_from_identifier(:check_user_belongs_to_group, name, gid)
       end
 
       def has_correct_home_directory?
-        check_command_from_identifier(:check_user_has_correct_home_directory, name, home_directory)
+        check_command_from_identifier(:check_user_has_home_directory, name, home_directory)
+      end
+
+      def has_correct_password?
+        ::UnixCrypt.valid?(password, get_remote_encrypted_password)
       end
 
       def has_correct_uid?
@@ -65,6 +81,22 @@ module Serverkit
 
       def has_correct_user?
         check_command_from_identifier(:check_user_exists, name)
+      end
+
+      def update_user_encrypted_password
+        run_command_from_identifier(:update_user_encrypted_password, name, encrypted_password)
+      end
+
+      def update_user_gid
+        run_command_from_identifier(:update_user_gid, name, gid)
+      end
+
+      def update_user_home_directory
+        run_command_from_identifier(:update_user_home_directory, name, home_directory)
+      end
+
+      def update_user_uid
+        run_command_from_identifier(:update_user_uid, name, uid)
       end
     end
   end

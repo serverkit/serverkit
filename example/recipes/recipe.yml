@@ -1,6 +1,7 @@
 resources:
   - type: user
     name: test
+    password: test
 handlers:
   - id: handler_test
     type: nothing
