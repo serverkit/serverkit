@@ -22,7 +22,7 @@ module Serverkit
             recipe.resources.map(&:clone).map do |resource|
               resource.backend = backend
               resource.run_check
-              backend.logger.info_check_result_of(resource)
+              backend.logger.report_check_result_of(resource)
               resource
             end
           end

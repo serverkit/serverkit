@@ -11,13 +11,13 @@ module Serverkit
     end
 
     # @param [Serverkit::Resources::Base]
-    def info_apply_result_of(resource)
+    def report_apply_result_of(resource)
       message = ResourceApplyStateView.new(resource).to_s
       info(message)
     end
 
     # @param [Serverkit::Resources::Base]
-    def info_check_result_of(resource)
+    def report_check_result_of(resource)
       message = ResourceCheckStateView.new(resource).to_s
       info(message)
     end

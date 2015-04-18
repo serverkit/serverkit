@@ -22,13 +22,13 @@ module Serverkit
             resources = recipe.resources.map(&:clone).map do |resource|
               resource.backend = backend
               resource.run_apply
-              backend.logger.info_apply_result_of(resource)
+              backend.logger.report_apply_result_of(resource)
               resource
             end
             handlers = resources.select(&:notifiable?).flat_map(&:handlers).uniq.map(&:clone).each do |handler|
               handler.backend = backend
               handler.run_apply
-              backend.logger.info_apply_result_of(handler)
+              backend.logger.report_apply_result_of(handler)
             end
             resources + handlers
           end
