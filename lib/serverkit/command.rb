@@ -12,11 +12,11 @@ module Serverkit
   class Command
     LOG_LEVELS_TABLE = {
       nil => Logger::INFO,
-      "debug" => Logger::DEBUG,
-      "error" => Logger::ERROR,
-      "fatal" => Logger::FATAL,
-      "info" => Logger::INFO,
-      "warn" => Logger::WARN,
+      "DEBUG" => Logger::DEBUG,
+      "ERROR" => Logger::ERROR,
+      "FATAL" => Logger::FATAL,
+      "INFO" => Logger::INFO,
+      "WARN" => Logger::WARN,
     }
 
     # @param [Array<String>] argv

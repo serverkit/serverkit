@@ -110,7 +110,7 @@ $ serverkit apply recipe.yml --hosts=alpha.example.com,bravo.example.com
 
 ### Log level
 You can change serverkit log level by passing `--log-level=` command line option.
-Available values are `debug`, `error`, `fatal`, `warn`, or `info` (default).
+Available values are `DEBUG`, `ERROR`, `FATAL`, `WARN`, OR `INFO` (default).
 General result lines like `[SKIP] ...` and `[ OK ] ...` are logged with FATAL level,
 and all shell commands executed on hosts are logged with DEBUG level.
 
