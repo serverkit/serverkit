@@ -13,13 +13,13 @@ module Serverkit
     # @param [Serverkit::Resources::Base]
     def report_apply_result_of(resource)
       message = ResourceApplyStateView.new(resource).to_s
-      info(message)
+      fatal(message)
     end
 
     # @param [Serverkit::Resources::Base]
     def report_check_result_of(resource)
       message = ResourceCheckStateView.new(resource).to_s
-      info(message)
+      fatal(message)
     end
 
     class Formatter
