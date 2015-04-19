@@ -194,17 +194,17 @@ By default, all types of resource can or must have the following attributes:
 ### Type
 A resource must have a valid type attribute like:
 
-- command
-- directory
-- file
-- git
-- nothing
-- package
-- recipe
-- remote_file
-- service
-- symlink
-- user
+- [command](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/command.rb)
+- [directory](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/directory.rb)
+- [file](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/file.rb)
+- [git](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/git.rb)
+- [nothing](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/nothing.rb)
+- [package](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/package.rb)
+- [recipe](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/recipe.rb)
+- [remote_file](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/remote_file.rb)
+- [service](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/service.rb)
+- [symlink](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/symlink.rb)
+- [user](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/user.rb)
 
 ### Example
 An example package resource that has type and name attributes.
