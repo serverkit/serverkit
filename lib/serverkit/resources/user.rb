@@ -105,7 +105,7 @@ module Serverkit
       end
 
       def update_user_login_shell
-        run_command("chsh -s #{shell} #{name}")
+        run_command_from_identifier(:update_user_login_shell, name, shell)
       end
 
       def update_user_uid
