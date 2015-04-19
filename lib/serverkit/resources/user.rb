@@ -8,7 +8,7 @@ module Serverkit
       attribute :home, type: String
       attribute :name, type: String, required: true
       attribute :password, type: String
-      attribute :system_user, type: [FalseClass, TrueClass]
+      attribute :system, type: [FalseClass, TrueClass]
       attribute :uid, type: Integer
 
       # @note Override
@@ -50,7 +50,7 @@ module Serverkit
           gid: gid,
           home_directory: home,
           password: encrypted_password,
-          system_user: system_user,
+          system_user: system,
           uid: uid,
         )
       end
