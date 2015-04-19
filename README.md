@@ -25,12 +25,12 @@ Write a recipe, then run `serverkit` executable to validate, inspect, check, and
 
 ### serverkit validate
 Validates recipe schema, resources, and attributes.
-For instance, it shows validation error if `source` attributes is missing in `file` resource.
+For instance, it shows validation error if `source` attributes is missing in `remote_file` resource.
 If any validation error is detected, it returns exit status 1.
 
 ```
 $ serverkit validate recipe.yml
-Error: source attribute is required in file resource
+Error: source attribute is required in remote_file resource
 Error: path attribute can't be unreadable path in recipe resource
 ```
 
@@ -195,11 +195,11 @@ By default, all types of resource can or must have the following attributes:
 A resource must have a type attribute. Currently the following types are available:
 
 - command
-- file
 - git
 - nothing
 - package
 - recipe
+- remote_file
 - service
 - symlink
 - user

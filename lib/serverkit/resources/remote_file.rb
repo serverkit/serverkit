@@ -3,7 +3,7 @@ require "serverkit/resources/base"
 
 module Serverkit
   module Resources
-    class File < Base
+    class RemoteFile < Base
       attribute :destination, required: true, type: String
       attribute :group, type: String
       attribute :owner, type: String
@@ -11,7 +11,7 @@ module Serverkit
 
       # @note Override
       def apply
-        send_file if file_sendable?
+        send_file_from_source_to_destination if file_sendable?
         change_group unless has_valid_group?
         change_owner unless has_valid_owner?
       end
@@ -61,8 +61,8 @@ module Serverkit
         run_command_from_identifier(:get_file_sha256sum, destination).stdout.rstrip
       end
 
-      def send_file
-        run_command_from_identifier(:send_file, source, destination)
+      def send_file_from_source_to_destination
+        send_file(source, destination)
       end
     end
   end
