@@ -5,7 +5,7 @@ module Serverkit
   module Resources
     class User < Base
       attribute :gid, type: [Integer, String]
-      attribute :home_directory, type: String
+      attribute :home, type: String
       attribute :name, type: String, required: true
       attribute :password, type: String
       attribute :system_user, type: [FalseClass, TrueClass]
@@ -30,7 +30,7 @@ module Serverkit
           false
         when gid && !has_correct_gid?
           false
-        when home_directory && !has_correct_home_directory?
+        when home && !has_correct_home_directory?
           false
         when password && !has_correct_password?
           false
@@ -48,7 +48,7 @@ module Serverkit
           :add_user,
           name,
           gid: gid,
-          home_directory: home_directory,
+          home_directory: home,
           password: encrypted_password,
           system_user: system_user,
           uid: uid,
@@ -68,7 +68,7 @@ module Serverkit
       end
 
       def has_correct_home_directory?
-        check_command_from_identifier(:check_user_has_home_directory, name, home_directory)
+        check_command_from_identifier(:check_user_has_home_directory, name, home)
       end
 
       def has_correct_password?
@@ -92,7 +92,7 @@ module Serverkit
       end
 
       def update_user_home_directory
-        run_command_from_identifier(:update_user_home_directory, name, home_directory)
+        run_command_from_identifier(:update_user_home_directory, name, home)
       end
 
       def update_user_uid
