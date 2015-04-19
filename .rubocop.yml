@@ -28,6 +28,9 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Enabled: false
 
+Style/AccessorMethodName:
+  Enabled: false
+
 Style/AndOr:
   Enabled: false
 
