@@ -97,7 +97,7 @@ module Serverkit
       end
 
       def successful_on_recheck?
-        @check_result == true
+        @recheck_result == true
       end
 
       # @note recipe resource will override to replace itself with multiple resources
