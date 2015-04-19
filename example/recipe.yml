@@ -2,6 +2,9 @@ resources:
   - type: remote_file
     source: README.md
     destination: /tmp/README.md
+  - type: file
+    path: /tmp/README.md
+    content: foo
   - type: user
     name: test
     password: test

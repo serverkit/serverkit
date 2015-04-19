@@ -30,15 +30,15 @@ module Serverkit
         case
         when !has_correct_user?
           false
-        when gid && !has_correct_gid?
+        when !has_correct_gid?
           false
-        when home && !has_correct_home_directory?
+        when !has_correct_home_directory?
           false
-        when password && !has_correct_password?
+        when !has_correct_password?
           false
-        when shell && !has_correct_login_shell?
+        when !has_correct_login_shell?
           false
-        when uid && !has_correct_uid?
+        when !has_correct_uid?
           false
         else
           true
@@ -69,23 +69,23 @@ module Serverkit
       end
 
       def has_correct_gid?
-        check_command_from_identifier(:check_user_belongs_to_group, name, gid)
+        gid.nil? || check_command_from_identifier(:check_user_belongs_to_group, name, gid)
       end
 
       def has_correct_home_directory?
-        check_command_from_identifier(:check_user_has_home_directory, name, home)
+        home.nil? || check_command_from_identifier(:check_user_has_home_directory, name, home)
       end
 
       def has_correct_login_shell?
-        check_command_from_identifier(:check_user_has_login_shell, name, shell)
+        shell.nil? || check_command_from_identifier(:check_user_has_login_shell, name, shell)
       end
 
       def has_correct_password?
-        ::UnixCrypt.valid?(password, get_remote_encrypted_password)
+        password.nil? || ::UnixCrypt.valid?(password, get_remote_encrypted_password)
       end
 
       def has_correct_uid?
-        check_command_from_identifier(:check_user_has_uid, name, uid)
+        uid.nil? || check_command_from_identifier(:check_user_has_uid, name, uid)
       end
 
       def has_correct_user?

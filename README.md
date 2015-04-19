@@ -192,9 +192,10 @@ By default, all types of resource can or must have the following attributes:
 - notify - specify an Array of handler ids that should be applied after changed
 
 ### Type
-A resource must have a type attribute. Currently the following types are available:
+A resource must have a valid type attribute like:
 
 - command
+- file
 - git
 - nothing
 - package

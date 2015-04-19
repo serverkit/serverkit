@@ -57,6 +57,11 @@ module Serverkit
         run_command(get_command_from_identifier(*args))
       end
 
+      def send_file(from, to)
+        logger.debug("Sending file #{from} to #{to}")
+        specinfra_backend.send_file(from, to)
+      end
+
       private
 
       # @note Override me
