@@ -1,3 +1,7 @@
+## 0.4.2
+- Fix bug on apply action exit code
+- Support case-insensitive or number log-level
+
 ## 0.4.1
 - Add user resource
 
