@@ -1,3 +1,10 @@
+## 0.4.3
+- Add directory resource
+- Add file resource
+- Rename the previous file resource with remote_file
+- Support shell attribute on user resource
+- Change some attribue names on user resource
+
 ## 0.4.2
 - Fix bug on apply action exit code
 - Support case-insensitive or number log-level
