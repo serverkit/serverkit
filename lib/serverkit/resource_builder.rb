@@ -1,5 +1,6 @@
 require "active_support/core_ext/string/inflections"
 require "serverkit/resources/command"
+require "serverkit/resources/directory"
 require "serverkit/resources/file"
 require "serverkit/resources/git"
 require "serverkit/resources/missing"

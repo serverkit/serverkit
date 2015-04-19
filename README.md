@@ -195,6 +195,7 @@ By default, all types of resource can or must have the following attributes:
 A resource must have a valid type attribute like:
 
 - command
+- directory
 - file
 - git
 - nothing

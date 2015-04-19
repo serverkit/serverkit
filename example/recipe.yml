@@ -10,3 +10,6 @@ resources:
     password: test
     home: /Users/test
     shell: /bin/bash
+  - type: directory
+    path: /Users/test
+    owner: test
