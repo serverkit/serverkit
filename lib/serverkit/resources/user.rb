@@ -8,6 +8,7 @@ module Serverkit
       attribute :home, type: String
       attribute :name, type: String, required: true
       attribute :password, type: String
+      attribute :shell, type: String
       attribute :system, type: [FalseClass, TrueClass]
       attribute :uid, type: Integer
 
@@ -17,6 +18,7 @@ module Serverkit
           update_user_encrypted_password unless has_correct_password?
           update_user_gid unless has_correct_gid?
           update_user_home_directory unless has_correct_home_directory?
+          update_user_login_shell unless has_correct_login_shell?
           update_user_uid unless has_correct_uid?
         else
           add_user
@@ -34,6 +36,8 @@ module Serverkit
           false
         when password && !has_correct_password?
           false
+        when shell && !has_correct_login_shell?
+          false
         when uid && !has_correct_uid?
           false
         else
@@ -50,6 +54,7 @@ module Serverkit
           gid: gid,
           home_directory: home,
           password: encrypted_password,
+          shell: shell,
           system_user: system,
           uid: uid,
         )
@@ -69,6 +74,10 @@ module Serverkit
 
       def has_correct_home_directory?
         check_command_from_identifier(:check_user_has_home_directory, name, home)
+      end
+
+      def has_correct_login_shell?
+        check_command_from_identifier(:check_user_has_login_shell, name, shell)
       end
 
       def has_correct_password?
@@ -93,6 +102,10 @@ module Serverkit
 
       def update_user_home_directory
         run_command_from_identifier(:update_user_home_directory, name, home)
+      end
+
+      def update_user_login_shell
+        run_command("chsh -s #{shell} #{name}")
       end
 
       def update_user_uid

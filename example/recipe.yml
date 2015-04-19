@@ -3,6 +3,4 @@ resources:
     name: test
     password: test
     home: /Users/test
-handlers:
-  - id: handler_test
-    type: nothing
+    shell: /bin/bash
