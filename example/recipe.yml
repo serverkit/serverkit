@@ -16,3 +16,6 @@ resources:
   - type: template
     source: example/template.erb
     destination: /tmp/template_test
+  - type: group
+    name: wheel
+    gid: 10000

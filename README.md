@@ -198,6 +198,7 @@ A resource must have a valid type attribute like:
 - [directory](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/directory.rb)
 - [file](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/file.rb)
 - [git](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/git.rb)
+- [group](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/group.rb)
 - [nothing](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/nothing.rb)
 - [package](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/package.rb)
 - [recipe](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/recipe.rb)
