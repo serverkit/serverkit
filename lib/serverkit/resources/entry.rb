@@ -10,6 +10,8 @@ module Serverkit
       attribute :mode, type: [Integer, String]
       attribute :owner, type: String
 
+      self.abstract_class = true
+
       # @note Override
       def apply
         update_entry unless has_correct_entry?

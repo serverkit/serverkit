@@ -50,5 +50,13 @@ RSpec.describe Serverkit::ResourceBuilder do
 
       it { is_expected.to be_a Serverkit::Resources::Missing }
     end
+
+    context "with abstract type attribute" do
+      let(:resource_attributes) do
+        super().merge("type" => "entry")
+      end
+
+      it { is_expected.to be_a Serverkit::Resources::Unknown }
+    end
   end
 end

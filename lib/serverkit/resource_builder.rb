@@ -29,8 +29,15 @@ module Serverkit
 
     private
 
+    # @return [Array<Class>]
+    def available_resource_classes
+      Resources.constants.select do |constant|
+        constant.is_a?(Resources::Base) && !constant.abstract_class?
+      end
+    end
+
     def has_known_type?
-      Resources.constants.map(&:to_s).include?(resource_class_name)
+      available_resource_classes.map(&:to_s).include?(resource_class_name)
     end
 
     # @return [Class]
