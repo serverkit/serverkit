@@ -204,6 +204,7 @@ A resource must have a valid type attribute like:
 - [remote_file](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/remote_file.rb)
 - [service](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/service.rb)
 - [symlink](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/symlink.rb)
+- [template](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/template.rb)
 - [user](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/user.rb)
 
 ### Example

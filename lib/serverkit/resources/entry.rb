@@ -78,6 +78,14 @@ module Serverkit
         run_command_from_identifier(:get_file_sha256sum, destination).stdout.rstrip
       end
 
+      def send_content_to_destination
+        ::Tempfile.open("") do |file|
+          file.write(content || "")
+          file.close
+          backend.send_file(file.path, destination)
+        end
+      end
+
       # @note Override me
       def update_entry
         raise NotImplementedError

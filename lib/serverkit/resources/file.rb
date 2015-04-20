@@ -1,4 +1,5 @@
 require "serverkit/resources/entry"
+require "tempfile"
 
 module Serverkit
   module Resources
@@ -20,11 +21,7 @@ module Serverkit
 
       # @note Override
       def update_entry
-        ::Tempfile.open("") do |file|
-          file.write(content || "")
-          file.close
-          backend.send_file(file.path, destination)
-        end
+        send_content_to_destination
       end
     end
   end

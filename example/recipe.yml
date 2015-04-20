@@ -13,3 +13,6 @@ resources:
   - type: directory
     path: /Users/test
     owner: test
+  - type: template
+    source: example/template.erb
+    destination: /tmp/template_test

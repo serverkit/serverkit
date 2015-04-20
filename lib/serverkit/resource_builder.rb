@@ -10,6 +10,7 @@ require "serverkit/resources/recipe"
 require "serverkit/resources/remote_file"
 require "serverkit/resources/service"
 require "serverkit/resources/symlink"
+require "serverkit/resources/template"
 require "serverkit/resources/unknown"
 require "serverkit/resources/user"
 
