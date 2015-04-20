@@ -1,3 +1,6 @@
+## 0.4.6
+- Fix group resource on apply action
+
 ## 0.4.5
 - Add group resource
 - Raise KeyError when missing key is referred from ERB
