@@ -1,3 +1,7 @@
+## 0.4.4
+- Add template resource
+- Prevent abstract class from being used as resource type
+
 ## 0.4.3
 - Add directory resource
 - Add file resource
