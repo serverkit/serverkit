@@ -11,7 +11,14 @@ module Serverkit
 
       # @note Override
       def content
-        @content ||= ::ERB.new(template_content, nil, "-").result(variables.to_mash.binding)
+        @content ||= erb.result(variables.to_mash.binding)
+      end
+
+      # @return [ERB]
+      def erb
+        _erb = ::ERB.new(template_content, nil, "-")
+        _erb.filename = source
+        _erb
       end
 
       # @return [String] ERB content

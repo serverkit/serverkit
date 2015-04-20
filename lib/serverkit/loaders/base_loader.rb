@@ -40,6 +40,13 @@ module Serverkit
         loaded_class.new({})
       end
 
+      # @return [ERB]
+      def erb
+        _erb = ERB.new(pathname.read, nil, "-")
+        _erb.filename = pathname.to_s
+        _erb
+      end
+
       # @return [String]
       def execute
         `#{pathname}`
@@ -47,7 +54,7 @@ module Serverkit
 
       # @return [String]
       def expand_erb
-        ERB.new(pathname.read, nil, "-").result(binding_for_erb)
+        erb.result(binding_for_erb)
       end
 
       # @return [String]
