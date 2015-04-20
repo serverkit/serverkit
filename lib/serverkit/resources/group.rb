@@ -9,9 +9,9 @@ module Serverkit
       # @note Override
       def apply
         if has_correct_group?
-          run_command_from_identifier(:add_group, name, gid: gid)
-        else
           run_command_from_identifier(:update_group_gid, name, gid)
+        else
+          run_command_from_identifier(:add_group, name, gid: gid)
         end
       end
 
