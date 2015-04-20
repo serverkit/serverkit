@@ -1,5 +1,4 @@
 require "serverkit/resources/entry"
-require "tempfile"
 
 module Serverkit
   module Resources
