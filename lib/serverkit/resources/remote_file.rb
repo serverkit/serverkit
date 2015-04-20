@@ -12,24 +12,16 @@ module Serverkit
       # @note Override
       def apply
         send_file_from_source_to_destination if file_sendable?
-        change_group unless has_valid_group?
-        change_owner unless has_valid_owner?
+        update_group unless has_correct_group?
+        update_owner unless has_correct_owner?
       end
 
       # @note Override
       def check
-        has_file? && has_same_content? && has_valid_group? && has_valid_owner?
+        has_file? && has_same_content? && has_correct_group? && has_correct_owner?
       end
 
       private
-
-      def change_group
-        run_command_from_identifier(:change_file_group, destination, group)
-      end
-
-      def change_owner
-        run_command_from_identifier(:change_file_owner, destination, owner)
-      end
 
       def file_sendable?
         !has_file? || !has_same_content?
@@ -43,11 +35,11 @@ module Serverkit
         remote_file_sha256sum == local_file_sha256sum
       end
 
-      def has_valid_group?
+      def has_correct_group?
         group.nil? || check_command_from_identifier(:check_file_is_grouped, destination, group)
       end
 
-      def has_valid_owner?
+      def has_correct_owner?
         owner.nil? || check_command_from_identifier(:check_file_is_owned_by, destination, owner)
       end
 
@@ -63,6 +55,14 @@ module Serverkit
 
       def send_file_from_source_to_destination
         send_file(source, destination)
+      end
+
+      def update_group
+        run_command_from_identifier(:change_file_group, destination, group)
+      end
+
+      def update_owner
+        run_command_from_identifier(:change_file_owner, destination, owner)
       end
     end
   end
