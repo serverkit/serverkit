@@ -22,6 +22,16 @@ module Serverkit
     end
 
     class BindableMash < Hashie::Mash
+      DEFAULT_PROC = -> (hash, key) do
+        raise KeyError, "key not found: #{key.inspect} (perhaps variables are wrong?)"
+      end
+
+      # @note Override to raise KeyError on missing key
+      def initialize(*, &block)
+        super
+        self.default_proc = DEFAULT_PROC
+      end
+
       # @note Override visibility from private to public
       def binding
         super
