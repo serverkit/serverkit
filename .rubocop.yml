@@ -49,6 +49,9 @@ Style/GuardClause:
 Style/IfUnlessModifier:
   Enabled: false
 
+Style/Lambda:
+  Enabled: false
+
 Style/MultilineBlockChain:
   Enabled: false
 
