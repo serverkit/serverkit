@@ -86,8 +86,6 @@ module Serverkit
         case
         when has_executable_path?
           load_data_from_executable
-        when has_erb_path?
-          load_data_from_erb
         when has_yaml_path?
           load_data_from_yaml
         else
