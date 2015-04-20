@@ -31,8 +31,9 @@ module Serverkit
 
     # @return [Array<Class>]
     def available_resource_classes
-      Resources.constants.select do |constant|
-        constant.is_a?(Resources::Base) && !constant.abstract_class?
+      Resources.constants.select do |constant_name|
+        constant = Resources.const_get(constant_name)
+        constant < Resources::Base && !constant.abstract_class?
       end
     end
 

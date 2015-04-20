@@ -11,6 +11,10 @@ module Serverkit
       class << self
         attr_writer :abstract_class
 
+        def abstract_class?
+          !!@abstract_class
+        end
+
         # @note DSL method to define attribute with its validations
         def attribute(name, options = {})
           default = options.delete(:default)
@@ -50,10 +54,6 @@ module Serverkit
       def initialize(recipe, attributes)
         @attributes = attributes
         @recipe = recipe
-      end
-
-      def abstract_class?
-        !!@abstract_class
       end
 
       # @note For override

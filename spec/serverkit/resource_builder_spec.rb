@@ -32,7 +32,7 @@ RSpec.describe Serverkit::ResourceBuilder do
     end
 
     context "with normal case" do
-      it { is_expected.to be_a Serverkit::Resources::Base }
+      it { is_expected.to be_a Serverkit::Resources::Symlink }
     end
 
     context "with unknown type attribute" do
