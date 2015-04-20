@@ -1,3 +1,8 @@
+## 0.4.5
+- Add group resource
+- Raise KeyError when missing key is referred from ERB
+- Show its file path on error from ERB template
+
 ## 0.4.4
 - Add template resource
 - Prevent abstract class from being used as resource type
