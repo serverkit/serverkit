@@ -1,7 +1,6 @@
 require "erb"
 require "serverkit/loaders/variables_loader"
-require "serverkit/resources/entry"
-require "tempfile"
+require "serverkit/resources/remote_file"
 
 module Serverkit
   module Resources
