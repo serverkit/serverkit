@@ -1,3 +1,6 @@
+## 0.4.8
+- Add line resource
+
 ## 0.4.7
 - Add a patch for vagrant-serverkit
 
