@@ -1,3 +1,6 @@
+## 0.4.7
+- Add a patch for vagrant-serverkit
+
 ## 0.4.6
 - Fix group resource on apply action
 
