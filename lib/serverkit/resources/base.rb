@@ -1,4 +1,5 @@
 require "active_model"
+require "active_model/errors"
 require "active_support/core_ext/module/delegation"
 require "readable_validator"
 require "required_validator"
