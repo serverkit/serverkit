@@ -12,3 +12,6 @@ resources:
   - type: directory
     path: /home/kit/.ssh
     mode: 0700
+  - type: line
+    path: /etc/sudoers
+    line: "#includedir /etc/sudoers.d"
