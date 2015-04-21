@@ -1,20 +1,14 @@
 resources:
-  - type: remote_file
-    source: README.md
-    destination: /tmp/README.md
-  - type: file
-    path: /tmp/README.md
-    content: foo
   - type: user
-    name: test
-    password: test
-    home: /Users/test
+    name: kit
+    password: kit
+    home: /home/kit
     shell: /bin/bash
-  - type: directory
-    path: /home/test
-    owner: test
-  - type: template
-    source: example/template.erb
-    destination: /tmp/template_test
   - type: group
     name: wheel
+  - type: user
+    name: kit
+    group: wheel
+  - type: directory
+    path: /home/kit/.ssh
+    mode: 0700
