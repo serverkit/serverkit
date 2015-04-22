@@ -1,3 +1,7 @@
+## 0.4.9
+- Add insert_after, insert_before, and pattern attributes on line resource
+- Rescue YAML parse error on recipe loading phase
+
 ## 0.4.8
 - Add line resource
 
