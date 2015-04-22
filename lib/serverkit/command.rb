@@ -46,7 +46,7 @@ module Serverkit
       else
         raise Errors::UnknownActionNameError, action_name
       end
-    rescue Errors::Base, Slop::MissingArgumentError, Slop::MissingOptionError => exception
+    rescue Errors::Base, Psych::SyntaxError, Slop::MissingArgumentError, Slop::MissingOptionError => exception
       abort "Error: #{exception}"
     end
 
