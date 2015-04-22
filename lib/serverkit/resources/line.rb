@@ -14,7 +14,7 @@ module Serverkit
       attribute :insert_after, type: String
       attribute :insert_before, type: String
       attribute :line, required: true, type: String
-      attribute :pattern, type: String
+      attribute :pattern, regexp: true, type: String
       attribute :state, default: DEFAULT_STATE, inclusion: %w[absent present], type: String
 
       # @note Override
