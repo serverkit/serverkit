@@ -12,6 +12,7 @@ module Serverkit
 
       attribute :path, required: true, type: String
       attribute :line, required: true, type: String
+      attribute :pattern, type: String
       attribute :state, default: DEFAULT_STATE, inclusion: %w[absent present], type: String
 
       # @note Override
@@ -42,7 +43,11 @@ module Serverkit
       end
 
       def has_correct_line?
-        !(present? ^ remote_file_content.each_line.include?(line_with_break))
+        !(present? ^ has_matched_line_in_remote_file_content?)
+      end
+
+      def has_matched_line_in_remote_file_content?
+        remote_file_content.each_line.lazy.grep(regexp || line_with_break).any?
       end
 
       def line_with_break
@@ -51,6 +56,13 @@ module Serverkit
 
       def present?
         state == "present"
+      end
+
+      # @return [Regexp, nil]
+      def regexp
+        if pattern
+          ::Regexp.new(pattern)
+        end
       end
 
       # @return [String]
