@@ -18,7 +18,10 @@ module Serverkit
       # @note Override
       def apply
         if has_correct_file?
-          send_applied_remote_file_content_to_path
+          update_remote_file_content(
+            content: applied_remote_file_content,
+            path: path,
+          )
         end
       end
 
@@ -32,10 +35,20 @@ module Serverkit
       # @return [String]
       def applied_remote_file_content
         if present?
-          remote_file_content << line_with_break
+          content.append(line).to_s
         else
-          (remote_file_content.each_line.to_a - [line_with_break]).join
+          content.delete(line).to_s
         end
+      end
+
+      # @return [Serverkit::Resources::Line::Content]
+      def content
+        Content.new(get_remote_file_content)
+      end
+
+      # @return [String]
+      def get_remote_file_content
+        run_command_from_identifier(:get_file_content, path).stdout
       end
 
       def has_correct_file?
@@ -43,13 +56,18 @@ module Serverkit
       end
 
       def has_correct_line?
-        !(present? ^ has_matched_line_in_remote_file_content?)
+        case
+        when present? && !has_matched_line?
+          false
+        when !present? && has_matched_line?
+          false
+        else
+          true
+        end
       end
 
-      def has_matched_line_in_remote_file_content?
-        remote_file_content.each_line.any? do |remote_file_line|
-          (regexp || line) === remote_file_line.gsub(/\n$/, "")
-        end
+      def has_matched_line?
+        content.match(regexp || line)
       end
 
       def line_with_break
@@ -67,16 +85,45 @@ module Serverkit
         end
       end
 
-      # @return [String]
-      def remote_file_content
-        run_command_from_identifier(:get_file_content, path).stdout
-      end
+      # Wrapper class to easily manage lines in remote file content.
+      class Content
+        # @param [String] raw
+        def initialize(raw)
+          @raw = raw
+        end
 
-      def send_applied_remote_file_content_to_path
-        ::Tempfile.open("") do |file|
-          file.write(applied_remote_file_content)
-          file.close
-          backend.send_file(file.path, path)
+        # @param [String] line
+        # @return [Serverkit::Resources::Line::Content]
+        def append(line)
+          string = @raw
+          string += "\n" unless @raw.end_with?("\n")
+          self.class.new(string + line + "\n")
+        end
+
+        # @param [String] line
+        # @return [Serverkit::Resources::Line::Content]
+        def delete(line)
+          self.class.new(@raw.gsub(/^#{line}$/, ""))
+        end
+
+        # @param [Regexp, String] pattern
+        # @return [false, true] True if any line matches given pattern
+        def match(pattern)
+          lines.lazy.grep(pattern).any?
+        end
+
+        # @note Override
+        def to_s
+          @raw.dup
+        end
+
+        private
+
+        # @return [Array<String>]
+        def lines
+          @lines ||= @raw.each_line.map do |line|
+            line.gsub(/\n$/, "")
+          end
         end
       end
     end

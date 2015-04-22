@@ -134,6 +134,17 @@ module Serverkit
         end
       end
 
+      # Create a file on remote side
+      # @param [String] content
+      # @param [String] path
+      def create_remote_file(content: nil, path: nil)
+        ::Tempfile.open("") do |file|
+          file.write(content)
+          file.close
+          backend.send_file(file.path, path)
+        end
+      end
+
       # @note For override
       # @return [String]
       def default_id
@@ -167,6 +178,19 @@ module Serverkit
         required_attribute_names.map do |required_attribute_name|
           send(required_attribute_name)
         end
+      end
+
+      # Update remote file content on given path with given content
+      # @param [String] content
+      # @param [String] path
+      def update_remote_file_content(content: nil, path: nil)
+        group = run_command_from_identifier(:get_file_owner_group, path).stdout.rstrip
+        mode = run_command_from_identifier(:get_file_mode, path).stdout.rstrip
+        owner = run_command_from_identifier(:get_file_owner_user, path).stdout.rstrip
+        create_remote_file(content: content, path: path)
+        run_command_from_identifier(:change_file_group, path, group)
+        run_command_from_identifier(:change_file_mode, path, mode)
+        run_command_from_identifier(:change_file_owner, path, owner)
       end
     end
   end
