@@ -47,7 +47,9 @@ module Serverkit
       end
 
       def has_matched_line_in_remote_file_content?
-        remote_file_content.each_line.lazy.grep(regexp || line_with_break).any?
+        remote_file_content.each_line.any? do |remote_file_line|
+          (regexp || line) === remote_file_line.gsub(/\n$/, "")
+        end
       end
 
       def line_with_break
