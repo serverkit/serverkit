@@ -145,18 +145,18 @@ module Serverkit
 
         private
 
-        # @return [Array<String>]
-        def lines
-          @lines ||= @raw.each_line.map do |line|
-            line.gsub(/\n$/, "")
-          end
-        end
-
         # @param [Integer] index
         # @param [String] line
         # @return [Serverkit::Resources::Line::Content]
         def insert(index, line)
           self.class.new([*lines.dup.insert(index, line), ""].join("\n"))
+        end
+
+        # @return [Array<String>]
+        def lines
+          @lines ||= @raw.each_line.map do |line|
+            line.gsub(/\n$/, "")
+          end
         end
 
         # @param [String] line
