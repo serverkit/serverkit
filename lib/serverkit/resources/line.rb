@@ -11,6 +11,8 @@ module Serverkit
       DEFAULT_STATE = "present"
 
       attribute :path, required: true, type: String
+      attribute :insert_after, type: String
+      attribute :insert_before, type: String
       attribute :line, required: true, type: String
       attribute :pattern, type: String
       attribute :state, default: DEFAULT_STATE, inclusion: %w[absent present], type: String
@@ -32,12 +34,21 @@ module Serverkit
 
       private
 
+      def absent?
+        state == "absent"
+      end
+
       # @return [String]
       def applied_remote_file_content
-        if present?
-          content.append(line).to_s
-        else
+        case
+        when absent?
           content.delete(line).to_s
+        when insert_after
+          content.insert_after(Regexp.new(insert_after), line).to_s
+        when insert_before
+          content.insert_before(Regexp.new(insert_before), line).to_s
+        else
+          content.append(line).to_s
         end
       end
 
@@ -67,22 +78,15 @@ module Serverkit
       end
 
       def has_matched_line?
-        content.match(regexp || line)
-      end
-
-      def line_with_break
-        "#{line}\n"
+        if pattern
+          content.match(Regexp.new(pattern))
+        else
+          content.match(line)
+        end
       end
 
       def present?
         state == "present"
-      end
-
-      # @return [Regexp, nil]
-      def regexp
-        if pattern
-          ::Regexp.new(pattern)
-        end
       end
 
       # Wrapper class to easily manage lines in remote file content.
@@ -95,15 +99,37 @@ module Serverkit
         # @param [String] line
         # @return [Serverkit::Resources::Line::Content]
         def append(line)
-          string = @raw
-          string += "\n" unless @raw.end_with?("\n")
-          self.class.new(string + line + "\n")
+          self.class.new([*lines, line, ""].join("\n"))
         end
 
         # @param [String] line
         # @return [Serverkit::Resources::Line::Content]
         def delete(line)
           self.class.new(@raw.gsub(/^#{line}$/, ""))
+        end
+
+        # Insert the line after the last matched line or EOF
+        # @param [Regexp] regexp
+        # @param [String] line
+        # @return [Serverkit::Resources::Line::Content]
+        def insert_after(regexp, line)
+          if index = lines.rindex { |line| line =~ regexp }
+            insert(index + 1, line)
+          else
+            append(line)
+          end
+        end
+
+        # Insert the line before the last matched line or BOF
+        # @param [Regexp] regexp
+        # @param [String] line
+        # @return [Serverkit::Resources::Line::Content]
+        def insert_before(regexp, line)
+          if index = lines.rindex { |line| line =~ regexp }
+            insert(index, line)
+          else
+            prepend(line)
+          end
         end
 
         # @param [Regexp, String] pattern
@@ -124,6 +150,19 @@ module Serverkit
           @lines ||= @raw.each_line.map do |line|
             line.gsub(/\n$/, "")
           end
+        end
+
+        # @param [Integer] index
+        # @param [String] line
+        # @return [Serverkit::Resources::Line::Content]
+        def insert(index, line)
+          self.class.new([*lines.dup.insert(index, line), ""].join("\n"))
+        end
+
+        # @param [String] line
+        # @return [Serverkit::Resources::Line::Content]
+        def prepend(line)
+          self.class.new("#{line}\n#{@raw}")
         end
       end
     end
