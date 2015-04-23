@@ -18,4 +18,3 @@ resources:
     line: "%wheel ALL=(ALL) ALL"
     insert_before: "^#includedir"
     validation_script: visudo -cf %{path}
-    state: absent
