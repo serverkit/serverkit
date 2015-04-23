@@ -16,14 +16,16 @@ module Serverkit
       attribute :line, required: true, type: String
       attribute :pattern, regexp: true, type: String
       attribute :state, default: DEFAULT_STATE, inclusion: %w[absent present], type: String
+      attribute :validation_script, type: String
 
       # @note Override
       def apply
         if has_correct_file?
-          update_remote_file_content(
-            content: applied_remote_file_content,
-            path: path,
-          )
+          if validation_script
+            update_remote_file_content_with_validation
+          else
+            update_remote_file_content_without_validation
+          end
         end
       end
 
@@ -89,6 +91,22 @@ module Serverkit
         state == "present"
       end
 
+      # Create a new temp file on remote side, then validate it with given script,
+      # and move it to right file path if it succeeded. Note that `%{path}` in validation
+      # script will be replaced with the path to temp file.
+      def update_remote_file_content_with_validation
+        temp_path = create_remote_temp_file(applied_remote_file_content)
+        if check_command(format(validation_script, path: temp_path))
+          move_remote_file_keeping_destination_metadata(temp_path, path)
+        end
+        run_command_from_identifier(:remove_file, temp_path)
+      end
+
+      # Create or update remote file
+      def update_remote_file_content_without_validation
+        update_remote_file_content(content: applied_remote_file_content, path: path)
+      end
+
       # Wrapper class to easily manage lines in remote file content.
       class Content
         # @param [String] raw
@@ -105,7 +123,7 @@ module Serverkit
         # @param [String] line
         # @return [Serverkit::Resources::Line::Content]
         def delete(line)
-          self.class.new(@raw.gsub(/^#{line}$/, ""))
+          self.class.new(@raw.gsub(/^#{Regexp.escape(line)}[\n$]/, ""))
         end
 
         # Insert the line after the last matched line or EOF

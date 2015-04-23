@@ -146,10 +146,38 @@ module Serverkit
         end
       end
 
+      # Create temp file on remote side with given content
+      # @param [String] content
+      # @return [String] Path to remote temp file
+      def create_remote_temp_file(content)
+        make_remote_temp_path.tap do |path|
+          update_remote_file_content(content: content, path: path)
+        end
+      end
+
       # @note For override
       # @return [String]
       def default_id
         required_values.join(" ")
+      end
+
+      # @note GNU mktemp doesn't require -t option, but BSD mktemp does
+      # @return [String]
+      def make_remote_temp_path
+        run_command("mktemp -u 2>/dev/null || mktemp -u -t tmp").stdout.rstrip
+      end
+
+      # @note "metadata" meens a set of group, mode, and owner
+      # @param [String] destination
+      # @param [String] source
+      def move_remote_file_keeping_destination_metadata(source, destination)
+        group = run_command_from_identifier(:get_file_owner_group, destination).stdout.rstrip
+        mode = run_command_from_identifier(:get_file_mode, destination).stdout.rstrip
+        owner = run_command_from_identifier(:get_file_owner_user, destination).stdout.rstrip
+        run_command_from_identifier(:change_file_group, source, group) unless group.empty?
+        run_command_from_identifier(:change_file_mode, source, mode) unless mode.empty?
+        run_command_from_identifier(:change_file_owner, source, owner) unless owner.empty?
+        run_command_from_identifier(:move_file, source, destination)
       end
 
       # @note For override
@@ -189,9 +217,9 @@ module Serverkit
         mode = run_command_from_identifier(:get_file_mode, path).stdout.rstrip
         owner = run_command_from_identifier(:get_file_owner_user, path).stdout.rstrip
         create_remote_file(content: content, path: path)
-        run_command_from_identifier(:change_file_group, path, group)
-        run_command_from_identifier(:change_file_mode, path, mode)
-        run_command_from_identifier(:change_file_owner, path, owner)
+        run_command_from_identifier(:change_file_group, path, group) unless group.empty?
+        run_command_from_identifier(:change_file_mode, path, mode) unless mode.empty?
+        run_command_from_identifier(:change_file_owner, path, owner) unless owner.empty?
       end
     end
   end

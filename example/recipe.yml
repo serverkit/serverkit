@@ -14,4 +14,8 @@ resources:
     mode: 0700
   - type: line
     path: /etc/sudoers
-    line: "#includedir /etc/sudoers.d"
+    pattern: '%wheel +ALL=\(ALL\) ALL'
+    line: "%wheel ALL=(ALL) ALL"
+    insert_before: "^#includedir"
+    validation_script: visudo -cf %{path}
+    state: absent
