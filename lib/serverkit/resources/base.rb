@@ -167,7 +167,7 @@ module Serverkit
         run_command("mktemp -u 2>/dev/null || mktemp -u -t tmp").stdout.rstrip
       end
 
-      # @note "metadata" meens a set of group, mode, and owner
+      # @note "metadata" means a set of group, mode, and owner
       # @param [String] destination
       # @param [String] source
       def move_remote_file_keeping_destination_metadata(source, destination)
