@@ -1,3 +1,6 @@
+## 0.5.0
+- Add validation_script attribute on line resource
+
 ## 0.4.9
 - Add insert_after, insert_before, and pattern attributes on line resource
 - Rescue YAML parse error on recipe loading phase
