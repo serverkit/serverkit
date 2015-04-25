@@ -6,12 +6,6 @@ For example, [serverkit-rbenv](https://github.com/r7kamura/serverkit-rbenv) gem
 adds a custom resource type named `rbenv_ruby` by defining `Serverkit::Resources::RbenvRuby` class.
 Serverkit finds `Serverkit::Resources::FooBar` resource class from `type: "foo_bar"`.
 
-- [serverkit-atom](https://github.com/r7kamura/serverkit-atom)
-- [serverkit-defaults](https://github.com/r7kamura/serverkit-defaults)
-- [serverkit-homebrew](https://github.com/r7kamura/serverkit-homebrew)
-- [serverkit-karabiner](https://github.com/r7kamura/serverkit-karabiner)
-- [serverkit-rbenv](https://github.com/r7kamura/serverkit-rbenv)
-
 ```rb
 # Gemfile
 gem "serverkit"
