@@ -46,3 +46,11 @@ $ serverkit apply recipe.yml
  - [serverkit-karabiner](https://github.com/r7kamura/serverkit-karabiner)
  - [serverkit-rbenv](https://github.com/r7kamura/serverkit-rbenv)
 - [Vagrant integration](/doc/vagrant_integration.md)
+
+## Similar tools
+- [ansible/ansible](https://github.com/ansible/ansible)
+- [fabric/fabric](https://github.com/fabric/fabric)
+- [chef/chef](https://github.com/chef/chef)
+- [puppetlabs/puppet](https://github.com/puppetlabs/puppet)
+- [itamae-kitchen/itamae](https://github.com/itamae-kitchen/itamae)
+- [Windows PowerShell Desired State Configuration](https://technet.microsoft.com/library/dn249918.aspx)
