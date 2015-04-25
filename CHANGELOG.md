@@ -31,7 +31,7 @@
 - Change some attribue names on user resource
 
 ## 0.4.2
-- Fix bug on apply action exit code
+- Fix bug on apply action exit status
 - Support case-insensitive or number log-level
 
 ## 0.4.1
@@ -51,7 +51,7 @@
 - Change attributes naming rule: status -> state
 
 ## 0.3.3
-- Return exit code 1 if any resource failed
+- Return exit status 1 if any resource failed
 
 ## 0.3.2
 - Fix git resource on git-clone
