@@ -1,6 +1,8 @@
 # Serverkit [![Build Status](https://travis-ci.org/r7kamura/serverkit.svg)](https://travis-ci.org/r7kamura/serverkit) [![Code Climate](https://codeclimate.com/github/r7kamura/serverkit/badges/gpa.svg)](https://codeclimate.com/github/r7kamura/serverkit)
 Assemble servers from your recipe.
 
+![Server (thx 1041uuu)](/images/server.png)
+
 ## Usage
 Describe the desired state, then `serverkit apply`.
 
