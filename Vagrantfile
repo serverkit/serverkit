@@ -4,9 +4,10 @@ Vagrant.configure("2") do |config|
   config.plugin.add_dependency "vagrant-multiplug"
   config.plugin.add_dependency "vagrant-serverkit", "0.0.5"
 
-  config.vm.provision :serverkit do |serverkit_config|
-    serverkit_config.log_level = "DEBUG"
-    serverkit_config.recipe_path = "example/recipe.yml"
-    serverkit_config.variables_path = "example/variables.yml"
-  end
+  config.vm.provision(
+    :serverkit,
+    log_level: "DEBUG",
+    recipe_path: "example/recipe.yml",
+    variables_path: "example/variables.yml",
+  )
 end
