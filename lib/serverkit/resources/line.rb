@@ -44,14 +44,14 @@ module Serverkit
       def applied_remote_file_content
         case
         when absent?
-          content.delete(line).to_s
+          content.delete(line)
         when insert_after
-          content.insert_after(Regexp.new(insert_after), line).to_s
+          content.insert_after(Regexp.new(insert_after), line)
         when insert_before
-          content.insert_before(Regexp.new(insert_before), line).to_s
+          content.insert_before(Regexp.new(insert_before), line)
         else
-          content.append(line).to_s
-        end
+          content.append(line)
+        end.to_s
       end
 
       # @return [Serverkit::Resources::Line::Content]
