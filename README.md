@@ -27,7 +27,7 @@ $ serverkit apply recipe.yml
 - [Resource](/doc/resource.md)
  - [command](/doc/resource_command.md)
  - [directory](/doc/resource_directory.md)
- - [file](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/file.rb)
+ - [file](/doc/resource_file.md)
  - [git](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/git.rb)
  - [group](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/group.rb)
  - [line](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/line.rb)
