@@ -55,4 +55,3 @@ $ serverkit apply recipe.yml
 - [chef/chef](https://github.com/chef/chef)
 - [puppetlabs/puppet](https://github.com/puppetlabs/puppet)
 - [itamae-kitchen/itamae](https://github.com/itamae-kitchen/itamae)
-- [Windows PowerShell Desired State Configuration](https://technet.microsoft.com/library/dn249918.aspx)
