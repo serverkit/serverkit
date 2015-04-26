@@ -8,7 +8,7 @@
 - path - directory path (required, type: `String`)
 
 ## Example
-This recipe ensures the `/home/foo/.ssh` exists on the remote host,
+This recipe ensures a directory exists at `/home/foo/.ssh` on a remote host,
 and its mode is `700`, and it is owned by user `foo`.
 
 ```yaml

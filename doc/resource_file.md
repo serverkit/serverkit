@@ -9,7 +9,7 @@
 - path - file path (required, type: `String`)
 
 ## Example
-This recipe ensures the `/home/foo/.ssh/authorized_keys` exists on the remote host
+This recipe ensures a file exists at `/home/foo/.ssh/authorized_keys` on a remote host
 with specified content, and its mode is `600`, and its owner is user `foo`.
 
 ```yaml
