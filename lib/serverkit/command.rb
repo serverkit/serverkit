@@ -8,8 +8,13 @@ require "serverkit/errors/missing_recipe_path_argument_error"
 require "serverkit/errors/unknown_action_name_error"
 
 module Serverkit
-  # Command clsas takes care of command line interface.
-  # It builds and runs an Action object from given command line arguements.
+  # This class is responsible for command line interface.
+  # An instance of this class builds an instance of Actions::Base class,
+  # then calls its `#call` method, and it exits with exit status 0 unless any error found.
+  # This class should be used only from bin/serverkit executable.
+  # If you need to use serverkit's any feature from Ruby code,
+  # use a child of Actions::Base class instead because
+  # this class only focuses on command line interface.
   class Command
     LOG_LEVELS_TABLE = {
       "" => Logger::INFO,
