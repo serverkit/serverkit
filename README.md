@@ -6,16 +6,14 @@ Assemble servers from your recipe.
 ## Usage
 Describe the desired state, then `serverkit apply`.
 
-```yaml
-# recipe.yml
+```sh
+$ echo '
 resources:
   - type: package
     name: mysql
   - type: package
     name: redis
-```
-
-```
+' > recipe.yml
 $ serverkit apply recipe.yml
 ```
 
