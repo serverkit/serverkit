@@ -25,7 +25,7 @@ $ serverkit apply recipe.yml
 - [serverkit validate](/doc/action_validate.md)
 - [Recipe](/doc/recipe.md)
 - [Resource](/doc/resource.md)
- - [command](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/command.rb)
+ - [command](/doc/resource_command.md)
  - [directory](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/directory.rb)
  - [file](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/file.rb)
  - [git](https://github.com/r7kamura/serverkit/blob/master/lib/serverkit/resources/git.rb)
