@@ -3,8 +3,8 @@ require "serverkit/resources/base"
 module Serverkit
   module Resources
     class Group < Base
-      attribute :name, required: true, type: String
       attribute :gid, type: Integer
+      attribute :name, required: true, type: String
 
       # @note Override
       def apply
