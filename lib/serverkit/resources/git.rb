@@ -7,7 +7,7 @@ module Serverkit
 
       attribute :path, required: true, type: String
       attribute :repository, required: true, type: String
-      attribute :state, default: DEFAULT_STATE, type: String
+      attribute :state, default: DEFAULT_STATE, in: %w[cloned updated], type: String
 
       # @note Override
       def apply
