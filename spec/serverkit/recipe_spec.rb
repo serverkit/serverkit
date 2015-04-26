@@ -1,5 +1,3 @@
-require "serverkit"
-
 RSpec.describe Serverkit::Recipe do
   let(:recipe) do
     described_class.new(recipe_data)

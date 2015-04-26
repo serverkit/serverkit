@@ -1,5 +1,4 @@
 require "active_support/core_ext/hash/slice"
-require "serverkit"
 
 RSpec.describe Serverkit::ResourceBuilder do
   let(:recipe) do
