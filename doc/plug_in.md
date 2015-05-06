@@ -14,4 +14,5 @@ gem "serverkit-defaults"
 gem "serverkit-homebrew"
 gem "serverkit-karabiner"
 gem "serverkit-rbenv"
+gem "serverkit-login_items"
 ```

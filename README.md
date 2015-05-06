@@ -45,6 +45,7 @@ $ serverkit apply recipe.yml
  - [serverkit-homebrew](https://github.com/r7kamura/serverkit-homebrew)
  - [serverkit-karabiner](https://github.com/r7kamura/serverkit-karabiner)
  - [serverkit-rbenv](https://github.com/r7kamura/serverkit-rbenv)
+ - [serverkit-login_items](https://github.com/take/serverkit-login_items)
 - [Vagrant integration](/doc/vagrant_integration.md)
 
 ## Similar tools
