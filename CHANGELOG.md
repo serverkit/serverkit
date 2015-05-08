@@ -1,3 +1,6 @@
+## 0.5.1
+- Fix user resource behavior on nil password case
+
 ## 0.5.0
 - Add validation_script attribute on line resource
 
