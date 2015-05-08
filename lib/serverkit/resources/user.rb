@@ -60,8 +60,11 @@ module Serverkit
         )
       end
 
+      # @return [String, nil]
       def encrypted_password
-        @encrypted_password ||= UnixCrypt::SHA512.build(password)
+        unless password.nil?
+          @encrypted_password ||= UnixCrypt::SHA512.build(password)
+        end
       end
 
       def get_remote_encrypted_password
