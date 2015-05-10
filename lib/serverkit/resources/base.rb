@@ -34,17 +34,14 @@ module Serverkit
       attr_reader :attributes, :check_result, :recheck_result, :recipe
 
       attribute :check_script, type: String
+      attribute :cwd, type: String
       attribute :id, type: String
       attribute :notify, type: Array
       attribute :recheck_script, type: String
       attribute :type, type: String
+      attribute :user, type: String
 
       delegate(
-        :check_command,
-        :check_command_from_identifier,
-        :get_command_from_identifier,
-        :run_command,
-        :run_command_from_identifier,
         :send_file,
         to: :backend,
       )
@@ -62,6 +59,21 @@ module Serverkit
       # @return [Array<Serverkit::Errors::Base>]
       def all_errors
         attribute_validation_errors
+      end
+
+      # @return [true, false]
+      def check_command(*args)
+        run_command(*args).success?
+      end
+
+      # @return [true, false]
+      def check_command_from_identifier(*args)
+        run_command_from_identifier(*args).success?
+      end
+
+      # @return [String]
+      def get_command_from_identifier(*args)
+        backend.command.get(*args)
       end
 
       # @return [Array<Serverkit::Resource>]
@@ -207,6 +219,20 @@ module Serverkit
         required_attribute_names.map do |required_attribute_name|
           send(required_attribute_name)
         end
+      end
+
+      # @note Wraps backend.run_command for `cwd` and `user` attributes
+      # @param [String] command one-line shell script to be executed on remote machine
+      # @return [Specinfra::CommandResult]
+      def run_command(command)
+        command = "cd #{Shellwords.escape(cwd)} && #{command}" unless cwd.nil?
+        command = "sudo -u #{user} -- /bin/sh -c #{Shellwords.escape(command)}" unless user.nil?
+        backend.run_command(command)
+      end
+
+      # @return [Specinfra::CommandResult]
+      def run_command_from_identifier(*args)
+        run_command(get_command_from_identifier(*args))
       end
 
       # Update remote file content on given path with given content
