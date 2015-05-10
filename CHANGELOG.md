@@ -1,3 +1,6 @@
+## 0.6.1
+- Move to home directory if user attribute is specified
+
 ## 0.6.0
 - Add `cwd` and `user` attributes on all resources
 
