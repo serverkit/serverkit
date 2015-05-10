@@ -11,7 +11,7 @@ By default, all types of resource can or must have the following attributes:
 - id - change resource identifier used in log, and also used for `notify`
 - notify - specify an Array of handler ids that should be applied after changed
 - recheck_script - pass shell script to override the `#recheck` phase (runned after `#apply`)
-- user - specify user for `sudo -u`
+- user - specify user who executes commands on remote machine
 
 ## Example
 Here is a tiny example recipe that has only one resource with `type` and `name` attributes.

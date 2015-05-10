@@ -225,8 +225,15 @@ module Serverkit
       # @param [String] command one-line shell script to be executed on remote machine
       # @return [Specinfra::CommandResult]
       def run_command(command)
-        command = "cd #{Shellwords.escape(cwd)} && #{command}" unless cwd.nil?
-        command = "sudo -u #{user} -- /bin/sh -c #{Shellwords.escape(command)}" unless user.nil?
+        case
+        when cwd
+          command = "cd #{Shellwords.escape(cwd)} && #{command}"
+        when user
+          command = "cd && #{command}"
+        end
+        unless user.nil?
+          command = "sudo -u #{user} -- /bin/sh -c #{Shellwords.escape(command)}"
+        end
         backend.run_command(command)
       end
 
