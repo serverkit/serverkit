@@ -1,3 +1,6 @@
+## 0.6.0
+- Add `cwd` and `user` attributes on all resources
+
 ## 0.5.1
 - Fix user resource behavior on nil password case
 
