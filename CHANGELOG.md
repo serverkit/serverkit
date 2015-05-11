@@ -1,3 +1,6 @@
+## 0.6.2
+- Add AtLeastOneOfValidator
+
 ## 0.6.1
 - Move to home directory if user attribute is specified
 
