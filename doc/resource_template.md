@@ -15,7 +15,7 @@ with same content with a expanded result of `files/authorized_keys.erb`.
 
 ```yaml
 resources:
-  - type: remote_file
+  - type: template
     destination: /home/foo/.ssh/authorized_keys
     source: files/authorized_keys.erb
     mode: 600
