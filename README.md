@@ -1,4 +1,4 @@
-# Serverkit [![Build Status](https://travis-ci.org/r7kamura/serverkit.svg)](https://travis-ci.org/r7kamura/serverkit) [![Code Climate](https://codeclimate.com/github/r7kamura/serverkit/badges/gpa.svg)](https://codeclimate.com/github/r7kamura/serverkit)
+# Serverkit [![Build Status](https://travis-ci.org/serverkit/serverkit.svg)](https://travis-ci.org/serverkit/serverkit) [![Code Climate](https://codeclimate.com/github/serverkit/serverkit/badges/gpa.svg)](https://codeclimate.com/github/serverkit/serverkit)
 Assemble servers from your recipe.
 
 ![Server (thx 1041uuu)](/images/server.png)
@@ -40,11 +40,11 @@ $ serverkit apply recipe.yml
  - [template](/doc/resource_template.md)
  - [user](/doc/resource_user.md)
 - [Plug-in](/doc/plug_in.md)
- - [serverkit-atom](https://github.com/r7kamura/serverkit-atom)
- - [serverkit-defaults](https://github.com/r7kamura/serverkit-defaults)
- - [serverkit-homebrew](https://github.com/r7kamura/serverkit-homebrew)
- - [serverkit-karabiner](https://github.com/r7kamura/serverkit-karabiner)
- - [serverkit-rbenv](https://github.com/r7kamura/serverkit-rbenv)
+ - [serverkit-atom](https://github.com/serverkit/serverkit-atom)
+ - [serverkit-defaults](https://github.com/serverkit/serverkit-defaults)
+ - [serverkit-homebrew](https://github.com/serverkit/serverkit-homebrew)
+ - [serverkit-karabiner](https://github.com/serverkit/serverkit-karabiner)
+ - [serverkit-rbenv](https://github.com/serverkit/serverkit-rbenv)
  - [serverkit-login_items](https://github.com/take/serverkit-login_items)
 - [Vagrant integration](/doc/vagrant_integration.md)
 
