@@ -31,7 +31,7 @@ you can `git clone` the source code and `rake install` it.
 bundler and git are both required in this method.
 
 ```
-$ git clone https://github.com/r7kamura/serverkit.git
+$ git clone https://github.com/serverkit/serverkit.git
 $ cd serverkit
 $ bundle install
 $ bundle exec rake install
