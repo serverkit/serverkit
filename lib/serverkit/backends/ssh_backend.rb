@@ -25,6 +25,7 @@ module Serverkit
         @specinfra_backend ||= ::Specinfra::Backend::Ssh.new(
           host: host,
           ssh_options: ssh_options,
+          request_pty: true,
         )
       end
 
