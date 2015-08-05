@@ -1,3 +1,6 @@
+## 0.6.3
+- Add :request_pty option on SSH backend
+
 ## 0.6.2
 - Add AtLeastOneOfValidator
 
