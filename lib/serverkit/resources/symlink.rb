@@ -6,10 +6,9 @@ module Serverkit
       attribute :destination, required: true, type: String
       attribute :source, required: true, type: String
 
-      # @note Specinfra's #link_to command does not support -f option for now
       # @note Override
       def apply
-        run_command("ln -fs #{destination} #{source}")
+        run_command_from_identifier(:link_file_to, source, destination, force: true)
       end
 
       # @note Override
