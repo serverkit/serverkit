@@ -27,7 +27,7 @@ module Serverkit
       end
 
       def has_correct_group?
-        run_command_from_identifier(:check_group_exists, name)
+        check_command_from_identifier(:check_group_exists, name)
       end
 
       # @return [Integer]
