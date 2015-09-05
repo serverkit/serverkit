@@ -1,3 +1,6 @@
+## 0.6.4
+- Fix has_correct_group?
+
 ## 0.6.3
 - Add :request_pty option on SSH backend
 
