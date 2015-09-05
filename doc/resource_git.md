@@ -5,6 +5,7 @@
 - path - where repository is cloned (required, type: `String`)
 - repository - repository URL (required, type: `String`)
 - state - whether it must be same revision with origin (`"cloned"` or `"updated"`, default: `"cloned"`)
+- branch - branch name (type: `String`)
 
 ## Example
 This recipe ensures a git repository is cloned from
