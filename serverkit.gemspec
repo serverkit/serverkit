@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "highline"
   spec.add_runtime_dependency "rainbow"
   spec.add_runtime_dependency "slop", "~> 3.4"
-  spec.add_runtime_dependency "specinfra", ">= 2.29.0"
+  spec.add_runtime_dependency "specinfra", ">= 2.31.0"
   spec.add_runtime_dependency "unix-crypt"
   spec.add_development_dependency "pry", "0.10.1"
   spec.add_development_dependency "rake", "~> 10.0"
