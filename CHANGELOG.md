@@ -1,3 +1,6 @@
+## 0.6.5
+- Use `sudo -H` option
+
 ## 0.6.4
 - Fix has_correct_group?
 
