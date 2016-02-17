@@ -18,6 +18,6 @@ resources:
   - type: template
     destination: /home/foo/.ssh/authorized_keys
     source: files/authorized_keys.erb
-    mode: 600
+    mode: 0600
     owner: foo
 ```

@@ -10,13 +10,13 @@
 
 ## Example
 This recipe ensures a file exists at `/home/foo/.ssh/authorized_keys` on a remote host
-with specified content, and its mode is `600`, and its owner is user `foo`.
+with specified content, and its mode is `0600`, and its owner is user `foo`.
 
 ```yaml
 resources:
   - type: file
     path: /home/foo/.ssh/authorized_keys
     content: ...
-    mode: 600
+    mode: 0600
     owner: foo
 ```

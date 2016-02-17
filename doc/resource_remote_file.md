@@ -17,6 +17,6 @@ resources:
   - type: remote_file
     destination: /home/foo/.ssh/authorized_keys
     source: files/authorized_keys
-    mode: 600
+    mode: 0600
     owner: foo
 ```
