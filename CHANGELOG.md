@@ -1,3 +1,6 @@
+## 0.6.7
+- Use /bin/bash with -i option on command execution with user option
+
 ## 0.6.6
 - Fix bug on `service` resource
 
