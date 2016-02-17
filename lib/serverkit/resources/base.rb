@@ -233,7 +233,7 @@ module Serverkit
           command = "cd && #{command}"
         end
         unless user.nil?
-          command = "sudo -H -u #{user} -- /bin/sh -c #{Shellwords.escape(command)}"
+          command = "sudo -H -u #{user} -i -- /bin/sh -c #{Shellwords.escape(command)}"
         end
         backend.run_command(command)
       end
