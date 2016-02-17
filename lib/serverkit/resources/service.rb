@@ -7,7 +7,7 @@ module Serverkit
 
       # @note Override
       def apply
-        run_command_from_identifier(:start, name)
+        run_command_from_identifier(:start_service, name)
       end
 
       # @note Override
