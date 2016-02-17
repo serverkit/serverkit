@@ -1,3 +1,6 @@
+## 0.6.6
+- Fix bug on `service` resource
+
 ## 0.6.5
 - Use `sudo -H` option
 
