@@ -41,11 +41,11 @@ $ serverkit apply recipe.yml
  - [user](/doc/resource_user.md)
 - [Plug-in](/doc/plug_in.md)
  - [serverkit-atom](https://github.com/serverkit/serverkit-atom)
+ - [serverkit-aws](https://github.com/serverkit/serverkit-aws)
  - [serverkit-defaults](https://github.com/serverkit/serverkit-defaults)
  - [serverkit-homebrew](https://github.com/serverkit/serverkit-homebrew)
  - [serverkit-karabiner](https://github.com/serverkit/serverkit-karabiner)
  - [serverkit-rbenv](https://github.com/serverkit/serverkit-rbenv)
- - [serverkit-s3](https://github.com/serverkit/serverkit-s3)
  - [serverkit-login_items](https://github.com/take/serverkit-login_items)
 - [Vagrant integration](/doc/vagrant_integration.md)
 
