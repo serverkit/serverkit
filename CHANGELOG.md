@@ -1,3 +1,6 @@
+## 0.6.8
+- Restrict ActiveSupport version in < 5.0.0
+
 ## 0.6.7
 - Use /bin/bash with -i option on command execution with user option
 
