@@ -35,6 +35,7 @@ $ serverkit apply recipe.yml
  - [package](/doc/resource_package.md)
  - [recipe](/doc/resource_recipe.md)
  - [remote_file](/doc/resource_remote_file.md)
+ - [script](/doc/resource_script.md)
  - [service](/doc/resource_service.md)
  - [symlink](/doc/resource_symlink.md)
  - [template](/doc/resource_template.md)
