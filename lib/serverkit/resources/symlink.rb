@@ -22,6 +22,14 @@ module Serverkit
       def default_id
         source
       end
+
+      def destination
+        ::File.expand_path(attributes["destination"])
+      end
+
+      def source
+        ::File.expand_path(attributes["source"])
+      end
     end
   end
 end
