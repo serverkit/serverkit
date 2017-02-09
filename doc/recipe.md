@@ -7,7 +7,8 @@ A recipe can be specified as a path to one of the following patterns:
 
 - JSON file
 - YAML file named with \*.yaml or \*.yml
-- ERB file named with \*.json.erb or \*.yml.erb
+- TOML file named with \*.toml
+- ERB file named with \*.json.erb or \*.yml.erb or \*.toml.erb
 - Executable to output JSON
 - Directory including recipe files recursively
 
@@ -20,9 +21,13 @@ $ serverkit apply recipe.json.erb --variables=variables.json
 $ serverkit apply recipe.json.erb --variables=variables.json.erb
 $ serverkit apply recipe.json.erb --variables=variables.yml
 $ serverkit apply recipe.json.erb --variables=variables.yml.erb
+$ serverkit apply recipe.json.erb --variables=variables.toml
+$ serverkit apply recipe.json.erb --variables=variables.toml.erb
 $ serverkit apply recipe.json.erb --variables=variables/
 $ serverkit apply recipe.yml
 $ serverkit apply recipe.yml.erb
+$ serverkit apply recipe.toml
+$ serverkit apply recipe.toml.erb
 $ serverkit apply recipes/
 ```
 

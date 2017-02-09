@@ -4,11 +4,13 @@ require "pathname"
 require "serverkit/errors/non_existent_path_error"
 require "tempfile"
 require "yaml"
+require "tomlrb"
 
 module Serverkit
   module Loaders
     class BaseLoader
       YAML_EXTNAMES = [".yaml", ".yml"]
+      TOML_EXTNAMES = [".toml"]
 
       # @param [String] path
       def initialize(path)
@@ -88,6 +90,10 @@ module Serverkit
         YAML_EXTNAMES.include?(pathname.extname)
       end
 
+      def has_toml_path?
+        TOML_EXTNAMES.include?(pathname.extname)
+      end
+
       # @return [Hash]
       def load_data
         case
@@ -95,6 +101,8 @@ module Serverkit
           load_data_from_executable
         when has_yaml_path?
           load_data_from_yaml
+        when has_toml_path?
+          load_data_from_toml
         else
           load_data_from_json
         end
@@ -132,6 +140,11 @@ module Serverkit
       # @return [Hash]
       def load_data_from_yaml
         YAML.load_file(pathname)
+      end
+
+      # @return [Hash]
+      def load_data_from_toml
+        Tomlrb.load_file(pathname)
       end
 
       # @return [Pathname]
