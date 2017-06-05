@@ -74,6 +74,7 @@ module Serverkit
         log_level: log_level,
         recipe_path: recipe_path,
         variables_path: variables_path,
+        ssh_options: ssh_options,
       }.reject do |key, value|
         value.nil?
       end
@@ -97,6 +98,8 @@ module Serverkit
         on "--log-level=", "Log level (DEBUG, INFO, WARN, ERROR, FATAL)"
         on "--no-color", "Disable coloring"
         on "--variables=", "Path to variables file for ERB recipe"
+        on "--ssh-user=", "SSH user name"
+        on "--ssh-identity=", "SSH identity (private key) file path"
       end
     end
 
@@ -125,6 +128,17 @@ module Serverkit
 
     def variables_path
       command_line_options["variables"]
+    end
+
+    def ssh_options
+      identity = command_line_options["ssh-identity"]
+      keys = identity ? [identity] : nil
+      {
+        user: command_line_options["ssh-user"],
+        keys: keys,
+      }.reject do |key, value|
+        value.nil?
+      end
     end
   end
 end
