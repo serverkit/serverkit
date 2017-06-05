@@ -1,3 +1,6 @@
+## 0.6.9
+- Support --ssh-identity and --ssh-user options
+
 ## 0.6.8
 - Restrict ActiveSupport version in < 5.0.0
 
