@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 2.0.0"
 
   spec.add_runtime_dependency "activemodel"
-  spec.add_runtime_dependency "activesupport", "< 5.0.0"
+  spec.add_runtime_dependency "activesupport", ">= 5.0.0"
   spec.add_runtime_dependency "bundler"
   spec.add_runtime_dependency "hashie"
   spec.add_runtime_dependency "highline"
