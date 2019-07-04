@@ -1,3 +1,6 @@
+## 0.7.0
+- Drop Ruby 2.2 support.
+
 ## 0.6.9
 - Support --ssh-identity and --ssh-user options
 
