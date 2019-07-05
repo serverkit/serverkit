@@ -1,3 +1,6 @@
+AllCops:
+  TargetRubyVersion: 2.3
+
 Lint/AssignmentInCondition:
   Enabled: false
 
@@ -68,7 +71,7 @@ Style/PredicateName:
   Enabled: false
 
 Style/RegexpLiteral:
-  MaxSlashes: 0
+  AllowInnerSlashes: false
 
 Style/SignalException:
   Enabled: false
@@ -76,7 +79,10 @@ Style/SignalException:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
-Style/TrailingComma:
+Style/TrailingCommaInLiteral:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
   Enabled: false
 
 Style/TrivialAccessors:
