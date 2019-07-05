@@ -22,7 +22,7 @@ module Serverkit
     end
 
     class BindableMash < Hashie::Mash
-      DEFAULT_PROC = -> (hash, key) do
+      DEFAULT_PROC = ->(hash, key) do
         raise KeyError, "key not found: #{key.inspect} (perhaps variables are wrong?)"
       end
 

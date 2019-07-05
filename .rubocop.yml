@@ -1,3 +1,6 @@
+AllCops:
+  TargetRubyVersion: 2.3
+
 Lint/AssignmentInCondition:
   Enabled: false
 
@@ -19,6 +22,9 @@ Lint/UnusedMethodArgument:
 Metrics/AbcSize:
   Enabled: false
 
+Metrics/BlockLength:
+  Enabled: false
+
 Metrics/ClassLength:
   Enabled: false
 
@@ -34,7 +40,10 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Enabled: false
 
-Style/AccessorMethodName:
+Naming/AccessorMethodName:
+  Enabled: false
+
+Naming/PredicateName:
   Enabled: false
 
 Style/AndOr:
@@ -46,6 +55,12 @@ Style/Documentation:
 Style/DoubleNegation:
   Enabled: false
 
+Style/EmptyMethod:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+  
 Style/FormatString:
   Enabled: false
 
@@ -64,11 +79,8 @@ Style/MultilineBlockChain:
 Style/PercentLiteralDelimiters:
   Enabled: false
 
-Style/PredicateName:
-  Enabled: false
-
 Style/RegexpLiteral:
-  MaxSlashes: 0
+  AllowInnerSlashes: false
 
 Style/SignalException:
   Enabled: false
@@ -76,7 +88,13 @@ Style/SignalException:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
-Style/TrailingComma:
+Style/SymbolArray:
+  Enabled: false
+
+Style/TrailingCommaInLiteral:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
   Enabled: false
 
 Style/TrivialAccessors:

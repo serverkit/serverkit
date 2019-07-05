@@ -8,7 +8,7 @@ require "yaml"
 module Serverkit
   module Loaders
     class BaseLoader
-      YAML_EXTNAMES = [".yaml", ".yml"]
+      YAML_EXTNAMES = [".yaml", ".yml"].freeze
 
       # @param [String] path
       def initialize(path)
@@ -16,12 +16,11 @@ module Serverkit
       end
 
       def load
-        case
-        when !pathname.exist?
+        if !pathname.exist?
           raise Errors::NonExistentPathError, pathname
-        when has_directory_path?
+        elsif has_directory_path?
           load_from_directory
-        when has_erb_path?
+        elsif has_erb_path?
           load_from_erb
         else
           load_from_data
@@ -90,10 +89,9 @@ module Serverkit
 
       # @return [Hash]
       def load_data
-        case
-        when has_executable_path?
+        if has_executable_path?
           load_data_from_executable
-        when has_yaml_path?
+        elsif has_yaml_path?
           load_data_from_yaml
         else
           load_data_from_json

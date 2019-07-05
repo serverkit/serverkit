@@ -8,7 +8,7 @@ module Serverkit
     #     path: /etc/sudoers
     #     line: "#includedir /etc/sudoers.d"
     class Line < Base
-      DEFAULT_STATE = "present"
+      DEFAULT_STATE = "present".freeze
 
       attribute :path, required: true, type: String
       attribute :insert_after, type: String
@@ -42,12 +42,11 @@ module Serverkit
 
       # @return [String]
       def applied_remote_file_content
-        case
-        when absent?
+        if absent?
           content.delete(line)
-        when insert_after
+        elsif insert_after
           content.insert_after(Regexp.new(insert_after), line)
-        when insert_before
+        elsif insert_before
           content.insert_before(Regexp.new(insert_before), line)
         else
           content.append(line)
@@ -69,10 +68,9 @@ module Serverkit
       end
 
       def has_correct_line?
-        case
-        when present? && !has_matched_line?
+        if present? && !has_matched_line?
           false
-        when !present? && has_matched_line?
+        elsif !present? && has_matched_line?
           false
         else
           true

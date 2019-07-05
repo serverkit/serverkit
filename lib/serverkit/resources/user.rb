@@ -27,18 +27,17 @@ module Serverkit
 
       # @note Override
       def check
-        case
-        when !has_correct_user?
+        if !has_correct_user?
           false
-        when !has_correct_gid?
+        elsif !has_correct_gid?
           false
-        when !has_correct_home_directory?
+        elsif !has_correct_home_directory?
           false
-        when !has_correct_password?
+        elsif !has_correct_password?
           false
-        when !has_correct_login_shell?
+        elsif !has_correct_login_shell?
           false
-        when !has_correct_uid?
+        elsif !has_correct_uid?
           false
         else
           true

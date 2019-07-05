@@ -6,7 +6,7 @@ require "specinfra"
 module Serverkit
   module Backends
     class SshBackend < BaseBackend
-      DEFAULT_SSH_OPTIONS = {}
+      DEFAULT_SSH_OPTIONS = {}.freeze
 
       attr_reader :host
 
