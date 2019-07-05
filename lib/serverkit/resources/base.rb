@@ -226,10 +226,9 @@ module Serverkit
       # @param [String] command one-line shell script to be executed on remote machine
       # @return [Specinfra::CommandResult]
       def run_command(command)
-        case
-        when cwd
+        if cwd
           command = "cd #{Shellwords.escape(cwd)} && #{command}"
-        when user
+        elsif user
           command = "cd && #{command}"
         end
         unless user.nil?

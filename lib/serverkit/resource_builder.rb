@@ -46,10 +46,9 @@ module Serverkit
 
     # @return [Class]
     def resource_class
-      case
-      when type.nil?
+      if type.nil?
         Resources::Missing
-      when has_known_type?
+      elsif has_known_type?
         Resources.const_get(resource_class_name, false)
       else
         Resources::Unknown
