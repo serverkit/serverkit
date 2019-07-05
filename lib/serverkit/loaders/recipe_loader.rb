@@ -5,7 +5,7 @@ require "serverkit/recipe"
 module Serverkit
   module Loaders
     class RecipeLoader < BaseLoader
-      DEFAULT_VARIABLES_DATA = {}
+      DEFAULT_VARIABLES_DATA = {}.freeze
 
       # @param [String] path
       # @param [String, nil] variables_path

@@ -8,7 +8,7 @@ require "yaml"
 module Serverkit
   module Loaders
     class BaseLoader
-      YAML_EXTNAMES = [".yaml", ".yml"]
+      YAML_EXTNAMES = [".yaml", ".yml"].freeze
 
       # @param [String] path
       def initialize(path)

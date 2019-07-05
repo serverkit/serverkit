@@ -28,7 +28,7 @@ module Serverkit
       "FATAL" => Logger::FATAL,
       "INFO" => Logger::INFO,
       "WARN" => Logger::WARN,
-    }
+    }.freeze
 
     # @param [Array<String>] argv
     def initialize(argv)

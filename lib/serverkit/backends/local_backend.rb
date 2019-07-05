@@ -4,7 +4,7 @@ require "specinfra"
 module Serverkit
   module Backends
     class LocalBackend < BaseBackend
-      HOST = "localhost"
+      HOST = "localhost".freeze
 
       # @note Override
       def host

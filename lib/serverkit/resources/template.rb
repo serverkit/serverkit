@@ -5,7 +5,7 @@ require "serverkit/resources/remote_file"
 module Serverkit
   module Resources
     class Template < RemoteFile
-      DEFAULT_VARIABLES_DATA = {}
+      DEFAULT_VARIABLES_DATA = {}.freeze
 
       private
 

@@ -8,7 +8,7 @@ module Serverkit
     #     path: /etc/sudoers
     #     line: "#includedir /etc/sudoers.d"
     class Line < Base
-      DEFAULT_STATE = "present"
+      DEFAULT_STATE = "present".freeze
 
       attribute :path, required: true, type: String
       attribute :insert_after, type: String
