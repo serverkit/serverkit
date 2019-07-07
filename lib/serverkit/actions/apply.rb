@@ -1,6 +1,4 @@
 require "serverkit/actions/base"
-require "thread"
-
 module Serverkit
   module Actions
     class Apply < Base
