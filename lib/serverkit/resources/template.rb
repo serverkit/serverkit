@@ -23,7 +23,7 @@ module Serverkit
 
       # @return [String] ERB content
       def template_content
-        @template ||= ::File.read(source)
+        @template_content ||= ::File.read(source)
       end
 
       # @note Override

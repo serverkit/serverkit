@@ -67,7 +67,6 @@ module Serverkit
         @expanded_erb_tempfile ||= Tempfile.new(["", expanded_erb_path_suffix]).tap do |tempfile|
           tempfile << expand_erb
           tempfile.close
-          tempfile
         end
       end
 
