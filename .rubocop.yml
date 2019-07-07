@@ -46,6 +46,9 @@ Naming/AccessorMethodName:
 Naming/PredicateName:
   Enabled: false
 
+Naming/UncommunicativeMethodParamName:
+  Enabled: false
+
 Style/AndOr:
   Enabled: false
 
@@ -91,7 +94,10 @@ Style/StringLiterals:
 Style/SymbolArray:
   Enabled: false
 
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
   Enabled: false
 
 Style/TrailingCommaInArguments:
