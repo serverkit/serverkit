@@ -1,4 +1,5 @@
 require "serverkit/actions/base"
+
 module Serverkit
   module Actions
     class Apply < Base
