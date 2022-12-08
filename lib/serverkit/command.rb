@@ -59,7 +59,7 @@ module Serverkit
 
     # @note #inspect is reserved ;(
     def _inspect
-      Actions::Inspect.new(action_options).call
+      Actions::Inspect.new(**action_options).call
     end
 
     # @return [String, nil]
@@ -81,11 +81,11 @@ module Serverkit
     end
 
     def apply
-      Actions::Apply.new(action_options).call
+      Actions::Apply.new(**action_options).call
     end
 
     def check
-      Actions::Check.new(action_options).call
+      Actions::Check.new(**action_options).call
     end
 
     # @note This options are commonly used from all actions for now, however,
@@ -123,7 +123,7 @@ module Serverkit
     end
 
     def validate
-      Actions::Validate.new(action_options).call
+      Actions::Validate.new(**action_options).call
     end
 
     def variables_path
