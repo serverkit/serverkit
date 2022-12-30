@@ -1,3 +1,6 @@
+## 0.9.0
+- Drop Ruby 2.5 and older versions support.
+
 ## 0.8.0
 - Add Ruby 3.0 support.
 
