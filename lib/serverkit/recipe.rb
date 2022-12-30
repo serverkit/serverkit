@@ -16,15 +16,13 @@ module Serverkit
 
     # @return [Array<Serverkit::Errors::Base>]
     def errors
-      @errors ||= begin
-        if !has_valid_typed_recipe_data?
-          errors_for_invalid_typed_recipe_data
-        elsif !has_valid_typed_resources_property?
-          errors_for_invalid_typed_resources_property
-        else
-          errors_in_resources
-        end
-      end
+      @errors ||= if !has_valid_typed_recipe_data?
+                    errors_for_invalid_typed_recipe_data
+                  elsif !has_valid_typed_resources_property?
+                    errors_for_invalid_typed_resources_property
+                  else
+                    errors_in_resources
+                  end
     end
 
     # @return [Array<Serverkit::Resource>]
