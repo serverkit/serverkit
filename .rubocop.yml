@@ -19,6 +19,9 @@ Lint/UnusedBlockArgument:
 Lint/UnusedMethodArgument:
   Enabled: false
 
+Lint/MissingSuper:
+  Enabled: false
+
 Metrics/AbcSize:
   Enabled: false
 

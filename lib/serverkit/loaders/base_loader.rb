@@ -58,7 +58,7 @@ module Serverkit
 
       # @return [String]
       def expanded_erb_path_suffix
-        "." + pathname.basename(".erb").to_s.split(".", 2).last
+        ".#{pathname.basename('.erb').to_s.split('.', 2).last}"
       end
 
       # @note Memoizing to prevent GC
