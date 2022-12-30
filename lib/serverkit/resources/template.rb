@@ -16,7 +16,7 @@ module Serverkit
 
       # @return [ERB]
       def erb
-        _erb = ::ERB.new(template_content, nil, "-")
+        _erb = ::ERB.new(template_content, trim_mode: "-")
         _erb.filename = source
         _erb
       end
