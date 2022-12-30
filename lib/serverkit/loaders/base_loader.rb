@@ -41,7 +41,7 @@ module Serverkit
 
       # @return [ERB]
       def erb
-        _erb = ERB.new(pathname.read, nil, "-")
+        _erb = ERB.new(pathname.read, trim_mode: "-")
         _erb.filename = pathname.to_s
         _erb
       end
