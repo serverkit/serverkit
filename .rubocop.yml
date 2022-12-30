@@ -4,7 +4,7 @@ AllCops:
 Lint/AssignmentInCondition:
   Enabled: false
 
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Enabled: false
 
 Lint/ShadowingOuterLocalVariable:
@@ -46,7 +46,7 @@ Naming/AccessorMethodName:
 Naming/PredicateName:
   Enabled: false
 
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   Enabled: false
 
 Style/AndOr:
