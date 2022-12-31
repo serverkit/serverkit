@@ -33,13 +33,11 @@ module Serverkit
 
       # @return [Serverkit::Variables]
       def variables
-        @variables ||= begin
-          if recipe.variables_path
-            Loaders::VariablesLoader.new(recipe.variables_path).load
-          else
-            Variables.new(DEFAULT_VARIABLES_DATA.dup)
-          end
-        end
+        @variables ||= if recipe.variables_path
+                         Loaders::VariablesLoader.new(recipe.variables_path).load
+                       else
+                         Variables.new(DEFAULT_VARIABLES_DATA.dup)
+                       end
       end
     end
   end

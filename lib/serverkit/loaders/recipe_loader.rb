@@ -48,13 +48,11 @@ module Serverkit
 
       # @return [Serverkit::Variables]
       def variables
-        @variables ||= begin
-          if has_variables_path?
-            load_variables
-          else
-            Variables.new(DEFAULT_VARIABLES_DATA.dup)
-          end
-        end
+        @variables ||= if has_variables_path?
+                         load_variables
+                       else
+                         Variables.new(DEFAULT_VARIABLES_DATA.dup)
+                       end
       end
     end
   end

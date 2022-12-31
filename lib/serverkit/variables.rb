@@ -33,7 +33,7 @@ module Serverkit
       end
 
       # @note Override visibility from private to public
-      def binding
+      def binding # rubocop:disable Lint/UselessMethodDefinition
         super
       end
     end

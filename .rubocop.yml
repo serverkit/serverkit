@@ -19,6 +19,9 @@ Lint/UnusedBlockArgument:
 Lint/UnusedMethodArgument:
   Enabled: false
 
+Lint/MissingSuper:
+  Enabled: false
+
 Metrics/AbcSize:
   Enabled: false
 
@@ -30,9 +33,6 @@ Metrics/ClassLength:
 
 Metrics/CyclomaticComplexity:
   Enabled: false
-
-Metrics/LineLength:
-  Max: 120
 
 Metrics/MethodLength:
   Enabled: false
@@ -105,3 +105,6 @@ Style/TrailingCommaInArguments:
 
 Style/TrivialAccessors:
   Enabled: false
+
+Layout/LineLength:
+  Max: 120
