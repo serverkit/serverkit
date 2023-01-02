@@ -1,0 +1,22 @@
+name: Test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  rspec:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        ruby: ['2.6', '2.7', '3.0', '3.1']
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby ${{ matrix.ruby }}
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - name: Run rubocop and rspec
+      run: bundle exec rake
