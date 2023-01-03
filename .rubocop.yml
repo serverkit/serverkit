@@ -104,6 +104,3 @@ Style/TrailingCommaInArguments:
 
 Style/TrivialAccessors:
   Enabled: false
-
-Layout/LineLength:
-  Max: 120
