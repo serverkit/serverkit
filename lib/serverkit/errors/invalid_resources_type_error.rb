@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "serverkit/errors/base"
 
 module Serverkit

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "serverkit/loaders/base_loader"
 require "serverkit/variables"
 

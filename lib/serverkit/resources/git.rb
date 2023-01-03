@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require "serverkit/resources/base"
 
 module Serverkit
   module Resources
     class Git < Base
-      DEFAULT_STATE = "cloned".freeze
+      DEFAULT_STATE = "cloned"
 
       attribute :path, required: true, type: String
       attribute :repository, required: true, type: String

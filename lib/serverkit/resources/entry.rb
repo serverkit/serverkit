@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "digest"
 require "serverkit/resources/base"
 require "tempfile"

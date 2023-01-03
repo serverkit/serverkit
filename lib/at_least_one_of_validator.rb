@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "active_model"
 require "active_support/core_ext/array/conversions"
 require "active_support/core_ext/object/try"

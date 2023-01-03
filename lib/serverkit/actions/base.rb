@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "bundler"
 require "logger"
 require "serverkit/backends/local_backend"

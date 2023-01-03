@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "active_support/core_ext/hash/deep_merge"
 require "serverkit/errors/invalid_recipe_type_error"
 require "serverkit/errors/invalid_resources_type_error"

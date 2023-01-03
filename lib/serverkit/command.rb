@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rainbow"
 require "serverkit/actions/apply"
 require "serverkit/actions/check"

@@ -62,9 +62,6 @@ Style/DoubleNegation:
 
 Style/EmptyMethod:
   Enabled: false
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
   
 Style/FormatString:
   Enabled: false

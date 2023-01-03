@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "erb"
 require "serverkit/loaders/variables_loader"
 require "serverkit/resources/remote_file"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "serverkit/errors/missing_resource_type_error"
 require "serverkit/resources/base"
 

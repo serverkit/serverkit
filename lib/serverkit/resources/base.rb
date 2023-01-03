@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "active_model"
 require "active_model/errors"
 require "active_support/core_ext/module/delegation"

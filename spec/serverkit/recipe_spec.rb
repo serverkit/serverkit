@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Serverkit::Recipe do
   let(:recipe) do
     described_class.new(recipe_data)
