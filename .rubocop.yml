@@ -104,3 +104,6 @@ Style/TrailingCommaInArguments:
 
 Style/TrivialAccessors:
   Enabled: false
+
+Style/CollectionCompact:
+  Enabled: true

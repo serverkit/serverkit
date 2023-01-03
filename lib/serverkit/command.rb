@@ -77,9 +77,7 @@ module Serverkit
         recipe_path: recipe_path,
         variables_path: variables_path,
         ssh_options: ssh_options,
-      }.reject do |key, value|
-        value.nil?
-      end
+      }.compact
     end
 
     def apply
@@ -138,9 +136,7 @@ module Serverkit
       {
         user: command_line_options["ssh-user"],
         keys: keys,
-      }.reject do |key, value|
-        value.nil?
-      end
+      }.compact
     end
   end
 end
