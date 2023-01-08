@@ -25,8 +25,4 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "slop", "~> 3.4"
   spec.add_runtime_dependency "specinfra", ">= 2.31.0"
   spec.add_runtime_dependency "unix-crypt"
-  spec.add_development_dependency "pry"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec"
-  spec.add_development_dependency "rubocop", "~> 1.23.0"
 end
