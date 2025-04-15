@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "serverkit/resources/base"
 
 module Serverkit
@@ -8,7 +10,7 @@ module Serverkit
     #     path: /etc/sudoers
     #     line: "#includedir /etc/sudoers.d"
     class Line < Base
-      DEFAULT_STATE = "present".freeze
+      DEFAULT_STATE = "present"
 
       attribute :path, required: true, type: String
       attribute :insert_after, type: String

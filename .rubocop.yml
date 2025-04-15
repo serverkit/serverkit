@@ -62,9 +62,6 @@ Style/DoubleNegation:
 
 Style/EmptyMethod:
   Enabled: false
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
   
 Style/FormatString:
   Enabled: false
@@ -108,5 +105,5 @@ Style/TrailingCommaInArguments:
 Style/TrivialAccessors:
   Enabled: false
 
-Layout/LineLength:
-  Max: 120
+Style/CollectionCompact:
+  Enabled: true

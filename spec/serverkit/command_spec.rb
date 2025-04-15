@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Serverkit::Command do
   let(:command) do
     described_class.new(argv)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "serverkit"
 
 RSpec.configure do |config|

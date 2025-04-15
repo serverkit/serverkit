@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require "serverkit/backends/base_backend"
 require "specinfra"
 
 module Serverkit
   module Backends
     class LocalBackend < BaseBackend
-      HOST = "localhost".freeze
+      HOST = "localhost"
 
       # @note Override
       def host
