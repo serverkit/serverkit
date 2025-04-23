@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/hash/slice"
-
 RSpec.describe Serverkit::ResourceBuilder do
   let(:recipe) do
     Serverkit::Recipe.new(recipe_data)
