@@ -24,7 +24,7 @@ module Serverkit
         def attribute(name, options = {})
           default = options.delete(:default)
           define_method(name) do
-            @attributes[name.to_s] || default
+            @attributes.fetch(name.to_s, default)
           end
           validates name, options unless options.empty?
         end
