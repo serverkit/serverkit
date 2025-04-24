@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
-require "serverkit/command"
-require "serverkit/version"
+require_relative "serverkit/command"
+require_relative "serverkit/version"
