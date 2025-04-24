@@ -18,13 +18,13 @@ Gem::Specification.new do |spec|
   spec.require_paths         = ["lib"]
   spec.required_ruby_version = ">= 2.6.0"
 
-  spec.add_runtime_dependency "activemodel"
-  spec.add_runtime_dependency "activesupport", ">= 5.0.0"
-  spec.add_runtime_dependency "bundler"
-  spec.add_runtime_dependency "hashie"
-  spec.add_runtime_dependency "highline"
-  spec.add_runtime_dependency "rainbow"
-  spec.add_runtime_dependency "slop", "~> 3.4"
-  spec.add_runtime_dependency "specinfra", ">= 2.31.0"
-  spec.add_runtime_dependency "unix-crypt"
+  spec.add_dependency "activemodel"
+  spec.add_dependency "activesupport", ">= 5.0.0"
+  spec.add_dependency "bundler"
+  spec.add_dependency "hashie"
+  spec.add_dependency "highline"
+  spec.add_dependency "rainbow"
+  spec.add_dependency "slop", "~> 3.4"
+  spec.add_dependency "specinfra", ">= 2.31.0"
+  spec.add_dependency "unix-crypt"
 end
