@@ -16,6 +16,10 @@ Gem::Specification.new do |spec|
   spec.require_paths         = ["lib"]
   spec.required_ruby_version = ">= 2.6.0"
 
+  spec.metadata["homepage_uri"]    = spec.homepage
+  spec.metadata["source_code_uri"] = "https://github.com/serverkit/serverkit"
+  spec.metadata["changelog_uri"]   = "https://github.com/serverkit/serverkit/blob/main/CHANGELOG.md"
+
   spec.add_dependency "activemodel"
   spec.add_dependency "activesupport", ">= 5.0.0"
   spec.add_dependency "bundler"
