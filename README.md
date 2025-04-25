@@ -1,4 +1,4 @@
-# Serverkit [![Test](https://github.com/serverkit/serverkit/actions/workflows/test.yml/badge.svg)](https://github.com/serverkit/serverkit/actions/workflows/test.yml) [![Code Climate](https://codeclimate.com/github/serverkit/serverkit/badges/gpa.svg)](https://codeclimate.com/github/serverkit/serverkit)
+# Serverkit [![Test](https://github.com/serverkit/serverkit/actions/workflows/test.yml/badge.svg)](https://github.com/serverkit/serverkit/actions/workflows/test.yml) [![Gem Version](https://badge.fury.io/rb/serverkit.svg)](https://badge.fury.io/rb/serverkit)
 Assemble servers from your recipe.
 
 ![Server (thx 1041uuu)](/images/server.png)
