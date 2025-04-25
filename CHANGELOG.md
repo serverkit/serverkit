@@ -1,3 +1,6 @@
+## 1.0.0
+From v1.0 onward, changelogs are maintained under [GitHub Releases](https://github.com/serverkit/serverkit/releases).
+
 ## 0.9.0
 - Drop Ruby 2.5 and older versions support.
 
