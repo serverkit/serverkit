@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"]    = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/serverkit/serverkit"
-  spec.metadata["changelog_uri"]   = "https://github.com/serverkit/serverkit/blob/main/CHANGELOG.md"
+  spec.metadata["changelog_uri"]   = "https://github.com/serverkit/serverkit/releases"
 
   spec.add_dependency "activemodel"
   spec.add_dependency "activesupport", ">= 5.0.0"
