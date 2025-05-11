@@ -47,7 +47,7 @@ $ serverkit apply recipe.yml
  - [serverkit-karabiner](https://github.com/serverkit/serverkit-karabiner)
  - [serverkit-rbenv](https://github.com/serverkit/serverkit-rbenv)
  - [serverkit-login_items](https://github.com/take/serverkit-login_items)
- - [serverkit-vscode](https://github.com/toshimaru/serverkit-vscode)
+ - [serverkit-vscode](https://github.com/serverkit/serverkit-vscode)
 - [Vagrant integration](/doc/vagrant_integration.md)
 
 ## Similar tools
