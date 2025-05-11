@@ -4,7 +4,7 @@ This action is useful as your recipe grows to a large size with using variables,
 You can specify your recipe by passing its path in the same way as the other actions.
 
 ## Example
-```
+```console
 $ serverkit inspect recipe.yml
 {
   "resources": [

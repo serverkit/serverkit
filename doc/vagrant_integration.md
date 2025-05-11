@@ -7,7 +7,7 @@ One is to use pass the machine's host name via `--hosts=` option like below.
 Note that `vagrant ssh-config` command outputs SSH configuration for the machine on vagrant
 with `Host default`, and serverkit will use it by `--hosts=default` option.
 
-```
+```console
 $ vagrant ssh-config >> ~/.ssh/config
 $ serverkit apply recipe.yml --hosts=default
 ```
@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-```
+```console
 $ vagrant plugin install vagrant-serverkit
 $ vagrant up
 ```
