@@ -12,7 +12,7 @@ source "https://rubygems.org"
 gem "serverkit"
 ```
 
-```
+```console
 $ gem install bundler
 $ bundle install
 ```
@@ -21,7 +21,7 @@ $ bundle install
 Instead you can simply install serverkit by `gem` command,
 while you cannot use plugins without bundler.
 
-```
+```console
 $ gem install serverkit
 ```
 
@@ -30,7 +30,7 @@ If you want to install serverkit from source code for any reason,
 you can `git clone` the source code and `rake install` it.
 bundler and git are both required in this method.
 
-```
+```console
 $ git clone https://github.com/serverkit/serverkit.git
 $ cd serverkit
 $ bundle install

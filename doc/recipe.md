@@ -11,7 +11,7 @@ A recipe can be specified as a path to one of the following patterns:
 - Executable to output JSON
 - Directory including recipe files recursively
 
-```
+```console
 $ serverkit apply recipe
 $ serverkit apply recipe.json
 $ serverkit apply recipe.json.erb
@@ -70,6 +70,6 @@ handlers:
     script: killall Dock
 ```
 
-```
+```console
 $ serverkit apply recipe.yml.erb --variables=variables.yml
 ```
