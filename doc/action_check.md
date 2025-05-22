@@ -8,7 +8,7 @@ See [/doc/action_apply.md] for more details.
 ## Same case
 If no difference was detected, it returns exit status 0.
 
-```
+```console
 $ serverkit check recipe.yml
 [ OK ] homebrew mysql on localhost
 [ OK ] homebrew redis on localhost
@@ -23,7 +23,7 @@ $ echo $?
 ## Different case
 If any difference was detected, it returns exit status 1.
 
-```
+```console
 $ serverkit check recipe.yml
 [ OK ] homebrew mysql on localhost
 [ OK ] homebrew redis on localhost

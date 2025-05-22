@@ -6,7 +6,7 @@ Note that the other actions (e.g. `inspect`, `check`, `apply`) also runs validat
 ## Successful case
 If no error found, it returns exit status 0.
 
-```
+```console
 $ serverkit validate recipe.yml
 $ echo $?
 0
@@ -15,7 +15,7 @@ $ echo $?
 ## Failed case
 If any error found, it reports errors and returns exit status 1.
 
-```
+```console
 $ serverkit validate recipe.yml
 Error: source attribute is required in remote_file resource
 Error: path attribute can't be unreadable path in recipe resource

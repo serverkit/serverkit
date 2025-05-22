@@ -5,7 +5,7 @@ between the specified recipe and the state of the target host.
 ## Successful case
 If no error was found, it returns exit status 0.
 
-```
+```console
 $ serverkit apply recipe.yml
 [SKIP] homebrew mysql on localhost
 [SKIP] homebrew redis on localhost
@@ -20,7 +20,7 @@ $ echo $?
 ## Failed case
 If any error was found, it returns exit status 1.
 
-```
+```console
 $ serverkit apply recipe.yml
 [SKIP] homebrew mysql on localhost
 [SKIP] homebrew redis on localhost
@@ -39,7 +39,7 @@ You can run serverkit on multiple hosts by passing hosts in comma-separated styl
 If you want to specify SSH configuration, write it into your ~/.ssh/config.
 This option is also available in `serverkit check` action.
 
-```
+```console
 $ serverkit apply recipe.yml --hosts=alpha.example.com
 $ serverkit apply recipe.yml --hosts=alpha.example.com,bravo.example.com
 $ serverkit apply recipe.yml --hosts=app1,app2,app3
@@ -53,6 +53,6 @@ and all shell commands executed on hosts are logged with DEBUG level.
 The log output is colored by default.
 Pass `--no-color` option if you want to disable colored log outputs.
 
-```
+```console
 $ serverkit apply recipe.yml --hosts=alpha.example.com --log-level=debug --no-color
 ```
