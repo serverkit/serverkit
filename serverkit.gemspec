@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "bundler"
   spec.add_dependency "hashie"
   spec.add_dependency "highline"
+  spec.add_dependency "logger"
   spec.add_dependency "rainbow"
   spec.add_dependency "slop", "~> 3.4"
   spec.add_dependency "specinfra", ">= 2.31.0"

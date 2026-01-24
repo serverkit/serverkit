@@ -4,6 +4,7 @@ source "https://rubygems.org"
 
 gemspec
 
+gem "ostruct"
 gem "rake"
 gem "rspec"
 gem "rubocop", "~> 1.23.0"
